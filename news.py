@@ -81,7 +81,25 @@ def bbc():
                                     print(newsContent)
 
                                 except:
-                                    print("Error!")
+                                    try:
+                                        newsTags = soup.find("div",{"id": "orb-modules"}).find("div",{"class": "qa-story-body story-body gel-pica gel-10/12@m gel-7/8@l gs-u-ml0@l gs-u-pb++"})
+
+                                        newsContent = ""
+
+
+                                        for i in newsTags.find_all('ul'):
+                                            i.replace_with("")
+
+                                        for i in newsTags.find_all('span',attrs={'class':'gs-u-display-block story-body__media gs-u-mb-alt+ qa-story-body-media'}):
+                                            i.replace_with("")
+
+                                        for new in newsTags.find_all('p'):
+                                            newsContent = newsContent + " " + new.text
+
+                                        print(newsContent)
+
+                                    except:
+                                        print("Error!")
 
                 except:
                     print("Error!")
@@ -89,7 +107,7 @@ def bbc():
             getContent(secondUrl)
             getContent(thirdUrl)
     except:
-        print("Error!"+Exception)
+        print("Error!")
 
 
 
@@ -621,19 +639,32 @@ def france24():
                     print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
                     print(newsTitle)
-                    newsContent = soup.find("p",{"class":"t-content__chapo"}).get_text().strip()
-                    newsTags= soup.find("div",{"class":"t-content t-content--article"}).find("div",{"class":"t-content__body u-clearfix"})
 
-                    for i in newsTags.find_all('div', attrs={'class': 'o-self-promo o-self-promo--app o-self-promo--hidden'}):
-                        i.replace_with("")
-                    for i in newsTags.find_all('div', attrs={'class': 'o-self-promo o-self-promo--nl'}):
-                        i.replace_with("")
-                    for i in newsTags.find_all('div', attrs={'class': 'm-em-flash'}):
-                        i.replace_with("")
-                    for new in newsTags.find_all("p"):
-                        newsContent = newsContent+ " " + new.get_text()
+                    try:
+                        newsContent = soup.find("p", {"class": "t-content__chapo"}).get_text().strip()
+                        newsTags = soup.find("div", {"class": "t-content t-content--article"}).find("div", {
+                            "class": "t-content__body u-clearfix"})
+                        for i in newsTags.find_all('div', attrs={'class': 'o-self-promo o-self-promo--app o-self-promo--hidden'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('div', attrs={'class': 'o-self-promo o-self-promo--nl'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('div', attrs={'class': 'm-em-flash'}):
+                            i.replace_with("")
+                        for new in newsTags.find_all("p"):
+                            newsContent = newsContent+ " " + new.get_text()
 
-                    print(newsContent)
+                        print(newsContent)
+
+                    except:
+                        try:
+                            newsContent = ""
+                            newsTags = soup.find("div", {"class": "t-content t-content--article"}).find("p", {"class": "t-content__chapo"})
+                            newsContent = newsContent + " " + newsTags.get_text()
+
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!")
                 except:
                     print("Error!")
             getContent(firstUrl)
