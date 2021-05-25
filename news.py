@@ -538,14 +538,55 @@ def insider():
                     print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
                     print(newsTitle)
-                    newsContent = ""
-                    newsTags= soup.find("div",{"id":"piano-inline-content-wrapper"}).find("div",{"class":"content-lock-content"}).find_all('p')
-                    for new in newsTags:
-                        newsContent = newsContent + new.get_text()
+                    try:
+                        newsContent = ""
+                        newsTags= soup.find("div",{"id":"piano-inline-content-wrapper"}).find("div",{"class":"content-lock-content"}).find_all('p')
+                        for new in newsTags:
+                            newsContent = newsContent + new.get_text()
 
-                    print(newsContent)
+                        print(newsContent)
+
+                    except:
+                        try:
+                            newsContent = ""
+                            newsTags = soup.find("div", {"class": "col-12"}).find("article").find("section",{"class":"slideshow-container typography"}).find("div",{"class":"content-lock-content"}).find("ul",{"class":"summary-list"}).find_all('li',id=False)
+                            for new in newsTags:
+                                newsContent = newsContent + new.get_text()
+
+                            print(newsContent)
+
+                        except:
+                            print("Error!"+Exception)
                 except:
-                    print("Error!")
+                    baseUrl = "https://www.insider.com"
+                    request = requests.get(baseUrl+url, timeout=30)
+                    content = request.content
+                    soup = BeautifulSoup(content, "html.parser")
+                    newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                    print(newsImage)
+                    newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                    print(newsTitle)
+                    try:
+                        newsContent = ""
+                        newsTags = soup.find("div", {"id": "piano-inline-content-wrapper"}).find("div", {
+                            "class": "content-lock-content"}).find_all('p')
+                        for new in newsTags:
+                            newsContent = newsContent + new.get_text()
+
+                        print(newsContent)
+
+                    except:
+                        try:
+                            newsContent = ""
+                            newsTags = soup.find("div", {"class": "col-12"}).find("article").find("section", {"class": "slideshow-container typography"}).find("div", {"class": "content-lock-content"}).find("ul", {"class": "summary-list"}).find_all('li',id=False)
+                            print(newsTags)
+                            for new in newsTags:
+                                newsContent = newsContent + new.get_text()
+
+                            print(newsContent)
+
+                        except:
+                            print("Error!" + Exception)
 
 
             getContent(firstUrl)
@@ -553,7 +594,7 @@ def insider():
             getContent(thirdUrl)
 
     except:
-        print("Error!")
+        print("Error!"+Exception)
 
 
 
@@ -794,9 +835,9 @@ def washingtonPost():
             websiteContent=websiteRequest.content
             soup=BeautifulSoup(websiteContent,"html.parser")
             a=0
-            firstNews = soup.find("div",{"data-chain-name":"hp-top-table-main-0430b"}).find("div",{"data-admin-id":"11"}).find("div",{"class":"card-top card-text"}).find("a").get("href")
-            secondNews = soup.find("div",{"data-chain-name":"hp-top-table-main-0430b"}).find("div",{"data-admin-id":"13"}).find("div",{"class":"card-top card-text"}).find("a").get("href")
-            thirdNews = soup.find("div",{"data-chain-name":"hp-top-table-main-0430b"}).find("div",{"data-admin-id":"14"}).find("div",{"class":"card-top card-text"}).find("a").get("href")
+            firstNews = soup.find("div",{"data-chain-name":"hp-top-table-main-0430b"}).find("div",{"data-admin-id":"11"}).find("h2").find("a").get("href")
+            secondNews = soup.find("div",{"data-chain-name":"hp-top-table-main-0430b"}).find("div",{"data-admin-id":"13"}).find("h2").find("a").get("href")
+            thirdNews = soup.find("div",{"data-chain-name":"hp-top-table-main-0430b"}).find("div",{"data-admin-id":"14"}).find("h2").find("a").get("href")
 
 
             firstUrl = firstNews
@@ -843,7 +884,17 @@ def washingtonPost():
                                 print(newsContent)
 
                             except:
-                                print("Error!")
+                                try:
+
+                                    newsContent = ""
+                                    newsTags = soup.find("section",{"id":"ent-pb-main"}).find("div",{"class":"ent-article-body ent-layout-centered"}).find("div",{"class": "main"}).find_all('p')
+                                    for new in newsTags:
+                                        newsContent = newsContent + new.get_text()
+
+                                    print(newsContent)
+
+                                except:
+                                    print("Error!")
 
 
 
@@ -854,8 +905,7 @@ def washingtonPost():
             getContent(thirdUrl)
 
     except:
-        print("Error!")
-
+        print("Error!"+Exception)
 
 
 
