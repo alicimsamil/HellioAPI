@@ -4,58 +4,49 @@ from bs4 import BeautifulSoup
 
 def bbc():
     try:
-        url="https://www.bbc.com/news"
-        websiteRequest=requests.get(url,timeout=30)
+        try:
+            url="https://www.bbc.com/news"
+            websiteRequest=requests.get(url,timeout=30)
 
-        if websiteRequest.status_code!=200:
-            newsImage = "Error"
-            newsTitle = "Error"
-            newsContent = "Error"
-        else:
-            websiteContent=websiteRequest.content
-            soup=BeautifulSoup(websiteContent,"html.parser")
-            firstNews=soup.find("div",{"data-entityid":"container-top-stories#1"}).find("a",{"class":"gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-paragon-bold nw-o-link-split__anchor"}).get("href")
-            secondNews=soup.find("div",{"data-entityid":"container-top-stories#2"}).find("a",{"class":"gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-pica-bold nw-o-link-split__anchor"}).get("href")
-            thirdNews=soup.find("div",{"data-entityid":"container-top-stories#4"}).find("a",{"class":"gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-pica-bold nw-o-link-split__anchor"}).get("href")
-            url = "https://www.bbc.com"
-            firstUrl=url+firstNews
-            secondUrl = url + secondNews
-            thirdUrl = url + thirdNews
-            def getContent(url):
-                try:
-                    request=requests.get(url,timeout=30)
-                    content=request.content
-                    soup=BeautifulSoup(content,"html.parser")
-                    newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
-                    newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
+            if websiteRequest.status_code!=200:
+                newsImage = "Error"
+                newsTitle = "Error"
+                newsContent = "Error"
+            else:
+                websiteContent=websiteRequest.content
+                soup=BeautifulSoup(websiteContent,"html.parser")
+                firstNews=soup.find("div",{"data-entityid":"container-top-stories#1"}).find("a",{"class":"gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-paragon-bold nw-o-link-split__anchor"}).get("href")
+                secondNews=soup.find("div",{"data-entityid":"container-top-stories#2"}).find("a",{"class":"gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-pica-bold nw-o-link-split__anchor"}).get("href")
+                thirdNews=soup.find("div",{"data-entityid":"container-top-stories#3"}).find("a",{"class":"gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-pica-bold nw-o-link-split__anchor"}).get("href")
+                url = "https://www.bbc.com"
+                firstUrl=url+firstNews
+                secondUrl = url + secondNews
+                thirdUrl = url + thirdNews
+
+
+                def getContent(url):
                     try:
-                        newsTags= soup.find("article",{"class":"ssrcss-5h7eao-ArticleWrapper e1nh2i2l6"})
-                        newsContent=""
-                        for i in newsTags.find_all('div', attrs={'class': 'ssrcss-18mjolk-ComponentWrapper e1xue1i87'}):
-                            i.replace_with("")
-                        for i in newsTags.find_all('div', attrs={'class': 'ssrcss-1lp2cw-ComponentWrapper-SocialEmbedComponentWrapper e1xue1i86'}):
-                            i.replace_with("")
-                        for new in newsTags.find_all('div', attrs={'data-component': 'text-block'}):
-                            newsContent = newsContent+ " " + new.get_text()
-
-                        print(newsContent)
-                    except:
+                        request=requests.get(url,timeout=30)
+                        content=request.content
+                        soup=BeautifulSoup(content,"html.parser")
+                        newsImage = soup.find("meta",{"property":"og:image"}).get("content")
+                        print(newsImage)
+                        newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                        print(newsTitle)
                         try:
-                            newsTags = soup.find("article", {"class": "ssrcss-1qrrcog-StyledMediaItem elwf6ac4"}).find("div", {"class": "ssrcss-1p48mn5-StyledSummary elwf6ac2"}).find("div", {"class": "ssrcss-18snukc-RichTextContainer e5tfeyi1"})
-                            newsContent = ""
+                            newsTags= soup.find("article",{"class":"ssrcss-5h7eao-ArticleWrapper e1nh2i2l6"})
+                            newsContent=""
                             for i in newsTags.find_all('div', attrs={'class': 'ssrcss-18mjolk-ComponentWrapper e1xue1i87'}):
                                 i.replace_with("")
                             for i in newsTags.find_all('div', attrs={'class': 'ssrcss-1lp2cw-ComponentWrapper-SocialEmbedComponentWrapper e1xue1i86'}):
                                 i.replace_with("")
-                            for new in newsTags.find_all('p'):
+                            for new in newsTags.find_all('div', attrs={'data-component': 'text-block'}):
                                 newsContent = newsContent+ " " + new.get_text()
 
                             print(newsContent)
                         except:
                             try:
-                                newsTags = soup.find("div", {"class": "gel-layout__item gel-2/3@l gel-2/4@xxl"}).find("div", {"class": "lx-o-panel__item"}).find("section",{"class":"lx-commentary lx-commentary--robo-text gs-t-news"}).find("div",{"class":"lx-commentary__stream"}).find("article",{"class":"qa-post gs-u-pb-alt+ lx-stream-post gs-u-pt-alt+ gs-u-align-left"}).find("div",{"class":"gs-u-mb+ gel-body-copy qa-post-body"}).find("div",{"class":"lx-stream-post-body"})
+                                newsTags = soup.find("article", {"class": "ssrcss-1qrrcog-StyledMediaItem elwf6ac4"}).find("div", {"class": "ssrcss-1p48mn5-StyledSummary elwf6ac2"}).find("div", {"class": "ssrcss-18snukc-RichTextContainer e5tfeyi1"})
                                 newsContent = ""
                                 for i in newsTags.find_all('div', attrs={'class': 'ssrcss-18mjolk-ComponentWrapper e1xue1i87'}):
                                     i.replace_with("")
@@ -65,32 +56,26 @@ def bbc():
                                     newsContent = newsContent+ " " + new.get_text()
 
                                 print(newsContent)
-
                             except:
                                 try:
-                                    newsTags = soup.find("div",{"class":"gel-layout__item gel-2/3@l gel-3/4@xxl"}).find("div",{"class":"lx-commentary__stream"}).find("ol",{"class":"gs-u-m0 gs-u-p0 lx-stream__feed qa-stream"}).find("li",{"class":"lx-stream__post-container placeholder-animation-finished"}).find("div",{"class":"gs-u-mb+ gel-body-copy qa-post-body"}).find("div",{"class":"lx-stream-post-body"})
+                                    newsTags = soup.find("div", {"class": "gel-layout__item gel-2/3@l gel-2/4@xxl"}).find("div", {"class": "lx-o-panel__item"}).find("section",{"class":"lx-commentary lx-commentary--robo-text gs-t-news"}).find("div",{"class":"lx-commentary__stream"}).find("article",{"class":"qa-post gs-u-pb-alt+ lx-stream-post gs-u-pt-alt+ gs-u-align-left"}).find("div",{"class":"gs-u-mb+ gel-body-copy qa-post-body"}).find("div",{"class":"lx-stream-post-body"})
                                     newsContent = ""
-
-
-                                    for i in newsTags.find_all('figure', attrs={'class':'lx-stream-post-body__media-asset lx-media-asset lx-media-asset--image lx-media-asset--landscape gs-u-mb+'}):
+                                    for i in newsTags.find_all('div', attrs={'class': 'ssrcss-18mjolk-ComponentWrapper e1xue1i87'}):
                                         i.replace_with("")
-
+                                    for i in newsTags.find_all('div', attrs={'class': 'ssrcss-1lp2cw-ComponentWrapper-SocialEmbedComponentWrapper e1xue1i86'}):
+                                        i.replace_with("")
                                     for new in newsTags.find_all('p'):
-                                        newsContent = newsContent + " " + new.text
+                                        newsContent = newsContent+ " " + new.get_text()
 
                                     print(newsContent)
 
                                 except:
                                     try:
-                                        newsTags = soup.find("div",{"id": "orb-modules"}).find("div",{"class": "qa-story-body story-body gel-pica gel-10/12@m gel-7/8@l gs-u-ml0@l gs-u-pb++"})
-
+                                        newsTags = soup.find("div",{"class":"gel-layout__item gel-2/3@l gel-3/4@xxl"}).find("div",{"class":"lx-commentary__stream"}).find("ol",{"class":"gs-u-m0 gs-u-p0 lx-stream__feed qa-stream"}).find("li",{"class":"lx-stream__post-container placeholder-animation-finished"}).find("div",{"class":"gs-u-mb+ gel-body-copy qa-post-body"}).find("div",{"class":"lx-stream-post-body"})
                                         newsContent = ""
 
 
-                                        for i in newsTags.find_all('ul'):
-                                            i.replace_with("")
-
-                                        for i in newsTags.find_all('span',attrs={'class':'gs-u-display-block story-body__media gs-u-mb-alt+ qa-story-body-media'}):
+                                        for i in newsTags.find_all('figure', attrs={'class':'lx-stream-post-body__media-asset lx-media-asset lx-media-asset--image lx-media-asset--landscape gs-u-mb+'}):
                                             i.replace_with("")
 
                                         for new in newsTags.find_all('p'):
@@ -99,13 +84,169 @@ def bbc():
                                         print(newsContent)
 
                                     except:
-                                        print("Error!")
+                                        try:
+                                            newsTags = soup.find("div",{"id": "orb-modules"}).find("div",{"class": "qa-story-body story-body gel-pica gel-10/12@m gel-7/8@l gs-u-ml0@l gs-u-pb++"})
 
-                except:
-                    print("Error!")
-            getContent(firstUrl)
-            getContent(secondUrl)
-            getContent(thirdUrl)
+                                            newsContent = ""
+
+
+                                            for i in newsTags.find_all('ul'):
+                                                i.replace_with("")
+
+                                            for i in newsTags.find_all('span',attrs={'class':'gs-u-display-block story-body__media gs-u-mb-alt+ qa-story-body-media'}):
+                                                i.replace_with("")
+
+                                            for new in newsTags.find_all('p'):
+                                                newsContent = newsContent + " " + new.text
+
+                                            print(newsContent)
+
+                                        except:
+                                            print("Error!")
+
+                    except:
+                        print("Error!")
+                getContent(firstUrl)
+                getContent(secondUrl)
+                getContent(thirdUrl)
+
+
+        except:
+
+            url = "https://www.bbc.com/news"
+            websiteRequest = requests.get(url, timeout=30)
+
+            if websiteRequest.status_code != 200:
+                newsImage = "Error"
+                newsTitle = "Error"
+                newsContent = "Error"
+            else:
+                websiteContent = websiteRequest.content
+                soup = BeautifulSoup(websiteContent, "html.parser")
+                firstNews = soup.find("div", {"data-entityid": "container-top-stories#1"}).find("a", {
+                    "class": "gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-paragon-bold nw-o-link-split__anchor"}).get(
+                    "href")
+                secondNews = soup.find("div", {"data-entityid": "container-top-stories#2"}).find("a", {
+                    "class": "gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-pica-bold nw-o-link-split__anchor"}).get(
+                    "href")
+                thirdNews = soup.find("div", {"data-entityid": "container-top-stories#4"}).find("a", {
+                    "class": "gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-pica-bold nw-o-link-split__anchor"}).get(
+                    "href")
+                url = "https://www.bbc.com"
+                firstUrl = url + firstNews
+                secondUrl = url + secondNews
+                thirdUrl = url + thirdNews
+
+                def getContent(url):
+                    try:
+                        request = requests.get(url, timeout=30)
+                        content = request.content
+                        soup = BeautifulSoup(content, "html.parser")
+                        newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                        print(newsImage)
+                        newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                        print(newsTitle)
+                        try:
+                            newsTags = soup.find("article", {"class": "ssrcss-5h7eao-ArticleWrapper e1nh2i2l6"})
+                            newsContent = ""
+                            for i in newsTags.find_all('div',
+                                                       attrs={'class': 'ssrcss-18mjolk-ComponentWrapper e1xue1i87'}):
+                                i.replace_with("")
+                            for i in newsTags.find_all('div', attrs={
+                                'class': 'ssrcss-1lp2cw-ComponentWrapper-SocialEmbedComponentWrapper e1xue1i86'}):
+                                i.replace_with("")
+                            for new in newsTags.find_all('div', attrs={'data-component': 'text-block'}):
+                                newsContent = newsContent + " " + new.get_text()
+
+                            print(newsContent)
+                        except:
+                            try:
+                                newsTags = soup.find("article",
+                                                     {"class": "ssrcss-1qrrcog-StyledMediaItem elwf6ac4"}).find("div", {
+                                    "class": "ssrcss-1p48mn5-StyledSummary elwf6ac2"}).find("div", {
+                                    "class": "ssrcss-18snukc-RichTextContainer e5tfeyi1"})
+                                newsContent = ""
+                                for i in newsTags.find_all('div', attrs={
+                                    'class': 'ssrcss-18mjolk-ComponentWrapper e1xue1i87'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={
+                                    'class': 'ssrcss-1lp2cw-ComponentWrapper-SocialEmbedComponentWrapper e1xue1i86'}):
+                                    i.replace_with("")
+                                for new in newsTags.find_all('p'):
+                                    newsContent = newsContent + " " + new.get_text()
+
+                                print(newsContent)
+                            except:
+                                try:
+                                    newsTags = soup.find("div",
+                                                         {"class": "gel-layout__item gel-2/3@l gel-2/4@xxl"}).find(
+                                        "div", {"class": "lx-o-panel__item"}).find("section", {
+                                        "class": "lx-commentary lx-commentary--robo-text gs-t-news"}).find("div", {
+                                        "class": "lx-commentary__stream"}).find("article", {
+                                        "class": "qa-post gs-u-pb-alt+ lx-stream-post gs-u-pt-alt+ gs-u-align-left"}).find(
+                                        "div", {"class": "gs-u-mb+ gel-body-copy qa-post-body"}).find("div", {
+                                        "class": "lx-stream-post-body"})
+                                    newsContent = ""
+                                    for i in newsTags.find_all('div', attrs={
+                                        'class': 'ssrcss-18mjolk-ComponentWrapper e1xue1i87'}):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('div', attrs={
+                                        'class': 'ssrcss-1lp2cw-ComponentWrapper-SocialEmbedComponentWrapper e1xue1i86'}):
+                                        i.replace_with("")
+                                    for new in newsTags.find_all('p'):
+                                        newsContent = newsContent + " " + new.get_text()
+
+                                    print(newsContent)
+
+                                except:
+                                    try:
+                                        newsTags = soup.find("div",
+                                                             {"class": "gel-layout__item gel-2/3@l gel-3/4@xxl"}).find(
+                                            "div", {"class": "lx-commentary__stream"}).find("ol", {
+                                            "class": "gs-u-m0 gs-u-p0 lx-stream__feed qa-stream"}).find("li", {
+                                            "class": "lx-stream__post-container placeholder-animation-finished"}).find(
+                                            "div", {"class": "gs-u-mb+ gel-body-copy qa-post-body"}).find("div", {
+                                            "class": "lx-stream-post-body"})
+                                        newsContent = ""
+
+                                        for i in newsTags.find_all('figure', attrs={
+                                            'class': 'lx-stream-post-body__media-asset lx-media-asset lx-media-asset--image lx-media-asset--landscape gs-u-mb+'}):
+                                            i.replace_with("")
+
+                                        for new in newsTags.find_all('p'):
+                                            newsContent = newsContent + " " + new.text
+
+                                        print(newsContent)
+
+                                    except:
+                                        try:
+                                            newsTags = soup.find("div", {"id": "orb-modules"}).find("div", {
+                                                "class": "qa-story-body story-body gel-pica gel-10/12@m gel-7/8@l gs-u-ml0@l gs-u-pb++"})
+
+                                            newsContent = ""
+
+                                            for i in newsTags.find_all('ul'):
+                                                i.replace_with("")
+
+                                            for i in newsTags.find_all('span', attrs={
+                                                'class': 'gs-u-display-block story-body__media gs-u-mb-alt+ qa-story-body-media'}):
+                                                i.replace_with("")
+
+                                            for new in newsTags.find_all('p'):
+                                                newsContent = newsContent + " " + new.text
+
+                                            print(newsContent)
+
+                                        except:
+                                            print("Error!")
+
+                    except:
+                        print("Error!")
+
+                getContent(firstUrl)
+                getContent(secondUrl)
+                getContent(thirdUrl)
+
     except:
         print("Error!")
 
@@ -558,11 +699,8 @@ def chinaPost():
         else:
             websiteContent=websiteRequest.content
             soup=BeautifulSoup(websiteContent,"html.parser")
-            a=0
 
             firstNews=soup.find("div",{"class":"td_module_mx5 td-animation-stack td-big-grid-post-0 td-big-grid-post td-big-thumb"}).find("div",{"class":"td-module-thumb"}).find("a",{"class":"td-image-wrap"}).get("href")
-
-
             secondNews = soup.find("div",{"class":"td-big-grid-wrapper"}).find("div",{"class":"td-big-grid-scroll"}).find("div",{"class":"td_module_mx6 td-animation-stack td-big-grid-post-1 td-big-grid-post td-small-thumb"}).find("div",{"class":"td-module-thumb"}).find("a",{"class":"td-image-wrap"}).get("href")
             thirdNews = soup.find("div",{"class":"td-big-grid-wrapper"}).find("div",{"class":"td-big-grid-scroll"}).find("div",{"class":"td_module_mx6 td-animation-stack td-big-grid-post-2 td-big-grid-post td-small-thumb"}).find("div",{"class":"td-module-thumb"}).find("a",{"class":"td-image-wrap"}).get("href")
 
@@ -714,8 +852,10 @@ def insider():
                     print(newsTitle)
                     try:
                         newsContent = ""
-                        newsTags= soup.find("div",{"id":"piano-inline-content-wrapper"}).find("div",{"class":"content-lock-content"}).find_all('p')
-                        for new in newsTags:
+                        newsTags= soup.find("div",{"id":"piano-inline-content-wrapper"}).find("div",{"class":"content-lock-content"})
+                        for i in newsTags.find_all('figure', attrs={'data-type': 'img'}):
+                            i.replace_with("")
+                        for new in newsTags.find_all('p'):
                             newsContent = newsContent+ " " + new.get_text()
 
                         print(newsContent)
@@ -723,14 +863,16 @@ def insider():
                     except:
                         try:
                             newsContent = ""
-                            newsTags = soup.find("div", {"class": "col-12"}).find("article").find("section",{"class":"slideshow-container typography"}).find("div",{"class":"content-lock-content"}).find("ul",{"class":"summary-list"}).find_all('li')
-                            for new in newsTags:
+                            newsTags = soup.find("div", {"class": "col-12"}).find("article").find("section",{"class":"slideshow-container typography"}).find("div",{"class":"content-lock-content"}).find("ul",{"class":"summary-list"})
+                            for i in newsTags.find_all('figure', attrs={'data-type': 'img'}):
+                                i.replace_with("")
+                            for new in newsTags.find_all('li'):
                                 newsContent = newsContent+ " " + new.get_text()
 
                             print(newsContent)
 
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
                 except:
                     baseUrl = "https://www.insider.com"
                     request = requests.get(baseUrl+url, timeout=30)
@@ -743,8 +885,10 @@ def insider():
                     try:
                         newsContent = ""
                         newsTags = soup.find("div", {"id": "piano-inline-content-wrapper"}).find("div", {
-                            "class": "content-lock-content"}).find_all('p')
-                        for new in newsTags:
+                            "class": "content-lock-content"})
+                        for i in newsTags.find_all('figure', attrs={'data-type': 'img'}):
+                            i.replace_with("")
+                        for new in newsTags.find_all('p'):
                             newsContent = newsContent+ " " + new.get_text()
 
                         print(newsContent)
@@ -752,15 +896,17 @@ def insider():
                     except:
                         try:
                             newsContent = ""
-                            newsTags = soup.find("div", {"class": "col-12"}).find("article").find("section", {"class": "slideshow-container typography"}).find("div", {"class": "content-lock-content"}).find("ul", {"class": "summary-list"}).find_all('li',id=False)
-                            print(newsTags)
-                            for new in newsTags:
+                            newsTags = soup.find("div", {"class": "col-12"}).find("article").find("section", {"class": "slideshow-container typography"}).find("div", {"class": "content-lock-content"}).find("ul", {"class": "summary-list"})
+
+                            for i in newsTags.find_all('figure', attrs={'data-type': 'img'}):
+                                i.replace_with("")
+                            for new in newsTags.find_all('p'.find_all('li',id=False)):
                                 newsContent = newsContent+ " " + new.get_text()
 
                             print(newsContent)
 
                         except:
-                            print("Error!" + Exception)
+                            print("Error!")
 
 
             getContent(firstUrl)
@@ -768,7 +914,7 @@ def insider():
             getContent(thirdUrl)
 
     except:
-        print("Error!"+Exception)
+        print("Error!")
 
 
 
@@ -922,9 +1068,14 @@ def euronews():
                 websiteContent=websiteRequest.content
                 soup=BeautifulSoup(websiteContent,"html.parser")
 
-                firstNews=soup.find("section",{"class":"o-section o-template-topstories qa-topStories"}).find("article",{"class":"m-object o-template-topstories__element-1 m-modeS-1 m-modeM-1 m-modeL-1 m-modeXL-1 m-object--has-video m-object--has-related"}).find("div",{"class":"m-object__body"}).find("h1",{"class":"m-object__title qa-article-title"}).find("a",{"class":"m-object__title__link m-object__title__link--big-title"}).get("href")
-                secondNews=soup.find("section",{"class":"o-section o-template-topstories qa-topStories"}).find("article",{"class":"m-object o-template-topstories__element-2 m-modeS-2 m-modeM-2 m-modeL-1 m-modeXL-1"}).find("div",{"class":"m-object__body"}).find("h3",{"class":"m-object__title qa-article-title"}).find("a",{"class","m-object__title__link"}).get("href")
-                thirdNews = soup.find("section", {"class": "o-section o-template-topstories qa-topStories"}).find("article", {"class": "m-object o-template-topstories__element-3 m-modeS-2 m-modeM-2 m-modeL-1 m-modeXL-1"}).find("div",{"class": "m-object__body"}).find("h3", {"class": "m-object__title qa-article-title"}).find("a", {"class", "m-object__title__link"}).get("href")
+                firstNews=soup.find("section",{"class":"o-section o-template-topstories qa-topStories"}).find("article").find("h1",{"class":"m-object__title qa-article-title"}).find("a",{"class":"m-object__title__link m-object__title__link--big-title"}).get("href")
+                a=0
+                for i in soup.find("section",{"class":"o-section o-template-topstories qa-topStories"}).find_all('h3',attrs={'class':'m-object__title qa-article-title'}):
+                   if a==0:
+                       secondNews = i.find("a").get("href")
+                   elif a==1:
+                       thirdNews  = i.find("a").get("href")
+                   a=a+1
 
 
 
@@ -1015,7 +1166,7 @@ def euronews():
 
 
     except:
-        print("Error!"+Exception)
+        print("Error!")
 
 
 
@@ -1052,6 +1203,8 @@ def sputnik():
                     newsContent = ""
                     newsTags= soup.find("div",{"class":"l-main m-oh"}).find("div",{"class":"b-article__text"})
                     for i in newsTags.find_all('div', attrs={'class': 'ria-tweet'}):
+                        i.replace_with("")
+                    for i in newsTags.find_all('div', attrs={'class': 'b-inject m-inject-min'}):
                         i.replace_with("")
                     for new in newsTags.find_all('p'):
                         newsContent = newsContent+ " " + new.text
@@ -1162,8 +1315,7 @@ def washingtonPost():
             getContent(thirdUrl)
 
     except:
-        print("Error!"+Exception)
-
+        print("Error!")
 
 
 bbc()
@@ -1173,12 +1325,11 @@ foxNews()
 rtNews()
 independent()
 time()
-france24()
 chinaPost()
+france24()
 reuters()
 insider()
 skyNews()
 euronews()
 sputnik()
 washingtonPost()
-
