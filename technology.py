@@ -52,7 +52,7 @@ def technology():
                                     for i in new.find("div",{"class":"col-12"}).find("article",{"id":"article-body"}).find("div",{"class":"col-7 article-main-body row"}).find_all('p'):
                                         newsContent = newsContent + " " + i.text
                                 a=a+1
-                            print(newsContent)
+                            print(newsContent.strip())
 
                         except:
                             print("Error!")
@@ -108,7 +108,7 @@ def technology():
                                 for new in newsTags.find_all('p'):
                                     newsContent=newsContent+" "+new.get_text()
 
-                                print(newsContent)
+                                print(newsContent.strip())
                             except:
                                 try:
                                     newsContent = ""
@@ -126,7 +126,7 @@ def technology():
                                     for new in newsTags.find_all('div', attrs={'class': 'wcp-item-content'}):
                                         newsContent = newsContent + " " + new.get_text()
 
-                                    print(newsContent)
+                                    print(newsContent.strip())
 
                                 except:
                                     print("Error!" + Exception)
@@ -198,7 +198,7 @@ def technology():
                             for new in newsTags.find_all('p'):
                                 newsContent=newsContent+" "+new.get_text()
 
-                            print(newsContent)
+                            print(newsContent.strip())
 
                         except:
                             print("Error!"+Exception)
@@ -268,7 +268,81 @@ def technology():
                             for new in newsTags.find_all('p'):
                                 newsContent=newsContent+" "+new.get_text()
 
-                            print(newsContent)
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!"+Exception)
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!"+Exception)
+
+
+        def techTimes():
+            try:
+                url = "https://www.techtimes.com/smartphone"
+                websiteRequest = requests.get(url, timeout=30 , headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    firstNews = soup.find("div", {"class": "archive"}).find("article", {"class": "lg"}).find("div", {"class": "row"}).find("div", {"class": "col-sm-6"}).find("h2").find("a").get("href")
+
+
+                    a=0
+                    for i in soup.find("div", {"class": "archive"}).find_all('div', attrs={'class': 'row'}):
+
+                        if a==1:
+                            b=0
+                            for c in i.find("div", {"class": "col-md-8"}).find("ul",{"class":"list"}).find_all('li'):
+                                if b==0:
+                                    secondNews = c.find("article",{"class":"clearfix"}).find("h4").find("a").get("href")
+                                elif b==1:
+                                    thirdNews = c.find("article",{"class":"clearfix"}).find("h4").find("a").get("href")
+                                b=b+1
+
+                        a=a+1
+
+                    url = "https://www.techtimes.com"
+                    firstUrl = url + firstNews
+                    secondUrl = url + secondNews
+                    thirdUrl = url + thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30)
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            newsTags = soup.find("div", {"class": "archive"}).find("div",{"class": "row"}).find("div",{"class": "article-body"})
+
+                            for i in newsTags.find_all('div'):
+                                i.replace_with("")
+                            for i in newsTags.find_all('script',{'type':'text/javascript'}):
+                                i.replace_with("")
+                            for i in newsTags.find_all('script'):
+                                i.replace_with("")
+
+                            for i in newsTags.find_all('strong'):
+                                i.replace_with("")
+
+                            for i in newsTags.find_all('center'):
+                                i.replace_with("")
+                            for new in newsTags.find_all('p'):
+                                newsContent=newsContent+" "+new.get_text()
+
+                            print(newsContent.strip())
 
                         except:
                             print("Error!"+Exception)
@@ -282,12 +356,19 @@ def technology():
 
 
 
+
+
+
+
+
+
+
+
         cNET()
         techRadar()
         pocketLint()
         gadgets360()
-
-
+        techTimes()
 
 
 

@@ -43,7 +43,7 @@ def bbc():
                             for new in newsTags.find_all('div', attrs={'data-component': 'text-block'}):
                                 newsContent = newsContent+ " " + new.get_text()
 
-                            print(newsContent)
+                            print(newsContent.strip())
                         except:
                             try:
                                 newsTags = soup.find("article", {"class": "ssrcss-1qrrcog-StyledMediaItem elwf6ac4"}).find("div", {"class": "ssrcss-1p48mn5-StyledSummary elwf6ac2"}).find("div", {"class": "ssrcss-18snukc-RichTextContainer e5tfeyi1"})
@@ -55,7 +55,7 @@ def bbc():
                                 for new in newsTags.find_all('p'):
                                     newsContent = newsContent+ " " + new.get_text()
 
-                                print(newsContent)
+                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("div", {"class": "gel-layout__item gel-2/3@l gel-2/4@xxl"}).find("div", {"class": "lx-o-panel__item"}).find("section",{"class":"lx-commentary lx-commentary--robo-text gs-t-news"}).find("div",{"class":"lx-commentary__stream"}).find("article",{"class":"qa-post gs-u-pb-alt+ lx-stream-post gs-u-pt-alt+ gs-u-align-left"}).find("div",{"class":"gs-u-mb+ gel-body-copy qa-post-body"}).find("div",{"class":"lx-stream-post-body"})
@@ -67,7 +67,7 @@ def bbc():
                                     for new in newsTags.find_all('p'):
                                         newsContent = newsContent+ " " + new.get_text()
 
-                                    print(newsContent)
+                                    print(newsContent.strip())
 
                                 except:
                                     try:
@@ -81,7 +81,7 @@ def bbc():
                                         for new in newsTags.find_all('p'):
                                             newsContent = newsContent + " " + new.text
 
-                                        print(newsContent)
+                                        print(newsContent.strip())
 
                                     except:
                                         try:
@@ -99,10 +99,24 @@ def bbc():
                                             for new in newsTags.find_all('p'):
                                                 newsContent = newsContent + " " + new.text
 
-                                            print(newsContent)
+                                            print(newsContent.strip())
 
                                         except:
-                                            print("Error!")
+                                            try:
+                                                newsTags = soup.find("div", {"class": "article__container"}).find("article", {"class": "article__body"}).find("div", {"class": "article__body-content"})
+                                                newsContent = ""
+                                                for i in newsTags.find_all('div', attrs={'class': 'article-body-native-ad article-body__body-text'}):
+                                                    i.replace_with("")
+                                                for i in newsTags.find_all('div', attrs={'class': 'article-body__image-text article-body__image-text--portrait'}):
+                                                    i.replace_with("")
+                                                for i in newsTags.find_all('div', attrs={'class': 'article__end'}):
+                                                    i.replace_with("")
+                                                for new in newsTags.find_all('p'):
+                                                    newsContent = newsContent + " " + new.get_text()
+
+                                                print(newsContent.strip())
+                                            except:
+                                                print("Error!")
 
                     except:
                         print("Error!")
@@ -158,7 +172,7 @@ def bbc():
                             for new in newsTags.find_all('div', attrs={'data-component': 'text-block'}):
                                 newsContent = newsContent + " " + new.get_text()
 
-                            print(newsContent)
+                            print(newsContent.strip())
                         except:
                             try:
                                 newsTags = soup.find("article",
@@ -175,7 +189,7 @@ def bbc():
                                 for new in newsTags.find_all('p'):
                                     newsContent = newsContent + " " + new.get_text()
 
-                                print(newsContent)
+                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("div",
@@ -196,7 +210,7 @@ def bbc():
                                     for new in newsTags.find_all('p'):
                                         newsContent = newsContent + " " + new.get_text()
 
-                                    print(newsContent)
+                                    print(newsContent.strip())
 
                                 except:
                                     try:
@@ -216,7 +230,7 @@ def bbc():
                                         for new in newsTags.find_all('p'):
                                             newsContent = newsContent + " " + new.text
 
-                                        print(newsContent)
+                                        print(newsContent.strip())
 
                                     except:
                                         try:
@@ -235,10 +249,28 @@ def bbc():
                                             for new in newsTags.find_all('p'):
                                                 newsContent = newsContent + " " + new.text
 
-                                            print(newsContent)
+                                            print(newsContent.strip())
 
                                         except:
-                                            print("Error!")
+                                            try:
+                                                newsTags = soup.find("div", {"class": "article__container"}).find(
+                                                    "article", {"class": "article__body"}).find("div", {
+                                                    "class": "article__body-content"})
+                                                newsContent = ""
+                                                for i in newsTags.find_all('div', attrs={
+                                                    'class': 'article-body-native-ad article-body__body-text'}):
+                                                    i.replace_with("")
+                                                for i in newsTags.find_all('div', attrs={
+                                                    'class': 'article-body__image-text article-body__image-text--portrait'}):
+                                                    i.replace_with("")
+                                                for i in newsTags.find_all('div', attrs={'class': 'article__end'}):
+                                                    i.replace_with("")
+                                                for new in newsTags.find_all('p'):
+                                                    newsContent = newsContent + " " + new.get_text()
+
+                                                print(newsContent.strip())
+                                            except:
+                                                print("Error!")
 
                     except:
                         print("Error!")
@@ -306,7 +338,7 @@ def aljazeera():
                                     newsContent = newsContent+ " " + new.get_text()
                             except:
                                 print("Error!")
-                    print(newsContent)
+                    print(newsContent.strip())
                 except:
                     print("Error!")
 
@@ -375,7 +407,7 @@ def dwNews():
 
 
 
-                    print(newsContent)
+                    print(newsContent.strip())
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -427,7 +459,7 @@ def foxNews():
                         newsContent = newsContent+ " " + new.get_text()
 
 
-                    print(newsContent)
+                    print(newsContent.strip())
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -488,7 +520,7 @@ def rtNews():
                     for new in newsTags:
                         newsContent = newsContent+ " " + new.get_text()
 
-                    print(newsContent)
+                    print(newsContent.strip())
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -545,7 +577,7 @@ def independent():
                         for new in newsTags:
                             newsContent = newsContent+ " " + new.get_text()
 
-                        print(newsContent)
+                        print(newsContent.strip())
 
                     except:
                         try:
@@ -554,7 +586,7 @@ def independent():
                             for new in newsTags:
                                 newsContent = newsContent + " " + new.get_text()
 
-                            print(newsContent)
+                            print(newsContent.strip())
 
                         except:
                             print("Error!")
@@ -603,7 +635,7 @@ def independent():
                         for new in newsTags:
                             newsContent = newsContent+ " " + new.get_text()
 
-                        print(newsContent)
+                        print(newsContent.strip())
 
                     except:
                         try:
@@ -612,7 +644,7 @@ def independent():
                             for new in newsTags:
                                 newsContent = newsContent + " " + new.get_text()
 
-                            print(newsContent)
+                            print(newsContent.strip())
 
                         except:
                             print("Error!")
@@ -677,7 +709,7 @@ def time():
                     for new in newsTags.find_all("p"):
                         newsContent = newsContent + " " + new.get_text()
 
-                    print(newsContent)
+                    print(newsContent.strip())
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -725,7 +757,7 @@ def chinaPost():
                     for new in newsTags:
                         newsContent = newsContent+ " " + new.get_text()
 
-                    print(newsContent)
+                    print(newsContent.strip())
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -791,7 +823,7 @@ def france24():
                         for new in newsTags.find_all("p"):
                             newsContent = newsContent+ " " + new.get_text()
 
-                        print(newsContent)
+                        print(newsContent.strip())
 
                     except:
                         try:
@@ -858,7 +890,7 @@ def insider():
                         for new in newsTags.find_all('p'):
                             newsContent = newsContent+ " " + new.get_text()
 
-                        print(newsContent)
+                        print(newsContent.strip())
 
                     except:
                         try:
@@ -869,7 +901,7 @@ def insider():
                             for new in newsTags.find_all('li'):
                                 newsContent = newsContent+ " " + new.get_text()
 
-                            print(newsContent)
+                            print(newsContent.strip())
 
                         except:
                             print("Error!")
@@ -891,7 +923,7 @@ def insider():
                         for new in newsTags.find_all('p'):
                             newsContent = newsContent+ " " + new.get_text()
 
-                        print(newsContent)
+                        print(newsContent.strip())
 
                     except:
                         try:
@@ -903,7 +935,7 @@ def insider():
                             for new in newsTags.find_all('p'.find_all('li',id=False)):
                                 newsContent = newsContent+ " " + new.get_text()
 
-                            print(newsContent)
+                            print(newsContent.strip())
 
                         except:
                             print("Error!")
@@ -960,7 +992,7 @@ def reuters():
                     for new in newsTags:
                         newsContent = newsContent+ " " + new.get_text()
 
-                    print(newsContent)
+                    print(newsContent.strip())
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -1026,7 +1058,7 @@ def skyNews():
                         for new in newsTags.find_all('p'):
                             newsContent = newsContent+ " " + new.get_text()
 
-                        print(newsContent)
+                        print(newsContent.strip())
                     except:
                         try:
                             newsContent = ""
@@ -1042,7 +1074,7 @@ def skyNews():
                             for new in newsTags.find_all('p'):
                                 newsContent = newsContent + " " + new.get_text()
 
-                            print(newsContent)
+                            print(newsContent.strip())
                         except:
                             print("Error!")
                 except:
@@ -1102,7 +1134,7 @@ def euronews():
 
                             newsContent = newsContent+ " " + new.get_text()
 
-                        print(newsContent)
+                        print(newsContent.strip())
 
                     except:
                         print("Error!")
@@ -1152,7 +1184,7 @@ def euronews():
                         for new in newsTags:
                             newsContent = newsContent + " " + new.get_text()
 
-                        print(newsContent)
+                        print(newsContent.strip())
 
                     except:
                         print("Error!")
@@ -1209,7 +1241,7 @@ def sputnik():
                     for new in newsTags.find_all('p'):
                         newsContent = newsContent+ " " + new.text
 
-                    print(newsContent)
+                    print(newsContent.strip())
 
                 except:
                     print("Error!")
@@ -1261,7 +1293,7 @@ def washingtonPost():
                         for new in newsTags:
                             newsContent = newsContent+ " " + new.get_text()
 
-                        print(newsContent)
+                        print(newsContent.strip())
 
                     except:
                         try:
@@ -1271,7 +1303,7 @@ def washingtonPost():
                             for new in newsTags:
                                 newsContent = newsContent+ " " + new.get_text()
 
-                            print(newsContent)
+                            print(newsContent.strip())
 
                         except:
                             try:
@@ -1281,7 +1313,7 @@ def washingtonPost():
                                 for new in newsTags:
                                     newsContent = newsContent+ " " + new.find("p").get_text()
 
-                                print(newsContent)
+                                print(newsContent.strip())
 
                             except:
                                 try:
@@ -1291,7 +1323,7 @@ def washingtonPost():
                                     for new in newsTags:
                                         newsContent = newsContent + " "+ new.get_text()
 
-                                    print(newsContent)
+                                    print(newsContent.strip())
 
                                 except:
                                     try:
@@ -1301,7 +1333,7 @@ def washingtonPost():
                                         for new in newsTags:
                                             newsContent = newsContent + " " + new.get_text()
 
-                                        print(newsContent)
+                                        print(newsContent.strip())
 
                                     except:
                                         print("Error!")
