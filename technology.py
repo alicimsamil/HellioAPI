@@ -46,6 +46,8 @@ def technology():
                                 i.replace_with("")
                             for i in newsTags.find_all('div', attrs={'class': 'newsletter-subscribe-form desktop -inline'}):
                                 i.replace_with("")
+                            for i in newsTags.find_all('div', attrs={'class': 'c-listiclePrecap ampHide shortcode'}):
+                                i.replace_with("")
 
                             for new in newsTags.find_all('div',{'class':'row'}):
                                 if a==3:
@@ -333,10 +335,8 @@ def technology():
                                 i.replace_with("")
                             for i in newsTags.find_all('script'):
                                 i.replace_with("")
-
                             for i in newsTags.find_all('strong'):
                                 i.replace_with("")
-
                             for i in newsTags.find_all('center'):
                                 i.replace_with("")
                             for new in newsTags.find_all('p'):
@@ -355,15 +355,6 @@ def technology():
                 print("Error!"+Exception)
 
 
-
-
-
-
-
-
-
-
-
         cNET()
         techRadar()
         pocketLint()
@@ -371,11 +362,273 @@ def technology():
         techTimes()
 
 
+    def iot():
+        def iotNow():
+            try:
+                url = "https://www.iot-now.com/news/"
+                websiteRequest = requests.get(url, timeout=30 , headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    a=0
+                    for i in soup.find("main", {"id": "main"}).find("div",{"class": "row"}).find("div",{"class": "col-md-12 col-lg-8"}).find("div",{"class": "row categories__wrapper"}).find_all('div', attrs={'class': 'col-md-6 mb-4'}):
+
+                        if a==0:
+                            firstNews = i.find("div", {"class": "category__post"}).find("h2", {"class": "category__title"}).find("a").get("href")
+                        elif a==1:
+                            secondNews = i.find("div", {"class": "category__post"}).find("h2", {"class": "category__title"}).find("a").get("href")
+                        elif a==2:
+                            thirdNews = i.find("div", {"class": "category__post"}).find("h2", {"class": "category__title"}).find("a").get("href")
+                        a=a+1
+
+                    url = "https://www.iot-now.com"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            newsTags = soup.find("div", {"class": "builder-html"}).find("main", {"class": "container"}).find("div",{"class": "col-md-12 col-lg-8"}).find("div",{"class": "article__content"})
+
+
+                            for new in newsTags.find_all():
+                                newsContent=newsContent+" "+new.get_text()
+
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!"+Exception)
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!"+Exception)
+
+
+
+        def iotBusinessNews():
+            try:
+                url = "https://iotbusinessnews.com"
+                websiteRequest = requests.get(url, timeout=30 , headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    a=0
+                    for i in soup.find("div", {"class": "main-content"}).find("section",{"class": "section news-box nb1 cat_4,5,6,7,8,9,10,11,16,564,1465,2192,2519,2600"}).find("ul").find_all('li'):
+
+                        if a==0:
+                            firstNews = i.find("figure", {"class": "post-thumbnail"}).find("a").get("href")
+                        elif a==1:
+                            secondNews = i.find("figure", {"class": "post-thumbnail"}).find("a").get("href")
+                        elif a==2:
+                            thirdNews = i.find("figure", {"class": "post-thumbnail"}).find("a").get("href")
+                        a=a+1
+
+                    url = "https://iotbusinessnews.com"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            newsTags = soup.find("div", {"class": "main-content"}).find("div", {"class": "site-content page-wrap"}).find("div",{"class": "entry-content clearfix"})
+
+                            for i in newsTags.find_all('img'):
+                                i.replace_with("")
+                            for i in newsTags.find_all('noscript'):
+                                i.replace_with("")
+                            for i in newsTags.find_all('div'):
+                                i.replace_with("")
+                            for new in newsTags.find_all("p"):
+                                newsContent=newsContent+" "+new.get_text()
+
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!"+Exception)
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!"+Exception)
 
 
 
 
-    mobileDevices()
+
+        def futureIot():
+            try:
+                url = "https://futureiot.tech/?s="
+                websiteRequest = requests.get(url, timeout=30 , headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    a=0
+                    for i in soup.find("div", {"class": "jeg_viewport"}).find("div", {"class": "jeg_main"}).find("div",{"class": "container"}).find("div",{"class": "jeg_cat_content row"}).find("div",{"class": "jeg_sidebar left jeg_sticky_sidebar col-sm-4"}).find("div",{"class": "widget widget_recent_entries"}).find("ul").find_all('li'):
+
+                        if a==0:
+                            firstNews = i.find("a").get("href")
+                        elif a==1:
+                            secondNews = i.find("a").get("href")
+                        elif a==2:
+                            thirdNews = i.find("a").get("href")
+                        a=a+1
+
+                    url = "https://futureiot.tech"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            newsTags = soup.find("div", {"class": "jeg_viewport"}).find("div", {"class": "post-wrapper"}).find("div",{"class": "row"}).find("div",{"class": "entry-content with-share"}).find("div",{"class": "content-inner"})
+
+                            for i in newsTags.find_all('img'):
+                                i.replace_with("")
+                            for i in newsTags.find_all('div'):
+                                i.replace_with("")
+                            for new in newsTags.find_all("p"):
+                                newsContent=newsContent+" "+new.get_text()
+
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!"+Exception)
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!"+Exception)
+
+
+
+        iotNow()
+        iotBusinessNews()
+        futureIot()
+
+
+
+    def AI():
+        def mit():
+            try:
+                url = "https://news.mit.edu/topic/artificial-intelligence2"
+                websiteRequest = requests.get(url, timeout=30 , headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    a=0
+                    for i in soup.find("main", {"class": "site-main"}).find("div",{"class": "page--section"}).find("div",{"class": "page--section--inner"}).find("div",{"id": "block-mit-content"}).find("div",{"class": "page-term--views--list"}).find_all('div', attrs={'class': 'page-term--views--list-item'}):
+
+                        if a==0:
+                            firstNews = i.find("article", {"class": "term-page--news-article--item"}).find("div", {"class": "term-page--news-article--item--cover-image"}).find("a").get("href")
+                        elif a==1:
+                            secondNews = i.find("article", {"class": "term-page--news-article--item"}).find("div", {"class": "term-page--news-article--item--cover-image"}).find("a").get("href")
+                        elif a==2:
+                            thirdNews = i.find("article", {"class": "term-page--news-article--item"}).find("div", {"class": "term-page--news-article--item--cover-image"}).find("a").get("href")
+                        a=a+1
+
+                    url = "https://news.mit.edu"
+
+                    firstUrl = url + firstNews
+                    secondUrl = url + secondNews
+                    thirdUrl = url + thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            newsTags = soup.find("main", {"class": "site-main"}).find("div", {"class": "page--section"}).find("div",{"id": "block-mit-content"}).find("div",{"class": "news-article--content"}).find("div",{"class": "news-article--content--body"}).find("div",{"class": "news-article--content--body--inner"})
+
+                            for i in newsTags.find_all('iframe'):
+                                i.replace_with("")
+                            for i in newsTags.find_all('div',attrs={'class':'news-article--inline-video'}):
+                                i.replace_with("")
+                            for new in newsTags.find_all('div',attrs={'class':'paragraph paragraph--type--content-block-text paragraph--view-mode--default'}):
+                                for x in new.find_all('p'):
+                                    newsContent=newsContent+" "+x.get_text()
+
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!"+Exception)
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!"+Exception)
+
+
+
+        mit()
+
+
+
+
+
+    #mobileDevices()
+    #iot()
+    AI()
 
 
 

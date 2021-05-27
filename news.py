@@ -599,125 +599,225 @@ def independent():
 
 
         except:
-            url = "https://www.independent.co.uk/news/world"
-            websiteRequest = requests.get(url, timeout=30)
+            try:
+                url = "https://www.independent.co.uk/news/world"
+                websiteRequest = requests.get(url, timeout=30)
 
-            if websiteRequest.status_code != 200:
-                newsImage = "Error"
-                newsTitle = "Error"
-                newsContent = "Error"
-            else:
-                websiteContent = websiteRequest.content
-                soup = BeautifulSoup(websiteContent, "html.parser")
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
 
-                firstNews = soup.find("div", {"id": "sectionContent"}).find("div",{"class": "sc-oVpqz sc-pQrUA bTgZlJ"}).find("div", {"class": "sc-pbvYO kyuTJY sc-prrfo bqrhRh hero-article article-default"}).find("div", {"class": "sc-pIJmg fgdQdf image-wrap"}).find("a").get("href")
-                secondNews= soup.find("div", {"id": "sectionContent"}).find("div",{"class": "sc-oVpqz sc-pQrUA bTgZlJ"}).find("div", {"class": "articles"}).find('div', attrs={'class': 'sc-pRgDJ dibVwu article article-default'}).find("a", {"class": "sc-pRFHb kfZOQo"}).get("href")
-                thirdNews = soup.find("div", {"id": "sectionContent"}).find("div",{"class": "sc-oVpqz sc-pQrUA bTgZlJ"}).find("div", {"class": "articles"}).find('div', attrs={'class': 'sc-pRgDJ dibVwu article article-default article-premium'}).find("a", {"class": "sc-pRFHb kfZOQo"}).get("href")
+                    firstNews = soup.find("div", {"id": "sectionContent"}).find("div", {"class": "sc-pbvYO kyuTJY sc-prrfo bqrhRh hero-article article-default"}).find("div", {"class": "sc-pIJmg fgdQdf image-wrap"}).find("a").get("href")
+                    secondNews= soup.find("div", {"id": "sectionContent"}).find("div", {"class": "articles"}).find('div', attrs={'class': 'sc-pRgDJ dibVwu article article-default'}).find("a", {"class": "sc-pRFHb kfZOQo"}).get("href")
+                    thirdNews = soup.find("div", {"id": "sectionContent"}).find("div", {"class": "articles"}).find('div', attrs={'class': 'sc-pRgDJ dibVwu article article-default article-premium'}).find("a", {"class": "sc-pRFHb kfZOQo"}).get("href")
 
 
-            url = "https://www.independent.co.uk"
-            firstUrl = url + firstNews
-            secondUrl = url + secondNews
-            thirdUrl = url + thirdNews
+                url = "https://www.independent.co.uk"
+                firstUrl = url + firstNews
+                secondUrl = url + secondNews
+                thirdUrl = url + thirdNews
 
-            def getContent(url):
-                try:
-                    request=requests.get(url,timeout=30)
-                    content=request.content
-                    soup=BeautifulSoup(content,"html.parser")
-                    newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
-                    newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
+                def getContent(url):
                     try:
-                        newsTags= soup.find("div",{"class":"sc-psEMT gwrImx main-wrapper"}).find("div",{"class":"sc-pJgJK daSdlt sc-pZbQk kzfPTw"}).find_all('p')
-                        newsContent=""
-                        for new in newsTags:
-                            newsContent = newsContent+ " " + new.get_text()
-
-                        print(newsContent.strip())
-
-                    except:
+                        request=requests.get(url,timeout=30)
+                        content=request.content
+                        soup=BeautifulSoup(content,"html.parser")
+                        newsImage = soup.find("meta",{"property":"og:image"}).get("content")
+                        print(newsImage)
+                        newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                        print(newsTitle)
                         try:
-                            newsTags = soup.find("div", {"class": "sc-psEMT sc-pbxEC dKclYu main-wrapper"}).find("div", {"class": "sc-pJgJK daSdlt sc-pZbQk sc-oTAMn kWoGPI"}).find_all('p')
-                            newsContent = ""
+                            newsTags= soup.find("div",{"class":"sc-psEMT gwrImx main-wrapper"}).find("div",{"class":"sc-pJgJK daSdlt sc-pZbQk kzfPTw"}).find_all('p')
+                            newsContent=""
                             for new in newsTags:
-                                newsContent = newsContent + " " + new.get_text()
+                                newsContent = newsContent+ " " + new.get_text()
 
                             print(newsContent.strip())
 
                         except:
+                            try:
+                                newsTags = soup.find("div", {"class": "sc-psEMT sc-pbxEC dKclYu main-wrapper"}).find("div", {"class": "sc-pJgJK daSdlt sc-pZbQk sc-oTAMn kWoGPI"}).find_all('p')
+                                newsContent = ""
+                                for new in newsTags:
+                                    newsContent = newsContent + " " + new.get_text()
+
+                                print(newsContent.strip())
+
+                            except:
+                                print("Error!")
+                    except:
+                        print("Error!")
+                getContent(firstUrl)
+                getContent(secondUrl)
+                getContent(thirdUrl)
+
+            except:
+                try:
+                    url = "https://www.independent.co.uk/news/world"
+                    websiteRequest = requests.get(url, timeout=30)
+
+                    if websiteRequest.status_code != 200:
+                        newsImage = "Error"
+                        newsTitle = "Error"
+                        newsContent = "Error"
+                    else:
+                        websiteContent = websiteRequest.content
+                        soup = BeautifulSoup(websiteContent, "html.parser")
+
+
+                        firstNews = soup.find("div", {"id": "sectionContent"}).find("div", {"class": "sc-pmjZF sc-oUMOe iQMxTb"}).find("div", {"class": "sc-prrfo ioTEQn sc-qYGWS iaowKX hero-article article-default"}).find("div", {"class": "sc-pZCuu FQldL image-wrap"}).find("a").get("href")
+                        a=0
+                        for i in soup.find("div", {"id": "sectionContent"}).find("div", {"class": "sc-pmjZF sc-oUMOe iQMxTb"}).find("div", {"class": "articles"}).find_all('div',attrs={'class':'sc-oTzgz byxrrN article article-default'}):
+                            if a==0:
+                                secondNews = i.find("div",{"class":"content"}).find("h2").find("a").get("href")
+                            elif a==1:
+                                thirdNews = i.find("div",{"class":"content"}).find("h2").find("a").get("href")
+                            a=a+1
+                    url = "https://www.independent.co.uk"
+                    firstUrl = url + firstNews
+                    secondUrl = url + secondNews
+                    thirdUrl = url + thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30)
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            try:
+                                newsTags = soup.find("div", {"class": "sc-psEMT gwrImx main-wrapper"}).find("div", {"class": "sc-pJgJK daSdlt sc-pZbQk kzfPTw"}).find_all('p')
+                                newsContent = ""
+                                for new in newsTags:
+                                    newsContent = newsContent + " " + new.get_text()
+
+                                print(newsContent.strip())
+
+                            except:
+                                try:
+                                    newsTags = soup.find("div", {"id": "main"}).find_all('p')
+                                    newsContent = ""
+                                    for new in newsTags:
+                                        newsContent = newsContent + " " + new.get_text()
+
+                                    print(newsContent.strip())
+
+                                except:
+                                      print("Error!")
+                        except:
                             print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
                 except:
                     print("Error!")
-            getContent(firstUrl)
-            getContent(secondUrl)
-            getContent(thirdUrl)
+
+
+
 
     except:
-        print("Error!")
+        print("Error!"+Exception)
 
 def time():
-    try:
-        url="https://time.com"
-        websiteRequest=requests.get(url,timeout=30)
-
-        if websiteRequest.status_code!=200:
-            newsImage = "Error"
-            newsTitle = "Error"
-            newsContent = "Error"
-        else:
-            websiteContent=websiteRequest.content
-            soup=BeautifulSoup(websiteContent,"html.parser")
-            firstNews=soup.find("section",{"class":"homepage-module lead"}).find("div",{"class":"primary"}).find("article",{"class":"slide"}).find("div",{"class":"content"}).find("h2").find("a").get("href")
-            a=0
-
-            for i in soup.find("section",{"class":"homepage-module lead"}).find("div",{"class":"secondary"}).find_all('article',attrs={'class':'slide'}):
-                if a==0:
-                    secondNews = i.find("div",{"class":"content"}).find("h2",{"class":"title"}).find("a").get("href")
-                elif a==1:
-                    thirdNews = i.find("div",{"class":"content"}).find("h2",{"class":"title"}).find("a").get("href")
-                a=a+1
-
+        try:
             url="https://time.com"
-            firstUrl=url+firstNews
-            secondUrl =url+secondNews
-            thirdUrl =url+thirdNews
+            websiteRequest=requests.get(url,timeout=30)
+
+            if websiteRequest.status_code!=200:
+                newsImage = "Error"
+                newsTitle = "Error"
+                newsContent = "Error"
+            else:
+                websiteContent=websiteRequest.content
+                soup=BeautifulSoup(websiteContent,"html.parser")
+                firstNews=soup.find("section",{"class":"homepage-module lead"}).find("div",{"class":"primary"}).find("article",{"class":"slide"}).find("div",{"class":"content"}).find("h2").find("a").get("href")
+                a=0
+
+                for i in soup.find("section",{"class":"homepage-module lead"}).find("div",{"class":"secondary"}).find_all('article',attrs={'class':'slide'}):
+                    if a==0:
+                        secondNews = i.find("div",{"class":"content"}).find("h2",{"class":"title"}).find("a").get("href")
+                    elif a==1:
+                        thirdNews = i.find("div",{"class":"content"}).find("h2",{"class":"title"}).find("a").get("href")
+                    a=a+1
+
+                url="https://time.com"
+                firstUrl=firstNews
+                secondUrl =secondNews
+                thirdUrl =thirdNews
 
 
-            def getContent(url):
+                def getContent(url):
+                    try:
+                        request=requests.get(url,timeout=30)
+                        content=request.content
+                        soup=BeautifulSoup(content,"html.parser")
+                        newsImage = soup.find("meta",{"property":"og:image"}).get("content")
+
+                        newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+
+                        newsTags= soup.find("div",{"class":"article content body clearfix"}).find("div",{"class":"padded"})
+                        newsContent=""
+                        for i in newsTags.find_all('div', attrs={'class': 'component inline image margin-32-tb'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('div', attrs={'class': 'component subscription-cta'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('div', attrs={'class': 'component newsletter-callout newsletter-inline-signup with-known-country'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('div', attrs={'class': 'article-bottom'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('p', attrs={'class': 'author-feedback-text'}):
+                            i.replace_with("")
+                        for new in newsTags.find_all("p"):
+                            newsContent = newsContent + " " + new.get_text()
+                        print(newsImage)
+                        print(newsTitle)
+                        print(newsContent.strip())
+
+                    except:
+                        try:
+                            request = requests.get(url, timeout=30)
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsTags = soup.find("div", {"class": "player"}).find("div", {"class": "video-info"}).find(
+                                "div", {"class": "description"}).get_text()
+                            newsContent = ""
+
+                            newsContent = newsContent + " " + newsTags
+
+                            print(newsContent.strip())
+                        except:
+                            print("Error!" + Exception)
                 try:
-                    request=requests.get(url,timeout=30)
-                    content=request.content
-                    soup=BeautifulSoup(content,"html.parser")
-                    newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
-                    newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
-                    newsTags= soup.find("div",{"class":"article content body clearfix"}).find("div",{"class":"padded"})
-                    newsContent=""
-                    for i in newsTags.find_all('div', attrs={'class': 'component inline image margin-32-tb'}):
-                        i.replace_with("")
-                    for i in newsTags.find_all('div', attrs={'class': 'component subscription-cta'}):
-                        i.replace_with("")
-                    for i in newsTags.find_all('div', attrs={'class': 'component newsletter-callout newsletter-inline-signup with-known-country'}):
-                        i.replace_with("")
-                    for i in newsTags.find_all('div', attrs={'class': 'article-bottom'}):
-                        i.replace_with("")
-                    for i in newsTags.find_all('p', attrs={'class': 'author-feedback-text'}):
-                        i.replace_with("")
-                    for new in newsTags.find_all("p"):
-                        newsContent = newsContent + " " + new.get_text()
-
-                    print(newsContent.strip())
+                    getContent(firstUrl)
                 except:
-                    print("Error!")
-            getContent(firstUrl)
-            getContent(secondUrl)
-            getContent(thirdUrl)
+                    getContent(url+firstUrl)
+                try:
+                    getContent(secondUrl)
+                except:
+                    getContent(url+secondUrl)
+                try:
+                    getContent(thirdUrl)
+                except:
+                    getContent(url+thirdUrl)
 
-    except:
-        print("Error!")
+        except:
+            print("Error!")
+
+
+
+
 
 def chinaPost():
     try:
@@ -1127,14 +1227,42 @@ def euronews():
                         print(newsImage)
                         newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
                         print(newsTitle)
-                        newsContent = ""
-                        newsTags= soup.find("div",{"class":"o-article__body"}).find("article",{"class":"article-wrapper c-article__full_article"}).find("section",{"class":"row collapse jsBottomArticle u-overflow-visible u-margin-top-medium-down-2 u-margin-top-large-only-3 u-margin-top-xlarge-4"}).find("div",{"class":"column small-12 medium-10 xlarge-11 js-responsive-iframes-container"}).find("div",{"class":"c-article-content js-article-content article__content"}).find_all('p')
+                        try:
+                            newsContent = ""
+                            newsTags= soup.find("div",{"class":"o-article__body"}).find("article",{"class":"article-wrapper c-article__full_article"}).find("section",{"class":"row collapse jsBottomArticle u-overflow-visible u-margin-top-medium-down-2 u-margin-top-large-only-3 u-margin-top-xlarge-4"}).find("div",{"class":"column small-12 medium-10 xlarge-11 js-responsive-iframes-container"}).find("div",{"class":"c-article-content js-article-content article__content"}).find_all('p')
 
-                        for new in newsTags:
+                            for new in newsTags:
 
-                            newsContent = newsContent+ " " + new.get_text()
+                                newsContent = newsContent+ " " + new.get_text()
 
-                        print(newsContent.strip())
+                            print(newsContent.strip())
+                        except:
+                            try:
+                                print(soup.find("div", {"class": "o-article__body"}).find("div", {
+                                    "class": "c-article__full_article"}).find("div", {
+                                    "class": "column small-12 medium-10 xlarge-11 js-responsive-iframes-container u-zindex--bottom"}))
+                                newsTags = soup.find("div", {"class": "o-article__body"}).find("div", {
+                                    "class": "c-article__full_article"}).find("div", {
+                                    "class": "column small-12 medium-10 xlarge-11 js-responsive-iframes-container u-zindex--bottom"}).find(
+                                    "div", {"class": "c-article-content js-article-content article__content"}).find_all(
+                                    'p')
+
+
+                                for i in newsTags.find_all('div', attrs={'class': 'c-advertising-sticky-floor'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={
+                                    'class': 'widget widget--type-image widget--size-fullwidth widget--align-center'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={
+                                    'class': 'widget widget--type-related widget--size-fullwidth widget--align-center'}):
+                                    i.replace_with("")
+                                for new in newsTags:
+                                    newsContent = newsContent + " " + new.get_text()
+
+                                print(newsContent.strip())
+
+                            except:
+                                print("Error!")
 
                     except:
                         print("Error!")
@@ -1174,17 +1302,43 @@ def euronews():
                         newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
                         print(newsTitle)
                         newsContent = ""
-                        newsTags = soup.find("div", {"class": "o-article__body"}).find("article", {
-                            "class": "article-wrapper c-article__full_article"}).find("section", {
-                            "class": "row collapse jsBottomArticle u-overflow-visible u-margin-top-medium-down-2 u-margin-top-large-only-3 u-margin-top-xlarge-4"}).find(
-                            "div",
-                            {"class": "column small-12 medium-10 xlarge-11 js-responsive-iframes-container"}).find(
-                            "div", {"class": "c-article-content js-article-content article__content"}).find_all('p')
+                        try:
+                            newsTags = soup.find("div", {"class": "o-article__body"}).find("article", {
+                                "class": "article-wrapper c-article__full_article"}).find("section", {
+                                "class": "row collapse jsBottomArticle u-overflow-visible u-margin-top-medium-down-2 u-margin-top-large-only-3 u-margin-top-xlarge-4"}).find(
+                                "div",
+                                {"class": "column small-12 medium-10 xlarge-11 js-responsive-iframes-container"}).find(
+                                "div", {"class": "c-article-content js-article-content article__content"}).find_all('p')
 
-                        for new in newsTags:
-                            newsContent = newsContent + " " + new.get_text()
+                            for new in newsTags:
+                                newsContent = newsContent + " " + new.get_text()
 
-                        print(newsContent.strip())
+                            print(newsContent.strip())
+
+                        except:
+                            try:
+
+                                newsTags = soup.find("div", {"class": "o-article__body"}).find("div", {
+                                    "class": "c-article__full_article"}).find("div", {
+                                    "class": "column small-12 medium-10 xlarge-11 js-responsive-iframes-container u-zindex--bottom "}).find(
+                                    "div",{"class": "c-article-content js-article-content article__content "}).find_all('p')
+
+
+                                for i in newsTags.find_all('div', attrs={'class': 'c-advertising-sticky-floor'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={'class': 'widget widget--type-image widget--size-fullwidth widget--align-center'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={'class': 'widget widget--type-related widget--size-fullwidth widget--align-center'}):
+                                    i.replace_with("")
+                                for new in newsTags:
+                                    newsContent = newsContent + " " + new.get_text()
+
+                                print(newsContent.strip())
+
+                            except:
+                                print("Error!")
+
+
 
                     except:
                         print("Error!")
@@ -1233,15 +1387,22 @@ def sputnik():
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
                     print(newsTitle)
                     newsContent = ""
-                    newsTags= soup.find("div",{"class":"l-main m-oh"}).find("div",{"class":"b-article__text"})
-                    for i in newsTags.find_all('div', attrs={'class': 'ria-tweet'}):
-                        i.replace_with("")
-                    for i in newsTags.find_all('div', attrs={'class': 'b-inject m-inject-min'}):
-                        i.replace_with("")
-                    for new in newsTags.find_all('p'):
-                        newsContent = newsContent+ " " + new.text
+                    try:
+                        newsTags= soup.find("div",{"class":"l-main m-oh"}).find("div",{"class":"b-article__text"})
+                        for i in newsTags.find_all('div', attrs={'class': 'ria-tweet'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('div', attrs={'class': 'b-inject m-inject-min'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('div', attrs={'class': 'b-inject m-inject-free'}):
+                            i.replace_with("")
+                        for new in newsTags.find_all():
+                            newsContent = newsContent+ " " + new.text
 
-                    print(newsContent.strip())
+                        print(newsContent.strip())
+
+                    except:
+                        print("Error!")
+
 
                 except:
                     print("Error!")
@@ -1267,9 +1428,9 @@ def washingtonPost():
             websiteContent=websiteRequest.content
             soup=BeautifulSoup(websiteContent,"html.parser")
             a=0
-            firstNews = soup.find("div",{"data-chain-name":"hp-top-table-main-0430b"}).find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-main grid-top grid-center"}).find("h2").find("a").get("href")
-            secondNews = soup.find("div",{"data-chain-name":"hp-top-table-main-0430b"}).find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-right grid-top grid-right"}).find("h2").find("a").get("href")
-            thirdNews = soup.find("div",{"data-chain-name":"hp-top-table-main-0430b"}).find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-right grid-pseudo-left grid-middle grid-right"}).find("h2").find("a").get("href")
+            firstNews = soup.find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-main grid-top grid-center"}).find("h2").find("a").get("href")
+            secondNews = soup.find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-right grid-top grid-right"}).find("h2").find("a").get("href")
+            thirdNews = soup.find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-right grid-pseudo-left grid-middle grid-right"}).find("h2").find("a").get("href")
 
 
             firstUrl = firstNews
@@ -1336,19 +1497,26 @@ def washingtonPost():
                                         print(newsContent.strip())
 
                                     except:
-                                        print("Error!")
+                                        try:
+                                            newsContent = ""
+                                            newsTags = soup.find("main").find("article").find("div", {"class": "topper-grid"}).find("span").get_text()
+                                            newsContent = newsContent + " " + newsTags
+
+                                            print(newsContent.strip())
+
+                                        except:
+                                            print("Error!" + Exception)
 
 
 
                 except:
-                    print("Error!")
+                    print("Error!"+Exception)
             getContent(firstUrl)
             getContent(secondUrl)
             getContent(thirdUrl)
 
     except:
-        print("Error!")
-
+        print("Error!"+Exception)
 
 bbc()
 aljazeera()
