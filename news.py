@@ -434,7 +434,7 @@ def dwNews():
                         i.replace_with("")
 
                     for new in newsTags.find_all('p'):
-                        newsContent = newsContent+ " " + new.get_text()
+                        newsContent = newsContent+ " " + new.get_text().strip()
 
 
 
@@ -786,7 +786,6 @@ def time():
 
 
                 def getContent(url):
-                    try:
                         request=requests.get(url,timeout=30)
                         content=request.content
                         soup=BeautifulSoup(content,"html.parser")
@@ -794,42 +793,68 @@ def time():
 
                         newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
 
-                        newsTags= soup.find("div",{"class":"article content body clearfix"}).find("div",{"class":"padded"})
+
                         newsContent=""
-                        for i in newsTags.find_all('div', attrs={'class': 'component inline image margin-32-tb'}):
-                            i.replace_with("")
-                        for i in newsTags.find_all('div', attrs={'class': 'component subscription-cta'}):
-                            i.replace_with("")
-                        for i in newsTags.find_all('div', attrs={'class': 'component newsletter-callout newsletter-inline-signup with-known-country'}):
-                            i.replace_with("")
-                        for i in newsTags.find_all('div', attrs={'class': 'article-bottom'}):
-                            i.replace_with("")
-                        for i in newsTags.find_all('p', attrs={'class': 'author-feedback-text'}):
-                            i.replace_with("")
-                        for new in newsTags.find_all("p"):
-                            newsContent = newsContent + " " + new.get_text()
-                        print(newsImage)
-                        print(newsTitle)
-                        print(newsContent.strip())
-
-                    except:
                         try:
-                            request = requests.get(url, timeout=30)
-                            content = request.content
-                            soup = BeautifulSoup(content, "html.parser")
-                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            newsTags = soup.find("div", {"class": "article content body clearfix"}).find("div", {
+                                "class": "padded"})
+                            for i in newsTags.find_all('div', attrs={'class': 'component inline image margin-32-tb'}):
+                                i.replace_with("")
+                            for i in newsTags.find_all('div', attrs={'class': 'component subscription-cta'}):
+                                i.replace_with("")
+                            for i in newsTags.find_all('div', attrs={'class': 'component newsletter-callout newsletter-inline-signup with-known-country'}):
+                                 i.replace_with("")
+                            for i in newsTags.find_all('div', attrs={'class': 'article-bottom'}):
+                                i.replace_with("")
+                            for i in newsTags.find_all('p', attrs={'class': 'author-feedback-text'}):
+                                i.replace_with("")
+                            for new in newsTags.find_all("p"):
+                                newsContent = newsContent + " " + new.get_text()
                             print(newsImage)
-                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
                             print(newsTitle)
-                            newsTags = soup.find("div", {"class": "player"}).find("div", {"class": "video-info"}).find(
-                                "div", {"class": "description"}).get_text()
-                            newsContent = ""
-
-                            newsContent = newsContent + " " + newsTags
-
                             print(newsContent.strip())
+
                         except:
-                            print("Error!" + Exception)
+                            try:
+                                request = requests.get(url, timeout=30)
+                                content = request.content
+                                soup = BeautifulSoup(content, "html.parser")
+                                newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+
+                                newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+
+                                newsTags = soup.find("div", {"class": "player"}).find("div", {"class": "video-info"}).find("div", {"class": "description"}).get_text()
+                                newsContent = ""
+
+                                newsContent = newsContent + " " + newsTags
+                                print(newsImage)
+                                print(newsTitle)
+                                print(newsContent.strip())
+                            except:
+                                try:
+                                    request = requests.get(url, timeout=30)
+                                    content = request.content
+                                    soup = BeautifulSoup(content, "html.parser")
+                                    newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+
+                                    newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+
+                                    newsTags = soup.find("main", {"class": "collection-sections"}).find_all("section",{"class": "collection-section"})
+                                    newsContent = ""
+
+
+                                    for i in newsTags:
+                                        for c in i.find_all('ul'):
+                                                newsContent = newsContent + " " + c.find("h3").text.strip()+ " " + c.find("h4").text.strip()
+                                    print(newsImage)
+                                    print(newsTitle)
+                                    print(newsContent)
+                                except:
+                                    print("Error!")
+
+
+
+
                 try:
                     getContent(firstUrl)
                 except:
@@ -842,6 +867,8 @@ def time():
                     getContent(thirdUrl)
                 except:
                     getContent(url+thirdUrl)
+
+
 
         except:
             print("Error!")
@@ -1461,9 +1488,10 @@ def washingtonPost():
             a=0
             firstNews = soup.find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-main grid-top grid-center"}).find("h2").find("a").get("href")
             secondNews = soup.find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-right grid-top grid-right"}).find("h2").find("a").get("href")
-            thirdNews = soup.find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-right grid-pseudo-left grid-middle grid-right"}).find("h2").find("a").get("href")
-
-
+            try:
+                thirdNews = soup.find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-right grid-pseudo-left grid-middle grid-right"}).find("h2").find("a").get("href")
+            except:
+                thirdNews = soup.find("div",{"class":"card relative hpgrid-item hpgrid-item--c-start hpgrid-item--c-spans hpgrid-item--r-spans table1-columns-main grid-pseudo-left grid-pseudo-right grid-bottom grid-center"}).find("h2").find("a").get("href")
             firstUrl = firstNews
             secondUrl = secondNews
             thirdUrl = thirdNews
@@ -1483,7 +1511,7 @@ def washingtonPost():
                         newsContent = ""
                         newsTags= soup.find("div",{"class":"relative"}).find("article",{"class":"b-l br-l mb-xxl-ns mt-xxs mt-md-l pr-lg-l col-8-lg mr-lg-l"}).find("div",{"class":"article-body"}).find_all('p')
                         for new in newsTags:
-                            newsContent = newsContent+ " " + new.get_text()
+                            newsContent = newsContent+ " " + new.get_text().strip()
 
                         print(newsContent.strip())
 
@@ -1493,7 +1521,7 @@ def washingtonPost():
                             newsContent = ""
                             newsTags = soup.find("div",{"class":"relative"}).find("main", {"class": "flex-grid flex flex-wrap mr-auto ml-auto print-mt-none"}).find("article",{"class":"b-l br-l mb-xxl-ns mt-xxs mt-md-l pr-lg-l col-8-lg mr-lg-l mw-100"}).find("div",{"class":"article-body"}).find("section").find_all('p',attrs={'data-el':'text'})
                             for new in newsTags:
-                                newsContent = newsContent+ " " + new.get_text()
+                                newsContent = newsContent+ " " + new.get_text().strip()
 
                             print(newsContent.strip())
 
@@ -1503,7 +1531,7 @@ def washingtonPost():
                                 newsContent = ""
                                 newsTags = soup.find("main").find("article").find("div", {"class": "mb-md mt-md"}).find("div", {"class": "scrolly relative"}).find_all('div', attrs={'class': 'font--body font-xs-ns vh-100'})
                                 for new in newsTags:
-                                    newsContent = newsContent+ " " + new.find("p").get_text()
+                                    newsContent = newsContent+ " " + new.find("p").get_text().strip()
 
                                 print(newsContent.strip())
 
@@ -1513,7 +1541,7 @@ def washingtonPost():
                                     newsContent = ""
                                     newsTags = soup.find("section",{"id":"ent-pb-main"}).find("div",{"class":"ent-article-body ent-layout-centered"}).find("div",{"class": "main"}).find_all('p')
                                     for new in newsTags:
-                                        newsContent = newsContent + " "+ new.get_text()
+                                        newsContent = newsContent + " "+ new.get_text().strip()
 
                                     print(newsContent.strip())
 
@@ -1523,7 +1551,7 @@ def washingtonPost():
                                         newsContent = ""
                                         newsTags = soup.find("article", {"class": "b-l br-l mb-xxl-ns mt-xxs mt-md-l pr-lg-l col-8-lg mr-lg-l"}).find("div", {"class": "article-body"}).find("div", {"class": "teaser-content"}).find("section").find_all('p')
                                         for new in newsTags:
-                                            newsContent = newsContent + " " + new.get_text()
+                                            newsContent = newsContent + " " + new.get_text().strip()
 
                                         print(newsContent.strip())
 
@@ -1531,7 +1559,7 @@ def washingtonPost():
                                         try:
                                             newsContent = ""
                                             newsTags = soup.find("main").find("article").find("div", {"class": "topper-grid"}).find("span").get_text()
-                                            newsContent = newsContent + " " + newsTags
+                                            newsContent = newsContent + " " + newsTags.strip()
 
                                             print(newsContent.strip())
 
@@ -1548,6 +1576,8 @@ def washingtonPost():
 
     except:
         print("Error!"+Exception)
+
+
 
 bbc()
 aljazeera()

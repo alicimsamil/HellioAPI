@@ -52,7 +52,7 @@ def technology():
                             for new in newsTags.find_all('div',{'class':'row'}):
                                 if a==3:
                                     for i in new.find("div",{"class":"col-12"}).find("article",{"id":"article-body"}).find("div",{"class":"col-7 article-main-body row"}).find_all('p'):
-                                        newsContent = newsContent + " " + i.text
+                                        newsContent = newsContent + " " + i.text.strip()
                                 a=a+1
                             print(newsContent.strip())
 
@@ -108,7 +108,7 @@ def technology():
                                     i.replace_with("")
 
                                 for new in newsTags.find_all('p'):
-                                    newsContent=newsContent+" "+new.get_text()
+                                    newsContent=newsContent+" "+new.get_text().strip()
 
                                 print(newsContent.strip())
                             except:
@@ -126,7 +126,7 @@ def technology():
                                         i.replace_with("")
 
                                     for new in newsTags.find_all('div', attrs={'class': 'wcp-item-content'}):
-                                        newsContent = newsContent + " " + new.get_text()
+                                        newsContent = newsContent + " " + new.get_text().strip()
 
                                     print(newsContent.strip())
 
@@ -198,7 +198,7 @@ def technology():
                                 i.replace_with("")
 
                             for new in newsTags.find_all('p'):
-                                newsContent=newsContent+" "+new.get_text()
+                                newsContent=newsContent+" "+new.get_text().strip()
 
                             print(newsContent.strip())
 
@@ -268,7 +268,7 @@ def technology():
 
 
                             for new in newsTags.find_all('p'):
-                                newsContent=newsContent+" "+new.get_text()
+                                newsContent=newsContent+" "+new.get_text().strip()
 
                             print(newsContent.strip())
 
@@ -340,7 +340,7 @@ def technology():
                             for i in newsTags.find_all('center'):
                                 i.replace_with("")
                             for new in newsTags.find_all('p'):
-                                newsContent=newsContent+" "+new.get_text()
+                                newsContent=newsContent+" "+new.get_text().strip()
 
                             print(newsContent.strip())
 
@@ -406,7 +406,7 @@ def technology():
 
 
                             for new in newsTags.find_all():
-                                newsContent=newsContent+" "+new.get_text()
+                                newsContent=newsContent+" "+new.get_text().strip()
 
                             print(newsContent.strip())
 
@@ -470,7 +470,7 @@ def technology():
                             for i in newsTags.find_all('div'):
                                 i.replace_with("")
                             for new in newsTags.find_all("p"):
-                                newsContent=newsContent+" "+new.get_text()
+                                newsContent=newsContent+" "+new.get_text().strip()
 
                             print(newsContent.strip())
 
@@ -534,7 +534,7 @@ def technology():
                             for i in newsTags.find_all('div'):
                                 i.replace_with("")
                             for new in newsTags.find_all("p"):
-                                newsContent=newsContent+" "+new.get_text()
+                                newsContent=newsContent+" "+new.get_text().strip()
 
                             print(newsContent.strip())
 
@@ -604,7 +604,7 @@ def technology():
                                 i.replace_with("")
                             for new in newsTags.find_all('div',attrs={'class':'paragraph paragraph--type--content-block-text paragraph--view-mode--default'}):
                                 for x in new.find_all('p'):
-                                    newsContent=newsContent+" "+x.get_text()
+                                    newsContent=newsContent+" "+x.get_text().strip()
 
                             print(newsContent.strip())
 
@@ -696,7 +696,7 @@ def technology():
                             for i in newsTags.find_all('div',attrs={'class':'sc-hRUHzT dOqdZq callout--has-top-border'}):
                                 i.replace_with("")
                             for x in newsTags.find_all('p'):
-                                    newsContent=newsContent+" "+x.get_text()
+                                    newsContent=newsContent+" "+x.get_text().strip()
 
                             print(newsContent.strip())
 
