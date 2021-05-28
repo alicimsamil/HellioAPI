@@ -319,22 +319,53 @@ def aljazeera():
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
                     print(newsTitle)
                     try:
-                        newsTags= soup.find("div",{"class":"wysiwyg wysiwyg--all-content css-az20b6"}).find_all('p')
+                        newsTags= soup.find("div",{"class":"wysiwyg wysiwyg--all-content css-az20b6"})
                         newsContent=""
-                        for new in newsTags:
+                        for i in newsTags.find_all('div', attrs={'class': 'twitter-tweet twitter-tweet-rendered'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('div', attrs={'class': 'article-source'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('div', attrs={'class': 'wp-caption aligncenter'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('div', attrs={'class': 'more-on'}):
+                            i.replace_with("")
+                        for i in newsTags.find_all('iframe'):
+                            i.replace_with("")
+                        for new in newsTags.find_all('p'):
                             newsContent = newsContent+ " " + new.get_text()
                     except:
                         try:
 
-                            newsTags = soup.find("div", {"class": "container__inner css-eaqrp2-Gallery"}).find("div", {"class": "l-col l-col--8--centered"}).find("div", {"class": "gallery-content wysiwyg wysiwyg--all-content css-az20b6"}).find_all('p')
+                            newsTags = soup.find("div", {"class": "container__inner css-eaqrp2-Gallery"}).find("div", {"class": "l-col l-col--8--centered"}).find("div", {"class": "gallery-content wysiwyg wysiwyg--all-content css-az20b6"})
                             newsContent = ""
-                            for new in newsTags:
+                            for i in newsTags.find_all('div', attrs={'class': 'twitter-tweet twitter-tweet-rendered'}):
+                                i.replace_with("")
+                            for i in newsTags.find_all('div', attrs={'class': 'article-source'}):
+                                i.replace_with("")
+                            for i in newsTags.find_all('div', attrs={'class': 'wp-caption aligncenter'}):
+                                i.replace_with("")
+                            for i in newsTags.find_all('div', attrs={'class': 'more-on'}):
+                                i.replace_with("")
+                            for i in newsTags.find_all('iframe'):
+                                i.replace_with("")
+                            for new in newsTags.find_all('p'):
                                 newsContent = newsContent+ " " + new.get_text()
                         except:
                             try:
-                                newsTags = soup.find("div",{"id":"root"}).find("div", {"class": "container container--grid container--gallery container--white"}).find("div", {"class": "container__inner css-eaqrp2-Gallery"}).find("div",{"class":"gallery-content wysiwyg wysiwyg--all-content css-az20b6"}).find_all('p')
+                                newsTags = soup.find("div",{"id":"root"}).find("div", {"class": "container container--grid container--gallery container--white"}).find("div", {"class": "container__inner css-eaqrp2-Gallery"}).find("div",{"class":"gallery-content wysiwyg wysiwyg--all-content css-az20b6"})
                                 newsContent = ""
-                                for new in newsTags:
+                                for i in newsTags.find_all('div',
+                                                           attrs={'class': 'twitter-tweet twitter-tweet-rendered'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={'class': 'article-source'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={'class': 'wp-caption aligncenter'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={'class': 'more-on'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for new in newsTags.find_all('p'):
                                     newsContent = newsContent+ " " + new.get_text()
                             except:
                                 print("Error!")

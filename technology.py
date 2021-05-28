@@ -619,15 +619,113 @@ def technology():
                 print("Error!"+Exception)
 
 
+        def wiredAI():
+            try:
+                url = "https://www.wired.com/tag/artificial-intelligence/"
+                websiteRequest = requests.get(url, timeout=30 , headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    a=0
+                    for i in soup.find("div", {"class": "page-loader-component"}).find("div",{"class": "tag-main"}).find("div",{"class": "primary-grid-component"}).find("div",{"class": "cards-component"}).find_all('div', attrs={'class': 'cards-component__row'}):
+
+                        try:
+                            if a==0:
+                                c=0
+                                for x in i.find_all('ul'):
+                                    if c==0:
+                                        firstNews = x.find("li").find("a").get("href")
+                                    elif c == 1:
+                                        secondNews = x.find("li").find("a").get("href")
+                                    c=c+1
+                            elif a==1:
+                                c = 0
+                                for x in i.find_all('ul'):
+                                    if c == 0:
+                                        thirdNews = x.find("li").find("a").get("href")
+                                    c = c+1
+
+                            a=a+1
+                        except:
+                            try:
+                                if a == 0:
+                                    c = 0
+                                    for x in i.find_all('ul'):
+                                        if c == 0:
+                                            firstNews = x.find("li").find("a").get("href")
+
+                                        c = c + 1
+                                elif a == 1:
+                                    c = 0
+                                    for x in i.find_all('ul'):
+                                        if c == 0:
+                                            secondNews = x.find("li").find("a").get("href")
+                                        elif c == 1:
+                                            thirdNews = x.find("li").find("a").get("href")
+                                        c = c + 1
+
+                                a = a + 1
+                            except:
+                                print("Error!")
+
+
+                    url = "https://www.wired.com"
+
+                    firstUrl = url + firstNews
+                    secondUrl = url + secondNews
+                    thirdUrl = url + thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            newsTags = soup.find("main", {"id": "main-content"}).find("div", {"class": "content-background"})
+
+
+                            for i in newsTags.find_all('div',attrs={'class':'sc-hRUHzT dOqdZq callout--has-top-border'}):
+                                i.replace_with("")
+                            for x in newsTags.find_all('p'):
+                                    newsContent=newsContent+" "+x.get_text()
+
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!"+Exception)
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!"+Exception)
+
+
+
+
+
+
+
 
         mit()
+        wiredAI()
 
 
 
 
 
-    #mobileDevices()
-    #iot()
+    mobileDevices()
+    iot()
     AI()
 
 
