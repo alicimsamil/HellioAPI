@@ -1863,7 +1863,20 @@ def washingtonPost():
                                                     print(newsContent.strip())
 
                                                 except:
-                                                    print("Error!")
+                                                    try:
+                                                        newsContent = ""
+                                                        newsTags = soup.find("div", {"class": "story relative"})
+                                                        for i in newsTags.find_all('figure'):
+                                                            i.replace_with("")
+                                                        for i in newsTags.find_all('div'):
+                                                            i.replace_with("")
+                                                        for i in newsTags.find_all("p"):
+                                                            newsContent = newsContent+ " " + i.get_text()
+
+                                                        print(newsContent.strip())
+
+                                                    except:
+                                                            print("Error!")
 
 
 
@@ -1875,6 +1888,8 @@ def washingtonPost():
 
     except:
         print("Error!")
+
+
 bbc()
 aljazeera()
 dwNews()

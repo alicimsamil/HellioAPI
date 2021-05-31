@@ -39,23 +39,25 @@ def technology():
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
                             print(newsTitle)
                             newsContent = ""
-                            newsTags = soup.find("div", {"class": "contentWrap"}).find("div",{"class": "container"})
-                            a = 0
+                            try:
+                                newsTags = soup.find("div", {"class": "contentWrap"}).find("div",{"class": "container"})
+                                a = 0
 
-                            for i in newsTags.find_all('figure', attrs={'section': 'shortcodeImage'}):
-                                i.replace_with("")
-                            for i in newsTags.find_all('div', attrs={'class': 'newsletter-subscribe-form desktop -inline'}):
-                                i.replace_with("")
-                            for i in newsTags.find_all('div', attrs={'class': 'c-listiclePrecap ampHide shortcode'}):
-                                i.replace_with("")
+                                for i in newsTags.find_all('figure', attrs={'section': 'shortcodeImage'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={'class': 'newsletter-subscribe-form desktop -inline'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={'class': 'c-listiclePrecap ampHide shortcode'}):
+                                    i.replace_with("")
 
-                            for new in newsTags.find_all('div',{'class':'row'}):
-                                if a==3:
-                                    for i in new.find("div",{"class":"col-12"}).find("article",{"id":"article-body"}).find("div",{"class":"col-7 article-main-body row"}).find_all('p'):
-                                        newsContent = newsContent + " " + i.text.strip()
-                                a=a+1
-                            print(newsContent.strip())
-
+                                for new in newsTags.find_all('div',{'class':'row'}):
+                                    if a==3:
+                                        for i in new.find("div",{"class":"col-12"}).find("article",{"id":"article-body"}).find("div",{"class":"col-7 article-main-body row"}).find_all('p'):
+                                            newsContent = newsContent + " " + i.text.strip()
+                                    a=a+1
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
                         except:
                             print("Error!")
 
@@ -131,7 +133,7 @@ def technology():
                                     print(newsContent.strip())
 
                                 except:
-                                    print("Error!" + Exception)
+                                    print("Error!")
 
                         except:
                             print("Error!")
@@ -140,7 +142,7 @@ def technology():
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
         def pocketLint():
@@ -203,14 +205,14 @@ def technology():
                             print(newsContent.strip())
 
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
 
                     getContent(firstUrl)
                     getContent(secondUrl)
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
 
@@ -273,14 +275,14 @@ def technology():
                             print(newsContent.strip())
 
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
 
                     getContent(firstUrl)
                     getContent(secondUrl)
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
         def techTimes():
@@ -345,14 +347,14 @@ def technology():
                             print(newsContent.strip())
 
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
 
                     getContent(firstUrl)
                     getContent(secondUrl)
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
         cNET()
@@ -411,14 +413,14 @@ def technology():
                             print(newsContent.strip())
 
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
 
                     getContent(firstUrl)
                     getContent(secondUrl)
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
 
@@ -475,14 +477,14 @@ def technology():
                             print(newsContent.strip())
 
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
 
                     getContent(firstUrl)
                     getContent(secondUrl)
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
 
@@ -539,14 +541,14 @@ def technology():
                             print(newsContent.strip())
 
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
 
                     getContent(firstUrl)
                     getContent(secondUrl)
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
 
@@ -609,14 +611,14 @@ def technology():
                             print(newsContent.strip())
 
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
 
                     getContent(firstUrl)
                     getContent(secondUrl)
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
         def wiredAI():
@@ -690,14 +692,242 @@ def technology():
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
                             print(newsTitle)
                             newsContent = ""
-                            newsTags = soup.find("main", {"id": "main-content"}).find("div", {"class": "content-background"})
+                            try:
+                                newsTags = soup.find("main", {"id": "main-content"}).find("div", {"class": "content-background"})
 
 
-                            for i in newsTags.find_all('div',attrs={'class':'sc-hRUHzT dOqdZq callout--has-top-border'}):
-                                i.replace_with("")
-                            for x in newsTags.find_all('p'):
-                                    newsContent=newsContent+" "+x.get_text().strip()
+                                for i in newsTags.find_all('div',attrs={'class':'sc-hRUHzT dOqdZq callout--has-top-border'}):
+                                    i.replace_with("")
+                                for x in newsTags.find_all('p'):
+                                        newsContent=newsContent+" "+x.get_text().strip()
+                            except:
+                                print("Error!")
 
+
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+        def theNextWeb():
+            try:
+                url = "https://thenextweb.com/neural"
+                websiteRequest = requests.get(url, timeout=30 , headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    firstNews=soup.find("main",{"class":"c-split__main"}).find("article",{"class":"c-topArticles__article o-grid__col"}).find("a").get("href")
+                    a=0
+                    for i in soup.find("main",{"class":"c-split__main"}).find_all('div',{'class':'c-card t-white w-full'}):
+                        if a==0:
+                            secondNews=i.find("a").get("href")
+                        elif a==1:
+                            thirdNews=i.find("a").get("href")
+                        a=a+1
+
+
+
+
+
+                    url = "https://thenextweb.com"
+
+                    firstUrl = url + firstNews
+                    secondUrl = url + secondNews
+                    thirdUrl = url + thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+
+                            try:
+                                newsTags = soup.find("main", {"class": "c-split__main"}).find("div", {"class": "c-article__main"}).find("div", {"class": "c-richText c-richText--large"})
+                                for i in newsTags.find_all('div',attrs={'class':'corona-wrapper'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('p',attrs={'class':'yt-responsive-wrapper'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={'class':'wp-block-image'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3',attrs={'class':'alsoTaggedIn'}):
+                                    i.replace_with("")
+
+                                for x in newsTags.find_all('p'):
+                                        newsContent=newsContent+" "+x.get_text().strip()
+                            except:
+                                print("Error!")
+
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+        def analyticsInsight():
+            try:
+                url = "https://www.analyticsinsight.net/category/artificial-intelligence/"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    a=0
+                    for i in soup.find("div",{"class":"article-list"}).find_all('div',{'class':'item-content'}):
+                        if a==0:
+                            firstNews=i.find("h3",{"class":"entry-title"}).find("a").get("href")
+                        elif a==1:
+                            secondNews=i.find("h3",{"class":"entry-title"}).find("a").get("href")
+                        elif a==2:
+                            thirdNews=i.find("h3",{"class":"entry-title"}).find("a").get("href")
+                        a=a+1
+
+
+
+
+
+                    url = "https://www.analyticsinsight.net"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+
+                            try:
+                                newsTags = soup.find("div", {"class": "main-content has-sidebar"}).find("div", {"class": "left-content left"})
+                                for i in newsTags.find_all('div',attrs={'class':'share-article-body'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={'class':'article-author-block'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={'class':'article-body-banner banner'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={'class':'similar-articles-list'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',{'class':'main-title'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={'class':'article-header'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('p',attrs={'class':'caps'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={'class':'widget-8 awac-wrapper'}):
+                                    i.replace_with("")
+
+                                for x in newsTags.find_all('p'):
+                                        newsContent=newsContent+" "+x.get_text().strip()
+                            except:
+                                print("Error!")
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+        def theVergeAI():
+            try:
+                url = "https://www.theverge.com/ai-artificial-intelligence"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    a=0
+                    for i in soup.find("main",{"id":"content"}).find("div",{"class":"c-compact-river"}).find_all('div',{'class':'c-compact-river__entry'}):
+                        if a==0:
+                            firstNews=i.find("a").get("href")
+                        elif a==1:
+                            secondNews=i.find("a").get("href")
+                        elif a==2:
+                            thirdNews=i.find("a").get("href")
+                        a=a+1
+
+
+
+
+
+                    url = "https://www.theverge.com"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+
+                            try:
+                                newsTags = soup.find("main", {"id": "content"}).find("div", {"class": "c-entry-content"})
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={'class':'article-body-banner banner'}):
+                                    i.replace_with("")
+                                for x in newsTags.find_all():
+
+                                        newsContent=newsContent+" "+x.get_text().strip()
+                            except:
+                                print("Error!")
                             print(newsContent.strip())
 
                         except:
@@ -712,13 +942,637 @@ def technology():
 
 
 
-
-
-
-
-
         mit()
         wiredAI()
+        theNextWeb()
+        analyticsInsight()
+        theVergeAI()
+
+
+    def computing():
+        def digitalTrends():
+            try:
+                url = "https://www.digitaltrends.com/computing/"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    a=0
+                    for i in soup.find("div",{"class":"b-page__wrapper"}).find_all('a',{'class':'b-synopsis-stack__hot'}):
+                        if a==0:
+                            firstNews=i.get("href")
+                        elif a==1:
+                            secondNews=i.get("href")
+                        elif a==2:
+                            thirdNews=i.get("href")
+                        a=a+1
+
+
+
+
+
+                    url = "https://www.digitaltrends.com"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+
+                            try:
+                                newsTags = soup.find("div", {"class": "b-page__inner"}).find("article", {"itemprop": "articleBody"})
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('ul'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h4'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all():
+                                    newsContent=newsContent+" "+x.get_text().strip()
+                            except:
+                                print("Error!")
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+        def techRadarComputing():
+            try:
+                url = "https://www.techradar.com/news/computing"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    firstNews= soup.find("div",{"id":"main"}).find("div",{"class":"listingResults"}).find("div",{"class":"listingResult small result1"}).find("a").get("href")
+                    secondNews = soup.find("div",{"id":"main"}).find("div",{"class":"listingResults"}).find("div",{"class":"listingResult small result2"}).find("a").get("href")
+                    thirdNews = soup.find("div",{"id":"main"}).find("div",{"class":"listingResults"}).find("div",{"class":"listingResult small result3"}).find("a").get("href")
+
+
+
+
+
+
+                    url = "https://www.techradar.com"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+
+                            try:
+                                newsTags = soup.find("div", {"id": "article-body"})
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('ul'):
+                                    i.replace_with("")
+
+                                for x in newsTags.find_all("p"):
+                                    newsContent=newsContent+" "+x.get_text().strip()
+                            except:
+                                print("Error!")
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+        def cnetComputing():
+            try:
+                url = "https://www.cnet.com/topics/computers/"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    a = 0
+                    for i in soup.find("div", {"class": "container"}).find("div", {"class": "row"}).find("div", {
+                        "class": "col-8"}).find("section", {"class": "listing"}).find_all('div',attrs={'class': 'row asset'}):
+                        if a == 0:
+                            firstNews = i.find("div", {"class": "col-6 assetBody"}).find("a").get("href")
+                        elif a == 1:
+                            secondNews = i.find("div", {"class": "col-6 assetBody"}).find("a").get("href")
+                        elif a == 2:
+                            thirdNews = i.find("div", {"class": "col-6 assetBody"}).find("a").get("href")
+                        a = a + 1
+                    url = "https://www.cnet.com"
+                    firstUrl = url + firstNews
+                    secondUrl = url + secondNews
+                    thirdUrl = url + thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30)
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"class": "contentWrap"}).find("div",
+                                                                                           {"class": "container"})
+                                a = 0
+
+                                for i in newsTags.find_all('figure', attrs={'section': 'shortcodeImage'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div', attrs={'class': 'newsletter-subscribe-form desktop -inline'}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={'class': 'c-listiclePrecap ampHide shortcode'}):
+                                    i.replace_with("")
+
+                                for new in newsTags.find_all('div', {'class': 'row'}):
+                                    if a == 3:
+                                        for i in new.find("div", {"class": "col-12"}).find("article",
+                                                                                           {"id": "article-body"}).find(
+                                                "div", {"class": "col-7 article-main-body row"}).find_all('p'):
+                                            newsContent = newsContent + " " + i.text.strip()
+                                    a = a + 1
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+        def tomsHardware():
+            try:
+                url = "https://www.tomshardware.com"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    firstNews = soup.find("div", {"id": "content"}).find_all("div", attrs={"class": "mainCarousel curatedCarousel"})[1].find("div", {"id": "Item1"}).find("a").get("href")
+                    secondNews = soup.find("div", {"id": "content"}).find_all("div", attrs={"class": "mainCarousel curatedCarousel"})[1].find("div", {"id": "Item2"}).find("a").get("href")
+                    thirdNews = soup.find("div", {"id": "content"}).find_all("div", attrs={"class": "mainCarousel curatedCarousel"})[1].find("div", {"id": "Item3"}).find("a").get("href")
+
+                    url = "https://www.tomshardware.com"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30)
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("article", {"class": "news-article"}).find("section", {"class": "content-wrapper"}).find("div", {"id": "article-body"})
+
+
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('br'):
+                                    i.replace_with("")
+
+                                for new in newsTags.find_all('p'):
+                                    newsContent = newsContent + " " + new.text.strip()
+
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+        def computerworld():
+            try:
+                url = "https://www.computerworld.com"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"class": "page-wrapper"}).find("section", {"role": "main"}).find("div", {"class": "homepage-top-stories"}).find("div", {"class": "item item-1 three"}).find("a").get("href")
+                    secondNews = soup.find("div", {"class": "page-wrapper"}).find("section", {"role": "main"}).find("div", {"class": "homepage-top-stories"}).find("div", {"class": "item item-2 three"}).find("a").get("href")
+                    thirdNews = soup.find("div", {"class": "page-wrapper"}).find("section", {"role": "main"}).find("div", {"class": "homepage-top-stories"}).find("div", {"class": "item item-3 three"}).find("a").get("href")
+
+                    url = "https://www.computerworld.com"
+
+                    firstUrl = url+firstNews
+                    secondUrl = url+secondNews
+                    thirdUrl = url+thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30)
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"class": "page-wrapper"}).find("section", {"role": "main"}).find("section", {"class": "bodee"}).find("div", {"itemprop": "articleBody"})
+
+
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={"id":"sponsoredfakesidebardiv"}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={"id":"editorialfakesidebardiv"}):
+                                    i.replace_with("")
+
+                                for i in newsTags.find_all('div',attrs={"class":"end-note"}):
+                                    i.replace_with("")
+
+                                for new in newsTags.find_all('p'):
+                                    newsContent = newsContent + " " + new.text.strip()
+
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+        digitalTrends()
+        techRadarComputing()
+        cnetComputing()
+        tomsHardware()
+        computerworld()
+
+
+
+    def robotics():
+        def robohub():
+            try:
+                url = "https://robohub.org"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    firstNews = soup.find("div",{"id":"main"}).find("div",{"class":"inner clearfix"}).find("div",{"class":"columnv mainw"}).find_all("div",attrs={"class":"roundedge cpxframex"})[0].find("a").get("href")
+                    secondNews = soup.find("div",{"id":"main"}).find("div",{"class":"inner clearfix"}).find("div",{"class":"columnv mainw"}).find_all("div",attrs={"class":"roundedge cpxframex"})[1].find("a").get("href")
+                    thirdNews = soup.find("div",{"id":"main"}).find("div",{"class":"inner clearfix"}).find("div",{"class":"columnv mainw"}).find_all("div",attrs={"class":"roundedge cpxframex"})[2].find("a").get("href")
+
+                    url = "https://robohub.org"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60)
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("head").find("title").get_text().strip()
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"class": "page-wrap"}).find("div", {"id": "main"}).find("div", {"class": "inner clearfix"}).find("div", {"class": "columnv mainw"}).find("div", {"class": "intcontent"})
+
+
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('strong'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('style'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={"class":"maintext ftauthdiv desaturate_bak"}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+
+                                for new in newsTags.find_all('p'):
+                                    newsContent = newsContent + " " + new.text.strip()
+
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+                        except:
+                            print("Error!"+Exception)
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!"+Exception)
+
+
+        def automate():
+            try:
+                url = "https://www.automate.org/news"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("main", {"role": "main"}).find("div", {"class": "inner"}).find("div", {"class": "gridcol nine"}).find_all("div", attrs={"class": "item informational tc-robotics"})[0].find("a").get("href")
+                    secondNews = soup.find("main", {"role": "main"}).find("div", {"class": "inner"}).find("div", {"class": "gridcol nine"}).find_all("div", attrs={"class": "item informational tc-robotics"})[1].find("a").get("href")
+                    thirdNews = soup.find("main", {"role": "main"}).find("div", {"class": "inner"}).find("div", {"class": "gridcol nine"}).find_all("div", attrs={"class": "item informational tc-robotics"})[2].find("a").get("href")
+
+                    url = "https://www.automate.org"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30)
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            if newsImage!="":
+                                print(newsImage)
+                            else:
+                                newsImage="https://www.automate.org/favicon.ico"
+                                print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"id": "wrapper"}).find("main", {"role": "main"}).find("div", {"class": "gridcol nine"}).find("div", {"class": "articleContent"})
+
+
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('a'):
+                                    i.replace_with("")
+
+
+                                for new in newsTags.find_all():
+                                    newsContent = newsContent + " " + new.text.strip()
+
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+        def theRobotReport():
+            try:
+                url = "https://www.therobotreport.com"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"class": "site-inner"}).find("div", {"class": "row"}).find_all("div", attrs={"class": "header-slide"})[0].find("a").get("href")
+                    secondNews = soup.find("div", {"class": "site-inner"}).find("div", {"class": "row"}).find_all("div", attrs={"class": "header-slide"})[1].find("a").get("href")
+                    thirdNews = soup.find("div", {"class": "site-inner"}).find("div", {"class": "row"}).find_all("div", attrs={"class": "header-slide"})[2].find("a").get("href")
+                    url = "https://www.therobotreport.com"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+
+                                newsTags = soup.find("div", {"class": "site-inner"}).find("main", {"class": "content"}).find("div", {"class": "entry-content"})
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+
+
+                                for new in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + new.text.strip()
+
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+        def techxplore():
+            try:
+                url = "https://phys.org/technology-news/robotics/"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("main", {"class": "pt-2"}).find("div", {"class": "col-12"}).find_all("article", attrs={"class": "sorted-article"})[0].find("a").get("href")
+                    secondNews = soup.find("main", {"class": "pt-2"}).find("div", {"class": "col-12"}).find_all("article", attrs={"class": "sorted-article"})[1].find("a").get("href")
+                    thirdNews = soup.find("main", {"class": "pt-2"}).find("div", {"class": "col-12"}).find_all("article", attrs={"class": "sorted-article"})[2].find("a").get("href")
+                    url = "https://phys.org"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=30, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+
+                                newsTags = soup.find("section", {"class": "article"}).find("article", {"class": "news-article"}).find("div", {"class": "mt-4 text-low-up text-regular article-main"})
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('p',attrs={"class":"article-byline text-low"}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('p',attrs={"class":"article-main__note mt-4"}):
+                                    i.replace_with("")
+
+
+                                for new in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + new.text.strip()
+
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+
+        robohub()
+        automate()
+        theRobotReport()
+        techxplore()
+
+
 
 
 
@@ -727,6 +1581,8 @@ def technology():
     mobileDevices()
     iot()
     AI()
+    computing()
+    robotics()
 
 
 
