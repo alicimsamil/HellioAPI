@@ -794,83 +794,7 @@ def technology():
 
 
 
-        def analyticsInsight():
-            try:
-                url = "https://www.analyticsinsight.net/category/artificial-intelligence/"
-                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
-                if websiteRequest.status_code != 200:
-                    newsImage = "Error"
-                    newsTitle = "Error"
-                    newsContent = "Error"
-                else:
-                    websiteContent = websiteRequest.content
-                    soup = BeautifulSoup(websiteContent, "html.parser")
 
-                    a=0
-                    for i in soup.find("div",{"class":"article-list"}).find_all('div',{'class':'item-content'}):
-                        if a==0:
-                            firstNews=i.find("h3",{"class":"entry-title"}).find("a").get("href")
-                        elif a==1:
-                            secondNews=i.find("h3",{"class":"entry-title"}).find("a").get("href")
-                        elif a==2:
-                            thirdNews=i.find("h3",{"class":"entry-title"}).find("a").get("href")
-                        a=a+1
-
-
-
-
-
-                    url = "https://www.analyticsinsight.net"
-
-                    firstUrl = firstNews
-                    secondUrl = secondNews
-                    thirdUrl = thirdNews
-
-                    def getContent(url):
-                        try:
-                            request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
-                            content = request.content
-                            soup = BeautifulSoup(content, "html.parser")
-                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
-                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
-                            newsContent = ""
-
-                            try:
-                                newsTags = soup.find("div", {"class": "main-content has-sidebar"}).find("div", {"class": "left-content left"})
-                                for i in newsTags.find_all('div',attrs={'class':'share-article-body'}):
-                                    i.replace_with("")
-                                for i in newsTags.find_all('div',attrs={'class':'article-author-block'}):
-                                    i.replace_with("")
-                                for i in newsTags.find_all('div',attrs={'class':'article-body-banner banner'}):
-                                    i.replace_with("")
-                                for i in newsTags.find_all('div',attrs={'class':'similar-articles-list'}):
-                                    i.replace_with("")
-                                for i in newsTags.find_all('div',{'class':'main-title'}):
-                                    i.replace_with("")
-                                for i in newsTags.find_all('div',attrs={'class':'article-header'}):
-                                    i.replace_with("")
-                                for i in newsTags.find_all('p',attrs={'class':'caps'}):
-                                    i.replace_with("")
-                                for i in newsTags.find_all('div',attrs={'class':'widget-8 awac-wrapper'}):
-                                    i.replace_with("")
-
-                                for x in newsTags.find_all('p'):
-                                        newsContent=newsContent+" "+x.get_text().strip()
-                            except:
-                                print("Error!")
-                            print(newsContent.strip())
-
-                        except:
-                            print("Error!")
-
-                    getContent(firstUrl)
-                    getContent(secondUrl)
-                    getContent(thirdUrl)
-
-            except:
-                print("Error!")
 
         def theVergeAI():
             try:
@@ -945,7 +869,6 @@ def technology():
         mit()
         wiredAI()
         theNextWeb()
-        analyticsInsight()
         theVergeAI()
 
 
@@ -1917,6 +1840,12 @@ def technology():
         darkReading()
         threatPost()
         hackRead()
+
+
+
+    def blockChain():
+        pass
+
 
 
 
