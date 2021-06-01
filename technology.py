@@ -1039,11 +1039,6 @@ def technology():
                     secondNews = soup.find("div",{"id":"main"}).find("div",{"class":"listingResults"}).find("div",{"class":"listingResult small result2"}).find("a").get("href")
                     thirdNews = soup.find("div",{"id":"main"}).find("div",{"class":"listingResults"}).find("div",{"class":"listingResult small result3"}).find("a").get("href")
 
-
-
-
-
-
                     url = "https://www.techradar.com"
 
                     firstUrl = firstNews
@@ -1562,15 +1557,300 @@ def technology():
                 print("Error!")
 
 
-
-
-
-
-
         robohub()
         automate()
         theRobotReport()
         techxplore()
+
+
+
+
+
+
+    def cyberSecurity():
+        def theHackerNews():
+            try:
+                url = "https://thehackernews.com"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    firstNews= soup.find("main",{"class":"main clear"}).find("div",{"class":"main-left-right clear"}).find("div",{"class":"blog-posts clear"}).find_all("div",attrs={"class":"body-post clear"})[0].find("a").get("href")
+                    secondNews = soup.find("main",{"class":"main clear"}).find("div",{"class":"main-left-right clear"}).find("div",{"class":"blog-posts clear"}).find_all("div",attrs={"class":"body-post clear"})[1].find("a").get("href")
+                    thirdNews = soup.find("main",{"class":"main clear"}).find("div",{"class":"main-left-right clear"}).find("div",{"class":"blog-posts clear"}).find_all("div",attrs={"class":"body-post clear"})[2].find("a").get("href")
+
+                    url = "https://thehackernews.com"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+
+                            try:
+                                newsTags = soup.find("div", {"class": "widget Blog"}).find("div", {"class": "post"}).find("div", {"id": "articlebody"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('br'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all():
+                                    newsContent=newsContent+" "+x.get_text().strip()
+                            except:
+                                print("Error!")
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+        def tripWire():
+            try:
+                url = "https://www.tripwire.com/state-of-security/"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    firstNews= soup.find("section",{"id":"content"}).find("section",{"class":"col-left body-content list-posts"}).find_all("div",attrs={"class":"post-image"})[0].find("a").get("href")
+                    secondNews = soup.find("section",{"id":"content"}).find("section",{"class":"col-left body-content list-posts"}).find_all("div",attrs={"class":"post-image"})[1].find("a").get("href")
+                    thirdNews = soup.find("section",{"id":"content"}).find("section",{"class":"col-left body-content list-posts"}).find_all("div",attrs={"class":"post-image"})[2].find("a").get("href")
+
+                    url = "https://www.tripwire.com"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+
+                            try:
+                                newsTags = soup.find("section", {"id": "page"}).find("section", {"class": "col-main col-main"}).find("section", {"class": "body-content"}).find("span", {"class": "entry-content post-content"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('br'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all():
+                                    newsContent=newsContent+" "+x.get_text().strip()
+                            except:
+                                print("Error!")
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+        def darkReading():
+            try:
+                url = "https://www.darkreading.com"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+
+                    firstNews= soup.find("div",{"class":"column-full"}).find("section",{"class":"column left-main"}).find("section",{"id":"left-column"}).find("div",{"id":"left-column-inner"}).find_all("header",attrs={"class":"strong medium"})[0].find("a").get("href")
+                    secondNews = soup.find("div",{"class":"column-full"}).find("section",{"class":"column left-main"}).find("section",{"id":"left-column"}).find("div",{"id":"left-column-inner"}).find_all("header",attrs={"class":"strong medium"})[1].find("a").get("href")
+                    thirdNews = soup.find("div",{"class":"column-full"}).find("section",{"class":"column left-main"}).find("section",{"id":"left-column"}).find("div",{"id":"left-column-inner"}).find_all("header",attrs={"class":"strong medium"})[2].find("a").get("href")
+
+                    url = "https://www.darkreading.com"
+
+                    firstUrl = url+firstNews
+                    secondUrl = url+secondNews
+                    thirdUrl = url+thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+
+                            try:
+                                newsTags = soup.find("div", {"id": "thedoctop"}).find("div", {"id": "article-main"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('header'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('br'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('strong'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all():
+                                    newsContent=newsContent+" "+x.get_text().strip()
+                            except:
+                                print("Error!")
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+        def threatPost():
+            try:
+                url = "https://threatpost.com"
+                websiteRequest = requests.get(url, timeout=60, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews= soup.find("div",{"class":"c-main"}).find("div",{"id":"latest_news_container"}).find_all("div",attrs={"class":"o-row"})[0].find("a").get("href")
+                    secondNews = soup.find("div",{"class":"c-main"}).find("div",{"id":"latest_news_container"}).find_all("div",attrs={"class":"o-row"})[1].find("a").get("href")
+                    thirdNews = soup.find("div",{"class":"c-main"}).find("div",{"id":"latest_news_container"}).find_all("div",attrs={"class":"o-row"})[2].find("a").get("href")
+
+                    url = "https://threatpost.com"
+
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+
+                            try:
+                                newsTags = soup.find("div", {"class": "c-main"}).find("div", {"class": "c-article__main"}).find("div", {"class": "c-article__content js-reading-content"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('header'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('footer'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('br'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('strong'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('a'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all():
+                                    newsContent=newsContent+" "+x.get_text().strip()
+                            except:
+                                print("Error!")
+                            print(newsContent.strip())
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        theHackerNews()
+        tripWire()
+        darkReading()
+        threatPost()
+
 
 
 
@@ -1583,6 +1863,7 @@ def technology():
     AI()
     computing()
     robotics()
+    cyberSecurity()
 
 
 
