@@ -1710,7 +1710,20 @@ def euronews():
                                     print(newsContent.strip())
 
                                 except:
-                                    print("Error!")
+                                    try:
+
+                                        newsTags = soup.find("div", {"class": "o-article__body"}).find("div", {"class": "c-article__full_article"}).find("div",{"class": "c-article-content c-article-content--travel js-article-content article__content "}).find_all('p')
+
+                                        for i in newsTags.find_all('div'):
+                                            i.replace_with("")
+
+                                        for new in newsTags:
+                                            newsContent = newsContent + " " + new.get_text()
+
+                                        print(newsContent.strip())
+
+                                    except:
+                                        print("Error!")
 
 
 
