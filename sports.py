@@ -1923,9 +1923,9 @@ def sports():
                 else:
                     websiteContent = websiteRequest.content
                     soup = BeautifulSoup(websiteContent, "html.parser")
-                    firstNews = soup.find_all("li", attrs={"class": "fc-slice__item"})[0].find("a").get("href")
-                    secondNews = soup.find_all("li", attrs={"class": "fc-slice__item"})[1].find("a").get("href")
-                    thirdNews = soup.find_all("li", attrs={"class": "fc-slice__item"})[2].find("a").get("href")
+                    firstNews = soup.find_all("h3", attrs={"class": "fc-item__title"})[0].find("a").get("href")
+                    secondNews = soup.find_all("h3", attrs={"class": "fc-item__title"})[1].find("a").get("href")
+                    thirdNews = soup.find_all("h3", attrs={"class": "fc-item__title"})[2].find("a").get("href")
 
                     url = "https://www.theguardian.com"
 
