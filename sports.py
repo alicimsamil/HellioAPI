@@ -15,10 +15,9 @@ def sports():
                 else:
                     websiteContent = websiteRequest.content
                     soup = BeautifulSoup(websiteContent, "html.parser")
-
-                    firstNews= soup.find("main", {"class": "layout-component"}).find("div", {"id": "view-news-index"}).find("div", {"class": "post-preview-list-component"}).find_all("article",attrs={"class":"post-preview-component"})[0].find("a").get("href")
-                    secondNews = soup.find("main", {"class": "layout-component"}).find("div", {"id": "view-news-index"}).find("div", {"class": "post-preview-list-component"}).find_all("article",attrs={"class":"post-preview-component"})[1].find("a").get("href")
-                    thirdNews = soup.find("main", {"class": "layout-component"}).find("div", {"id": "view-news-index"}).find("div", {"class": "post-preview-list-component"}).find_all("article",attrs={"class":"post-preview-component"})[2].find("a").get("href")
+                    firstNews= soup.find("main", {"class": "layout-component"}).find("div", {"id": "view-news-index"}).find_all("article",attrs={"class":"post-preview-component"})[0].find("a").get("href")
+                    secondNews = soup.find("main", {"class": "layout-component"}).find("div", {"id": "view-news-index"}).find_all("article",attrs={"class":"post-preview-component"})[1].find("a").get("href")
+                    thirdNews = soup.find("main", {"class": "layout-component"}).find("div", {"id": "view-news-index"}).find_all("article",attrs={"class":"post-preview-component"})[2].find("a").get("href")
 
                     url = "https://www.chess.com"
 
@@ -38,7 +37,7 @@ def sports():
                             newsContent = ""
 
                             try:
-                                newsTags = soup.find("main", {"class": "layout-component"}).find("article", {"class": "post-view-component"}).find("div", {"class": "post-view-content"})
+                                newsTags = soup.find("main", {"class": "layout-component"}).find("div", {"class": "post-view-content"})
                                 for i in newsTags.find_all('img'):
                                     i.replace_with("")
                                 for i in newsTags.find_all('figure'):
@@ -62,7 +61,7 @@ def sports():
                                 for i in newsTags.find_all('blockquote',attrs={"class":"twitter-tweet"}):
                                     i.replace_with("")
 
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
@@ -527,7 +526,8 @@ def sports():
                             newsContent = ""
 
                             try:
-                                newsTags = soup.find("div",{"id":"wrap"}).find("div", {"id": "main"}).find("div", {"id": "main-one"}).find("div", {"class": "info"}).find("div", {"class": "wp-field-value"})
+
+                                newsTags = soup.find("div",{"id":"wrap"}).find("div", {"id": "main"}).find("div", {"id": "main-one"}).find("div", {"class": "info"}).find("div", {"class": "wp-field wp-field-content"})
                                 for i in newsTags.find_all('img'):
                                     i.replace_with("")
                                 for i in newsTags.find_all('iframe'):
@@ -544,7 +544,6 @@ def sports():
                                     i.replace_with("")
                                 for i in newsTags.find_all('center'):
                                     i.replace_with("")
-
 
                                 for x in newsTags.find_all():
                                     newsContent=newsContent+" "+x.get_text().strip()
@@ -621,7 +620,7 @@ def sports():
                                     i.replace_with("")
 
 
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                                 print(newsContent.strip())
                             except:
@@ -726,7 +725,7 @@ def sports():
                                 for i in newsTags.find_all('script'):
                                     i.replace_with("")
 
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
                                 print(newsContent.strip())
                             except:
@@ -760,14 +759,14 @@ def sports():
 
 
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
 
                     getContent(firstUrl)
                     getContent(secondUrl)
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
 
@@ -828,7 +827,7 @@ def sports():
                                     for i in x.find_all('script'):
                                         i.replace_with("")
 
-                                    for b in x.find_all():
+                                    for b in x.find_all("p"):
                                         newsContent = newsContent + " " + b.get_text().strip()
                                 print(newsContent.strip())
                             except:
@@ -904,7 +903,7 @@ def sports():
                                 for i in newsTags.find_all('ul'):
                                     i.replace_with("")
 
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
                                 print(newsContent.strip())
                             except:
@@ -1710,7 +1709,7 @@ def sports():
                                 for i in newsTags.find_all('ul'):
                                     i.replace_with("")
 
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
                                 print(newsContent.strip())
                             except:
@@ -1730,8 +1729,6 @@ def sports():
                                         for i in y.find_all('blockquote'):
                                             i.replace_with("")
                                         for i in y.find_all('em'):
-                                            i.replace_with("")
-                                        for i in y.find_all('div'):
                                             i.replace_with("")
                                         for i in y.find_all('section'):
                                             i.replace_with("")
@@ -2123,10 +2120,1111 @@ def sports():
 
 
 
+        def bbcAthletics():
+            try:
+                url = "https://www.bbc.com/sport/athletics"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"class": "sp-qa-top-stories"}).find_all("div", attrs={
+                        "class": "gel-layout__item"})[0].find("a").get("href")
+                    secondNews = soup.find("div", {"class": "sp-qa-top-stories"}).find_all("div", attrs={
+                        "class": "gel-layout__item"})[1].find("a").get("href")
+                    thirdNews = soup.find("div", {"class": "sp-qa-top-stories"}).find_all("div", attrs={
+                        "class": "gel-layout__item"})[2].find("a").get("href")
+
+                    url = "https://www.bbc.com"
+                    if "www" in firstNews:
+                        firstUrl = firstNews
+                    else:
+                        firstUrl = url + firstNews
+
+                    if "www" in secondNews:
+                        secondUrl = secondNews
+                    else:
+                        secondUrl = url + secondNews
+
+                    if "www" in thirdNews:
+                        thirdUrl = thirdNews
+
+                    else:
+                        thirdUrl = url + thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+
+                            try:
+                                newsTags = soup.find("div", {"id": "orb-modules"}).find("div",
+                                                                                        {"class": "qa-story-body"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('ul'):
+                                    i.replace_with("")
+
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                try:
+                                    newsTags = soup.find("div", {"id": "orb-modules"}).find("div",{"id": "lx-stream"}).find("ol", {"class": "lx-stream__feed"}).find_all("li", {"class": "lx-stream__post-container"})
+                                    for y in newsTags:
+                                        for i in y.find_all('img'):
+                                            i.replace_with("")
+                                        for i in y.find_all('iframe'):
+                                            i.replace_with("")
+                                        for i in y.find_all('h3'):
+                                            i.replace_with("")
+                                        for i in y.find_all('figure'):
+                                            i.replace_with("")
+                                        for i in y.find_all('table'):
+                                            i.replace_with("")
+                                        for i in y.find_all('blockquote'):
+                                            i.replace_with("")
+                                        for i in y.find_all('em'):
+                                            i.replace_with("")
+                                        for i in y.find_all('div'):
+                                            i.replace_with("")
+                                        for i in y.find_all('section'):
+                                            i.replace_with("")
+                                        for i in y.find_all('script'):
+                                            i.replace_with("")
+                                        for i in y.find_all('ul'):
+                                            i.replace_with("")
+                                        for i in y:
+                                            for z in i.find("div", {"class": "lx-stream-post-body"}).find_all("p"):
+                                                newsContent = newsContent + " " + z.get_text().strip()
+                                    print(newsContent.strip())
+                                except:
+                                    print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+        def independentAthletics():
+            try:
+                url = "https://www.independent.co.uk/topic/athletics"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"id": "sectionContent"}).find_all("div", attrs={"class": "content"})[0].find("a",{"class":"title"}).get("href")
+                    secondNews = soup.find("div", {"id": "sectionContent"}).find_all("div", attrs={"class": "content"})[1].find("a",{"class":"title"}).get("href")
+                    thirdNews = soup.find("div", {"id": "sectionContent"}).find_all("div", attrs={"class": "content"})[2].find("a",{"class":"title"}).get("href")
+
+                    url = "https://www.independent.co.uk"
+                    firstUrl = url+firstNews
+                    secondUrl = url+secondNews
+                    thirdUrl = url+thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"id": "main"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('ul'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+        def eurosportAthletics():
+            try:
+                url = "https://www.eurosport.co.uk/athletics/"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div",{"data-testid":"enriched-hero-card"}).find("div",{"class":"EnrichedHeroCard__mainCard"}).find("a").get("href")
+                    secondNews = soup.find("div",{"data-testid":"enriched-hero-card"}).find_all("div",attrs={"class":"EnrichedHeroCard__secondaryCardWrapper"})[0].find("a").get("href")
+                    thirdNews = soup.find("div",{"data-testid":"enriched-hero-card"}).find_all("div",attrs={"class":"EnrichedHeroCard__secondaryCardWrapper"})[1].find("a").get("href")
+
+                    url = "https://www.eurosport.co.uk"
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"id": "col-left"}).find("div", {"class": "article-body"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',{"data-testid":"adwrapper"}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('ul'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("div",{"class":"-md:common-container"}):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
 
 
 
         worldAthletics()
+        bbcAthletics()
+        independentAthletics()
+        eurosportAthletics()
+
+
+
+
+
+    def fitness():
+        def independentFitness():
+            try:
+                url = "https://www.independent.co.uk/topic/fitness"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"id": "sectionContent"}).find_all("div", attrs={"class": "content"})[0].find("a", {"class": "title"}).get("href")
+                    secondNews = soup.find("div", {"id": "sectionContent"}).find_all("div", attrs={"class": "content"})[1].find("a", {"class": "title"}).get("href")
+                    thirdNews = soup.find("div", {"id": "sectionContent"}).find_all("div", attrs={"class": "content"})[2].find("a", {"class": "title"}).get("href")
+
+                    url = "https://www.independent.co.uk"
+                    firstUrl = url + firstNews
+                    secondUrl = url + secondNews
+                    thirdUrl = url + thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={
+                                'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"id": "main"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',{"class":"sc-qOvoE jhYSjM"}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',{"class":"sc-pczax hJdRYq"}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+        def menshealthFitness():
+            try:
+                url = "https://www.menshealth.com/fitness/"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("main", {"class": "site-content"}).find("div", {"class": "feed feed-custom"}).find_all("div", attrs={"class": "custom-item-inner"})[0].find("a").get("href")
+                    secondNews = soup.find("main", {"class": "site-content"}).find("div", {"class": "feed feed-custom"}).find_all("div", attrs={"class": "custom-item-inner"})[1].find("a").get("href")
+                    thirdNews = soup.find("main", {"class": "site-content"}).find("div", {"class": "feed feed-custom"}).find_all("div", attrs={"class": "custom-item-inner"})[2].find("a").get("href")
+
+                    url = "https://www.menshealth.com"
+                    firstUrl = url + firstNews
+                    secondUrl = url + secondNews
+                    thirdUrl = url + thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("main", {"class": "site-content"}).find("div", {"class": "standard-body"}).find("div", {"class": "article-body-content standard-body-content"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+        def muscleAndFitness():
+            try:
+                url = "https://www.muscleandfitness.com/athletes-celebrities/news/"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("main", {"class": "page-main"}).find_all("article", attrs={"class": "article"})[0].find("a").get("href")
+                    secondNews = soup.find("main", {"class": "page-main"}).find_all("article", attrs={"class": "article"})[1].find("a").get("href")
+                    thirdNews = soup.find("main", {"class": "page-main"}).find_all("article", attrs={"class": "article"})[2].find("a").get("href")
+
+                    url = "https://www.muscleandfitness.com"
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"class": "l-main__content"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={"class":"post-tags"}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={"class":"link-related article link-related__with-thumb"}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div',attrs={"id":"ds_default_anchor"}):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+
+        def tNation():
+            try:
+                url = "https://www.t-nation.com"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("main", {"id": "main"}).find_all("h2", attrs={"class": "entry-title"})[0].find("a").get("href")
+                    secondNews = soup.find("main", {"id": "main"}).find_all("h2", attrs={"class": "entry-title"})[1].find("a").get("href")
+                    thirdNews = soup.find("main", {"id": "main"}).find_all("h2", attrs={"class": "entry-title"})[2].find("a").get("href")
+
+                    url = "https://www.t-nation.com"
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("main", {"id": "main"}).find("div", {"class": "entry-content"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+        def myFitnessPal():
+            try:
+                url = "https://blog.myfitnesspal.com/category/fitness/"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"class": "main-content"}).find("div", {"class": "wide-posts"}).find_all("h3", attrs={"class": "post-title"})[0].find("a").get("href")
+                    secondNews = soup.find("div", {"class": "main-content"}).find("div", {"class": "wide-posts"}).find_all("h3", attrs={"class": "post-title"})[1].find("a").get("href")
+                    thirdNews = soup.find("div", {"class": "main-content"}).find("div", {"class": "wide-posts"}).find_all("h3", attrs={"class": "post-title"})[2].find("a").get("href")
+
+                    url = "https://blog.myfitnesspal.com"
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"class": "main"}).find("div", {"class": "main-content"}).find("div", {"class": "post-content links-new-tab"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('span'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        independentFitness()
+        menshealthFitness()
+        muscleAndFitness()
+        tNation()
+        myFitnessPal()
+
+
+
+
+    def mma():
+        def mmaNews():
+            try:
+                url = "https://www.mmanews.com"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"id": "tdi_63"}).find_all("div", attrs={"class": "td-module-meta-info"})[0].find("a").get("href")
+                    secondNews = soup.find("div", {"id": "tdi_63"}).find_all("div", attrs={"class": "td-module-meta-info"})[1].find("a").get("href")
+                    thirdNews = soup.find("div", {"id": "tdi_63"}).find_all("div", attrs={"class": "td-module-meta-info"})[2].find("a").get("href")
+
+                    url = "https://www.mmanews.com"
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"data-td-block-uid": "tdi_70"}).find("div", {"class": "tdb-block-inner td-fix-index"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('span'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+
+        def mmaFighting():
+            try:
+                url = "https://www.mmafighting.com/latest-news"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"class": "c-compact-river"}).find_all("div", attrs={"class": "c-compact-river__entry"})[0].find("a").get("href")
+                    secondNews = soup.find("div", {"class": "c-compact-river"}).find_all("div", attrs={"class": "c-compact-river__entry"})[1].find("a").get("href")
+                    thirdNews = soup.find("div", {"class": "c-compact-river"}).find_all("div", attrs={"class": "c-compact-river__entry"})[2].find("a").get("href")
+
+                    url = "https://www.mmafighting.com"
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("main", {"id": "content"}).find("div", {"class": "c-entry-content"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('span'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+
+        def mmaMania():
+            try:
+                url = "https://www.mmamania.com/latest-news"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"class": "c-compact-river"}).find_all("div", attrs={"class": "c-compact-river__entry"})[0].find("a").get("href")
+                    secondNews = soup.find("div", {"class": "c-compact-river"}).find_all("div", attrs={"class": "c-compact-river__entry"})[1].find("a").get("href")
+                    thirdNews = soup.find("div", {"class": "c-compact-river"}).find_all("div", attrs={"class": "c-compact-river__entry"})[2].find("a").get("href")
+
+                    url = "https://www.mmamania.com"
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("main", {"id": "content"}).find("div", {"class": "c-entry-content"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('span'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+
+        def mmaJunkie():
+            try:
+                url = "https://mmajunkie.usatoday.com/news"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"id": "content"}).find("div", {"class": "column big category-page"}).find_all("article", attrs={"class": "block big"})[0].find("a").get("href")
+                    secondNews = soup.find("div", {"id": "content"}).find("div", {"class": "column big category-page"}).find_all("article", attrs={"class": "block big"})[1].find("a").get("href")
+                    thirdNews = soup.find("div", {"id": "content"}).find("div", {"class": "column big category-page"}).find_all("article", attrs={"class": "block big"})[2].find("a").get("href")
+
+                    url = "https://mmajunkie.usatoday.com"
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"itemprop": "articleBody"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('span'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+
+
+
+
+        def bjpenn():
+            try:
+                url = "https://www.bjpenn.com/mma-news/"
+                websiteRequest = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                if websiteRequest.status_code != 200:
+                    newsImage = "Error"
+                    newsTitle = "Error"
+                    newsContent = "Error"
+                else:
+                    websiteContent = websiteRequest.content
+                    soup = BeautifulSoup(websiteContent, "html.parser")
+                    firstNews = soup.find("div", {"class": "td-category-grid td-container-wrap"}).find("div", {"class": "td_block_inner"}).find_all("div", attrs={"class": "td-module-thumb"})[0].find("a").get("href")
+                    secondNews = soup.find("div", {"class": "td-category-grid td-container-wrap"}).find("div", {"class": "td_block_inner"}).find_all("div", attrs={"class": "td-module-thumb"})[1].find("a").get("href")
+                    thirdNews = soup.find("div", {"class": "td-category-grid td-container-wrap"}).find("div", {"class": "td_block_inner"}).find_all("div", attrs={"class": "td-module-thumb"})[2].find("a").get("href")
+
+                    url = "https://www.bjpenn.com"
+                    firstUrl = firstNews
+                    secondUrl = secondNews
+                    thirdUrl = thirdNews
+
+                    def getContent(url):
+                        try:
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            content = request.content
+                            soup = BeautifulSoup(content, "html.parser")
+                            newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                            print(newsImage)
+                            newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
+                            print(newsTitle)
+                            newsContent = ""
+                            try:
+                                newsTags = soup.find("div", {"class": "td-post-content tagdiv-type"})
+                                for i in newsTags.find_all('img'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('iframe'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('aside'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('h3'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('figure'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('table'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('blockquote'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('span'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('section'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('script'):
+                                    i.replace_with("")
+                                for x in newsTags.find_all("p"):
+                                    newsContent = newsContent + " " + x.get_text().strip()
+                                print(newsContent.strip())
+                            except:
+                                print("Error!")
+
+
+                        except:
+                            print("Error!")
+
+                    getContent(firstUrl)
+                    getContent(secondUrl)
+                    getContent(thirdUrl)
+
+            except:
+                print("Error!")
+
+
+
+
+
+
+        mmaNews()
+        mmaFighting()
+        mmaMania()
+        mmaJunkie()
+        bjpenn()
+
+
+
+
+
+
 
 
 
@@ -2136,6 +3234,10 @@ def sports():
     volleyball()
     tennis()
     athletics()
+    fitness()
+    mma()
+
+
 
 
 
