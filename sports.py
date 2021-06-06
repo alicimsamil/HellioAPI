@@ -3131,11 +3131,6 @@ def sports():
 
 
 
-
-
-
-
-
         def bjpenn():
             try:
                 url = "https://www.bjpenn.com/mma-news/"
