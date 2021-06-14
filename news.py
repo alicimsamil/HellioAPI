@@ -116,7 +116,22 @@ def bbc():
 
                                                 print(newsContent.strip())
                                             except:
-                                                print("Error!")
+                                                try:
+                                                    newsTags = soup.find("main", {"id": "main-content"}).find("article", {"class": "ssrcss-1072xwf-ArticleWrapper"})
+                                                    newsContent = ""
+                                                    for i in newsTags.find_all('div', attrs={'class': 'article-body-native-ad article-body__body-text'}):
+                                                        i.replace_with("")
+                                                    for i in newsTags.find_all('div', attrs={'class': 'article-body__image-text article-body__image-text--portrait'}):
+                                                        i.replace_with("")
+                                                    for i in newsTags.find_all('div', attrs={'class': 'article__end'}):
+                                                        i.replace_with("")
+                                                    for new in newsTags.find_all('div',{"data-component":"text-block"}):
+                                                        for a in new.find_all("p"):
+                                                            newsContent = newsContent + " " + a.get_text()
+
+                                                    print(newsContent.strip())
+                                                except:
+                                                    print("Error!")
 
                     except:
                         print("Error!")
