@@ -246,9 +246,15 @@ def art():
                 else:
                     websiteContent = websiteRequest.content
                     soup = BeautifulSoup(websiteContent, "html.parser")
-                    firstNews = soup.find("div", {"id": "lx-stream"}).find_all("li", attrs={"class": "lx-stream__post-container"})[0].find("h3",{"class":"lx-stream-post__header-title"}).find("a").get("href")
-                    secondNews = soup.find("div", {"id": "lx-stream"}).find_all("li", attrs={"class": "lx-stream__post-container"})[1].find("h3",{"class":"lx-stream-post__header-title"}).find("a").get("href")
-                    thirdNews = soup.find("div", {"id": "lx-stream"}).find_all("li", attrs={"class": "lx-stream__post-container"})[2].find("h3",{"class":"lx-stream-post__header-title"}).find("a").get("href")
+                    try:
+                        firstNews = soup.find("div", {"id": "lx-stream"}).find_all("li", attrs={"class": "lx-stream__post-container"})[0].find("h3",{"class":"lx-stream-post__header-title"}).find("a").get("href")
+                        secondNews = soup.find("div", {"id": "lx-stream"}).find_all("li", attrs={"class": "lx-stream__post-container"})[1].find("h3",{"class":"lx-stream-post__header-title"}).find("a").get("href")
+                        thirdNews = soup.find("div", {"id": "lx-stream"}).find_all("li", attrs={"class": "lx-stream__post-container"})[2].find("h3",{"class":"lx-stream-post__header-title"}).find("a").get("href")
+                    except:
+                        firstNews = soup.find("div", {"id": "lx-stream"}).find_all("li", attrs={"class": "lx-stream__post-container"})[1].find("h3", {"class": "lx-stream-post__header-title"}).find("a").get("href")
+                        secondNews = soup.find("div", {"id": "lx-stream"}).find_all("li", attrs={"class": "lx-stream__post-container"})[2].find("h3", {"class": "lx-stream-post__header-title"}).find("a").get("href")
+                        thirdNews = soup.find("div", {"id": "lx-stream"}).find_all("li", attrs={"class": "lx-stream__post-container"})[3].find("h3", {"class": "lx-stream-post__header-title"}).find("a").get("href")
+
 
                     url = "https://www.bbc.com"
                     firstUrl = url+firstNews
