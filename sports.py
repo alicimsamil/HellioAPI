@@ -545,7 +545,7 @@ def sports():
                                 for i in newsTags.find_all('center'):
                                     i.replace_with("")
 
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                                 print(newsContent.strip())
                             except:
@@ -981,60 +981,88 @@ def sports():
                             newsContent = ""
 
                             try:
-                                newsTags = soup.find("div", {"class": "article-body-commercial-selector"})
-                                for i in newsTags.find_all('img'):
+                                x = soup.find("div", {"class": "article-body-commercial-selector"})
+                                for i in x.find_all('img'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('iframe'):
+                                for i in x.find_all('iframe'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('h3'):
+                                for i in x.find_all('h3'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('figure'):
+                                for i in x.find_all('figure'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('table'):
+                                for i in x.find_all('table'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('blockquote'):
+                                for i in x.find_all('blockquote'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('em'):
+                                for i in x.find_all('em'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('div'):
+                                for i in x.find_all('div'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('ul'):
+                                for i in x.find_all('ul'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('script'):
+                                for i in x.find_all('script'):
                                     i.replace_with("")
 
-                                for x in newsTags.find_all("p"):
+                                for x in x.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
                                 print(newsContent.strip())
                             except:
                                     try:
-                                        newsTags = soup.find("div", {"class": "from-content-api podcast__body"})
-                                        for i in newsTags.find_all('img'):
+                                        x = soup.find("div", {"class": "from-content-api podcast__body"})
+                                        for i in x.find_all('img'):
                                             i.replace_with("")
-                                        for i in newsTags.find_all('iframe'):
+                                        for i in x.find_all('iframe'):
                                             i.replace_with("")
-                                        for i in newsTags.find_all('h3'):
+                                        for i in x.find_all('h3'):
                                             i.replace_with("")
-                                        for i in newsTags.find_all('figure'):
+                                        for i in x.find_all('figure'):
                                             i.replace_with("")
-                                        for i in newsTags.find_all('table'):
+                                        for i in x.find_all('table'):
                                             i.replace_with("")
-                                        for i in newsTags.find_all('blockquote'):
+                                        for i in x.find_all('blockquote'):
                                             i.replace_with("")
-                                        for i in newsTags.find_all('em'):
+                                        for i in x.find_all('em'):
                                             i.replace_with("")
-                                        for i in newsTags.find_all('div'):
+                                        for i in x.find_all('div'):
                                             i.replace_with("")
-                                        for i in newsTags.find_all('ul'):
+                                        for i in x.find_all('ul'):
                                             i.replace_with("")
-                                        for i in newsTags.find_all('script'):
+                                        for i in x.find_all('script'):
                                             i.replace_with("")
 
-                                        for x in newsTags.find_all("p"):
+                                        for x in x.find_all("p"):
                                             newsContent = newsContent + " " + x.get_text().strip()
                                         print(newsContent.strip())
                                     except:
-                                        print("Error!")
+                                        try:
+                                            newsTags = soup.find_all("div", {"itemprop": "liveBlogUpdate"})
+                                            for x in newsTags:
+                                                for i in x.find_all('img'):
+                                                    i.replace_with("")
+                                                for i in x.find_all('iframe'):
+                                                    i.replace_with("")
+                                                for i in x.find_all('h3'):
+                                                    i.replace_with("")
+                                                for i in x.find_all('figure'):
+                                                    i.replace_with("")
+                                                for i in x.find_all('table'):
+                                                    i.replace_with("")
+                                                for i in x.find_all('blockquote'):
+                                                    i.replace_with("")
+                                                for i in x.find_all('em'):
+                                                    i.replace_with("")
+                                                for i in x.find_all('br'):
+                                                    i.replace_with("")
+                                                for i in x.find_all('ul'):
+                                                    i.replace_with("")
+                                                for i in x.find_all('script'):
+                                                    i.replace_with("")
+                                                for i in x.find_all("div",{"itemprop":"articleBody"}):
+                                                    for a in i.find_all("p"):
+                                                        newsContent = newsContent + " " + a.get_text().strip()
+                                            print(newsContent.strip())
+                                        except:
+                                            print("Error!")
 
 
                         except:
@@ -1064,9 +1092,9 @@ def sports():
                 else:
                     websiteContent = websiteRequest.content
                     soup = BeautifulSoup(websiteContent, "html.parser")
-                    firstNews = soup.find("section", {"class": "row-layout"}).find("ul", {"class": "auto-items"}).find_all("li", attrs={"class": "content-item"})[0].find("a").get("href")
-                    secondNews = soup.find("section", {"class": "row-layout"}).find("ul", {"class": "auto-items"}).find_all("li", attrs={"class": "content-item"})[1].find("a").get("href")
-                    thirdNews = soup.find("section", {"class": "row-layout"}).find("ul", {"class": "auto-items"}).find_all("li", attrs={"class": "content-item"})[2].find("a").get("href")
+                    firstNews = soup.find("ul", {"class": "auto-items"}).find_all("li", attrs={"class": "content-item"})[0].find("a").get("href")
+                    secondNews = soup.find("ul", {"class": "auto-items"}).find_all("li", attrs={"class": "content-item"})[1].find("a").get("href")
+                    thirdNews = soup.find("ul", {"class": "auto-items"}).find_all("li", attrs={"class": "content-item"})[2].find("a").get("href")
 
                     url = "https://www.marca.com"
 
@@ -1996,7 +2024,7 @@ def sports():
                                     print(newsContent.strip())
                                 except:
                                     try:
-                                        newsTags = soup.find("div",{"class": "content__standfirst"})
+                                        d = soup.find("div",{"class": "content__standfirst"})
                                         for i in d.find_all('img'):
                                             i.replace_with("")
                                         for i in d.find_all('iframe'):
@@ -2131,12 +2159,9 @@ def sports():
                 else:
                     websiteContent = websiteRequest.content
                     soup = BeautifulSoup(websiteContent, "html.parser")
-                    firstNews = soup.find("div", {"class": "sp-qa-top-stories"}).find_all("div", attrs={
-                        "class": "gel-layout__item"})[0].find("a").get("href")
-                    secondNews = soup.find("div", {"class": "sp-qa-top-stories"}).find_all("div", attrs={
-                        "class": "gel-layout__item"})[1].find("a").get("href")
-                    thirdNews = soup.find("div", {"class": "sp-qa-top-stories"}).find_all("div", attrs={
-                        "class": "gel-layout__item"})[2].find("a").get("href")
+                    firstNews = soup.find("div", {"class": "sp-qa-top-stories"}).find_all("div", attrs={"class": "gel-layout__item"})[0].find("a").get("href")
+                    secondNews = soup.find("div", {"class": "sp-qa-top-stories"}).find_all("div", attrs={"class": "gel-layout__item"})[1].find("a").get("href")
+                    thirdNews = soup.find("div", {"class": "sp-qa-top-stories"}).find_all("div", attrs={"class": "gel-layout__item"})[2].find("a").get("href")
 
                     url = "https://www.bbc.com"
                     if "www" in firstNews:
@@ -2167,38 +2192,37 @@ def sports():
                             newsContent = ""
 
                             try:
-                                newsTags = soup.find("div", {"id": "orb-modules"}).find("div",
-                                                                                        {"class": "qa-story-body"})
-                                for i in newsTags.find_all('img'):
+                                c = soup.find("div", {"id": "orb-modules"}).find("div",{"class": "qa-story-body"})
+                                for i in c.find_all('img'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('iframe'):
+                                for i in c.find_all('iframe'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('h3'):
+                                for i in c.find_all('h3'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('figure'):
+                                for i in c.find_all('figure'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('table'):
+                                for i in c.find_all('table'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('blockquote'):
+                                for i in c.find_all('blockquote'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('em'):
+                                for i in c.find_all('em'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('div'):
+                                for i in c.find_all('div'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('section'):
+                                for i in c.find_all('section'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('script'):
+                                for i in c.find_all('script'):
                                     i.replace_with("")
-                                for i in newsTags.find_all('ul'):
+                                for i in c.find_all('ul'):
                                     i.replace_with("")
 
-                                for x in newsTags.find_all("p"):
+                                for x in c.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
                                 print(newsContent.strip())
                             except:
                                 try:
-                                    newsTags = soup.find("div", {"id": "orb-modules"}).find("div",{"id": "lx-stream"}).find("ol", {"class": "lx-stream__feed"}).find_all("li", {"class": "lx-stream__post-container"})
-                                    for y in newsTags:
+                                    c = soup.find("div", {"id": "orb-modules"}).find("div",{"id": "lx-stream"}).find("ol", {"class": "lx-stream__feed"}).find_all("li", {"class": "lx-stream__post-container"})
+                                    for y in c:
                                         for i in y.find_all('img'):
                                             i.replace_with("")
                                         for i in y.find_all('iframe'):
@@ -2226,7 +2250,35 @@ def sports():
                                                 newsContent = newsContent + " " + z.get_text().strip()
                                     print(newsContent.strip())
                                 except:
-                                    print("Error!")
+                                    try:
+                                        newsTags = soup.find("main", {"id": "main-content"}).find_all("div",{"data-component":"text-block"})
+                                        for c in newsTags:
+                                            for i in c.find_all('img'):
+                                                i.replace_with("")
+                                            for i in c.find_all('iframe'):
+                                                i.replace_with("")
+                                            for i in c.find_all('h3'):
+                                                i.replace_with("")
+                                            for i in c.find_all('figure'):
+                                                i.replace_with("")
+                                            for i in c.find_all('table'):
+                                                i.replace_with("")
+                                            for i in c.find_all('blockquote'):
+                                                i.replace_with("")
+                                            for i in c.find_all('em'):
+                                                i.replace_with("")
+                                            for i in c.find_all('section'):
+                                                i.replace_with("")
+                                            for i in c.find_all('script'):
+                                                i.replace_with("")
+                                            for i in c.find_all('ul'):
+                                                i.replace_with("")
+
+                                            for x in c.find_all("p"):
+                                                newsContent = newsContent + " " + x.get_text().strip()
+                                        print(newsContent.strip())
+                                    except:
+                                        print("Error!")
 
 
                         except:
@@ -2542,7 +2594,35 @@ def sports():
                                     newsContent = newsContent + " " + x.get_text().strip()
                                 print(newsContent.strip())
                             except:
-                                print("Error!")
+                                try:
+                                    newsTags = soup.find("div", {"class": "content-container"}).find("div", {"class": "slideshow-desktop-dek"})
+                                    for i in newsTags.find_all('img'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('iframe'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('aside'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('h3'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('figure'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('table'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('blockquote'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('em'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('div'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('section'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('script'):
+                                        i.replace_with("")
+                                    for x in newsTags.find_all("p"):
+                                        newsContent = newsContent + " " + x.get_text().strip()
+                                    print(newsContent.strip())
+                                except:
+                                    print("Error!")
 
 
                         except:

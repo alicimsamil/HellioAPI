@@ -634,6 +634,8 @@ def travel():
                                     i.replace_with("")
                                 for i in newsTags.find_all('em'):
                                     i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
                                 for i in newsTags.find_all('section'):
                                     i.replace_with("")
                                 for i in newsTags.find_all('script'):
@@ -1145,6 +1147,8 @@ def travel():
                                     i.replace_with("")
                                 for i in newsTags.find_all('em'):
                                     i.replace_with("")
+                                for i in newsTags.find_all('div'):
+                                    i.replace_with("")
                                 for i in newsTags.find_all('section'):
                                     i.replace_with("")
                                 for i in newsTags.find_all('script'):
@@ -1652,6 +1656,8 @@ def travel():
                                 for i in newsTags.find_all('blockquote'):
                                     i.replace_with("")
                                 for i in newsTags.find_all('em'):
+                                    i.replace_with("")
+                                for i in newsTags.find_all('div'):
                                     i.replace_with("")
                                 for i in newsTags.find_all('section'):
                                     i.replace_with("")

@@ -1834,7 +1834,35 @@ def science():
                                     newsContent = newsContent + " " + i.get_text().strip()
                                 print(newsContent.strip())
                             except:
-                                print("Error!")
+                                try:
+                                    newsTags = soup.find("div", {"class": "ArticleBody__content___2gQno2"})
+                                    for i in newsTags.find_all('img'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('iframe'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('aside'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('h3'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('figure'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('table'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('blockquote'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('em'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('span'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('section'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('script'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all("p"):
+                                        newsContent = newsContent + " " + i.get_text().strip()
+                                    print(newsContent.strip())
+                                except:
+                                    print("Error!")
 
 
                         except:
@@ -2150,8 +2178,8 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all('script'):
                                     i.replace_with("")
-
-                                newsContent = newsContent + " " + newsTags.find("p").get_text().strip()
+                                for i in newsTags.find('p').find_all("p"):
+                                     newsContent = newsContent + " " + i.get_text().strip()
                                 print(newsContent.strip())
                             except:
                                 print("Error!")

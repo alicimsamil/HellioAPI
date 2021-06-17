@@ -407,7 +407,7 @@ def technology():
                             newsTags = soup.find("div", {"class": "builder-html"}).find("main", {"class": "container"}).find("div",{"class": "col-md-12 col-lg-8"}).find("div",{"class": "article__content"})
 
 
-                            for new in newsTags.find_all():
+                            for new in newsTags.find_all("p"):
                                 newsContent=newsContent+" "+new.get_text().strip()
 
                             print(newsContent.strip())
@@ -819,9 +819,6 @@ def technology():
                         a=a+1
 
 
-
-
-
                     url = "https://www.theverge.com"
 
                     firstUrl = firstNews
@@ -847,7 +844,7 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('div',attrs={'class':'article-body-banner banner'}):
                                     i.replace_with("")
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
 
                                         newsContent=newsContent+" "+x.get_text().strip()
                             except:
@@ -855,14 +852,14 @@ def technology():
                             print(newsContent.strip())
 
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
 
                     getContent(firstUrl)
                     getContent(secondUrl)
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
 
@@ -896,9 +893,6 @@ def technology():
                         a=a+1
 
 
-
-
-
                     url = "https://www.digitaltrends.com"
 
                     firstUrl = firstNews
@@ -928,7 +922,7 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('h4'):
                                     i.replace_with("")
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
@@ -1059,9 +1053,7 @@ def technology():
 
                                 for new in newsTags.find_all('div', {'class': 'row'}):
                                     if a == 3:
-                                        for i in new.find("div", {"class": "col-12"}).find("article",
-                                                                                           {"id": "article-body"}).find(
-                                                "div", {"class": "col-7 article-main-body row"}).find_all('p'):
+                                        for i in new.find("div", {"class": "col-12"}).find("article",{"id": "article-body"}).find("div", {"class": "col-7 article-main-body row"}).find_all('p'):
                                             newsContent = newsContent + " " + i.text.strip()
                                     a = a + 1
                                 print(newsContent.strip())
@@ -1272,14 +1264,14 @@ def technology():
                             except:
                                 print("Error!")
                         except:
-                            print("Error!"+Exception)
+                            print("Error!")
 
                     getContent(firstUrl)
                     getContent(secondUrl)
                     getContent(thirdUrl)
 
             except:
-                print("Error!"+Exception)
+                print("Error!")
 
 
         def automate():
@@ -1331,7 +1323,7 @@ def technology():
                                     i.replace_with("")
 
 
-                                for new in newsTags.find_all():
+                                for new in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + new.text.strip()
 
                                 print(newsContent.strip())
@@ -1534,7 +1526,7 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('br'):
                                     i.replace_with("")
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
@@ -1596,7 +1588,7 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('br'):
                                     i.replace_with("")
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
@@ -1667,7 +1659,7 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('strong'):
                                     i.replace_with("")
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
@@ -1739,7 +1731,7 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('a'):
                                     i.replace_with("")
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
@@ -1807,7 +1799,7 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('em'):
                                     i.replace_with("")
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
@@ -1898,7 +1890,7 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('ul',attrs={"class":"paywall"}):
                                     i.replace_with("")
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
@@ -1968,7 +1960,7 @@ def technology():
                                         i.replace_with("")
                                     for i in x.find_all('em'):
                                         i.replace_with("")
-                                    for c in x.find_all():
+                                    for c in x.find_all("p"):
                                         newsContent=newsContent+" "+c.get_text().strip()
                             except:
                                 print("Error!")
@@ -2041,7 +2033,7 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('div',attrs={"class":"article-sharing"}):
                                     i.replace_with("")
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p"):
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
@@ -2115,10 +2107,37 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('div',attrs={"class":"newsletter-module-wrapper"}):
                                     i.replace_with("")
-                                for x in newsTags.find_all():
+                                for x in newsTags.find_all("p",{"class":"text"}):
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
-                                print("Error!")
+                                try:
+                                    newsTags = soup.find("div",{"class": "article-body-wrapper"}).find("section",{"class": "article-body"})
+                                    for i in newsTags.find_all('img'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('figure'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('header'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('iframe'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('hr'):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('div', attrs={"class": "read-more-widget"}):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('div', attrs={"class": "article-disclosure"}):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('div', attrs={"class": "tags"}):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('div', attrs={"class": "end"}):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('div', attrs={"class": "read-more-widget"}):
+                                        i.replace_with("")
+                                    for i in newsTags.find_all('div', attrs={"class": "newsletter-module-wrapper"}):
+                                        i.replace_with("")
+                                    for x in newsTags.find_all("p",{"class":"text"}):
+                                        newsContent = newsContent + " " + x.get_text().strip()
+                                except:
+                                    print("Error!")
                             print(newsContent.strip())
 
                         except:
