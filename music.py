@@ -2298,12 +2298,12 @@ def music():
 
 
 
-    #electronicMusic()
-    #rock()
-    #blues()
-    #hipHop()
-    #country()
-    #jazz()
+    electronicMusic()
+    rock()
+    blues()
+    hipHop()
+    country()
+    jazz()
 
 
 
