@@ -1023,9 +1023,9 @@ def time():
                     a=a+1
 
                 url="https://time.com"
-                firstUrl=firstNews
-                secondUrl =secondNews
-                thirdUrl =thirdNews
+                firstUrl=url+firstNews
+                secondUrl =url+secondNews
+                thirdUrl =url+thirdNews
 
 
                 def getContent(url):
@@ -1038,12 +1038,9 @@ def time():
                         pageurl = url
                         newsImage = soup.find("meta",{"property":"og:image"}).get("content")
                         newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-
-
                         newsContent=""
                         try:
-                            newsTags = soup.find("div", {"class": "article content body clearfix"}).find("div", {
-                                "class": "padded"})
+                            newsTags = soup.find("div", {"class": "article content body clearfix"}).find("div", {"class": "padded"})
                             for i in newsTags.find_all('div', attrs={'class': 'component inline image margin-32-tb'}):
                                 i.replace_with("")
                             for i in newsTags.find_all('div', attrs={'class': 'component subscription-cta'}):
