@@ -1,4 +1,4 @@
-
+import databaseTransactions
 import requests
 from bs4 import BeautifulSoup
 
@@ -29,10 +29,12 @@ def bbc():
                         request=requests.get(url,timeout=30)
                         content=request.content
                         soup=BeautifulSoup(content,"html.parser")
+                        name="bbcNews"
+                        iconUrl="https://cdn.iconscout.com/icon/free/png-256/bbc-3-555283.png"
+                        pageurl=url
                         newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                        print(newsImage)
                         newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                        print(newsTitle)
+
                         try:
                             newsTags= soup.find("article",{"class":"ssrcss-5h7eao-ArticleWrapper e1nh2i2l6"})
                             newsContent=""
@@ -41,9 +43,8 @@ def bbc():
                             for i in newsTags.find_all('div', attrs={'class': 'ssrcss-1lp2cw-ComponentWrapper-SocialEmbedComponentWrapper e1xue1i86'}):
                                 i.replace_with("")
                             for new in newsTags.find_all('div', attrs={'data-component': 'text-block'}):
-                                newsContent = newsContent+ " " + new.get_text()
+                                newsContent = newsContent+ " " + new.get_text().strip()
 
-                            print(newsContent.strip())
                         except:
                             try:
                                 newsTags = soup.find("article", {"class": "ssrcss-1qrrcog-StyledMediaItem elwf6ac4"}).find("div", {"class": "ssrcss-1p48mn5-StyledSummary elwf6ac2"}).find("div", {"class": "ssrcss-18snukc-RichTextContainer e5tfeyi1"})
@@ -55,7 +56,6 @@ def bbc():
                                 for new in newsTags.find_all('p'):
                                     newsContent = newsContent+ " " + new.get_text()
 
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("div", {"class": "gel-layout__item gel-2/3@l gel-2/4@xxl"}).find("div", {"class": "lx-o-panel__item"}).find("section",{"class":"lx-commentary lx-commentary--robo-text gs-t-news"}).find("div",{"class":"lx-commentary__stream"}).find("article",{"class":"qa-post gs-u-pb-alt+ lx-stream-post gs-u-pt-alt+ gs-u-align-left"}).find("div",{"class":"gs-u-mb+ gel-body-copy qa-post-body"}).find("div",{"class":"lx-stream-post-body"})
@@ -67,7 +67,6 @@ def bbc():
                                     for new in newsTags.find_all('p'):
                                         newsContent = newsContent+ " " + new.get_text()
 
-                                    print(newsContent.strip())
 
                                 except:
                                     try:
@@ -81,7 +80,6 @@ def bbc():
                                         for new in newsTags.find_all('p'):
                                             newsContent = newsContent + " " + new.text
 
-                                        print(newsContent.strip())
 
                                     except:
                                         try:
@@ -99,7 +97,6 @@ def bbc():
                                             for new in newsTags.find_all('p'):
                                                 newsContent = newsContent + " " + new.text
 
-                                            print(newsContent.strip())
 
                                         except:
                                             try:
@@ -114,7 +111,6 @@ def bbc():
                                                 for new in newsTags.find_all('p'):
                                                     newsContent = newsContent + " " + new.get_text()
 
-                                                print(newsContent.strip())
                                             except:
                                                 try:
                                                     newsTags = soup.find("main", {"id": "main-content"}).find("article", {"class": "ssrcss-1072xwf-ArticleWrapper"})
@@ -129,10 +125,9 @@ def bbc():
                                                         for a in new.find_all("p"):
                                                             newsContent = newsContent + " " + a.get_text()
 
-                                                    print(newsContent.strip())
                                                 except:
                                                     print("Error!")
-
+                        databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                     except:
                         print("Error!")
                 getContent(firstUrl)
@@ -171,10 +166,11 @@ def bbc():
                         request = requests.get(url, timeout=30)
                         content = request.content
                         soup = BeautifulSoup(content, "html.parser")
+                        name = "bbcNews"
+                        iconUrl = "https://cdn.iconscout.com/icon/free/png-256/bbc-3-555283.png"
+                        pageurl = url
                         newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                        print(newsImage)
                         newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                        print(newsTitle)
                         try:
                             newsTags = soup.find("article", {"class": "ssrcss-5h7eao-ArticleWrapper e1nh2i2l6"})
                             newsContent = ""
@@ -187,7 +183,6 @@ def bbc():
                             for new in newsTags.find_all('div', attrs={'data-component': 'text-block'}):
                                 newsContent = newsContent + " " + new.get_text()
 
-                            print(newsContent.strip())
                         except:
                             try:
                                 newsTags = soup.find("article",
@@ -204,7 +199,6 @@ def bbc():
                                 for new in newsTags.find_all('p'):
                                     newsContent = newsContent + " " + new.get_text()
 
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("div",
@@ -225,7 +219,6 @@ def bbc():
                                     for new in newsTags.find_all('p'):
                                         newsContent = newsContent + " " + new.get_text()
 
-                                    print(newsContent.strip())
 
                                 except:
                                     try:
@@ -245,7 +238,6 @@ def bbc():
                                         for new in newsTags.find_all('p'):
                                             newsContent = newsContent + " " + new.text
 
-                                        print(newsContent.strip())
 
                                     except:
                                         try:
@@ -264,7 +256,6 @@ def bbc():
                                             for new in newsTags.find_all('p'):
                                                 newsContent = newsContent + " " + new.text
 
-                                            print(newsContent.strip())
 
                                         except:
                                             try:
@@ -283,10 +274,10 @@ def bbc():
                                                 for new in newsTags.find_all('p'):
                                                     newsContent = newsContent + " " + new.get_text()
 
-                                                print(newsContent.strip())
                                             except:
                                                 print("Error!")
 
+                        databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                     except:
                         print("Error!")
 
@@ -327,12 +318,12 @@ def aljazeera():
                 try:
                     request=requests.get(url,timeout=30)
                     content=request.content
-
+                    name = "aljazeeraNews"
+                    iconUrl = "https://iconape.com/wp-content/png_logo_vector/aljazeera-logo.png"
+                    pageurl = url
                     soup=BeautifulSoup(content,"html.parser")
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     try:
                         newsTags= soup.find("div",{"class":"wysiwyg wysiwyg--all-content css-az20b6"})
                         newsContent=""
@@ -369,8 +360,7 @@ def aljazeera():
                             try:
                                 newsTags = soup.find("div",{"id":"root"}).find("div", {"class": "container container--grid container--gallery container--white"}).find("div", {"class": "container__inner css-eaqrp2-Gallery"}).find("div",{"class":"gallery-content wysiwyg wysiwyg--all-content css-az20b6"})
                                 newsContent = ""
-                                for i in newsTags.find_all('div',
-                                                           attrs={'class': 'twitter-tweet twitter-tweet-rendered'}):
+                                for i in newsTags.find_all('div',attrs={'class': 'twitter-tweet twitter-tweet-rendered'}):
                                     i.replace_with("")
                                 for i in newsTags.find_all('div', attrs={'class': 'article-source'}):
                                     i.replace_with("")
@@ -385,8 +375,7 @@ def aljazeera():
 
                             except:
                                 try:
-                                    newsTags = soup.find("div", {"id": "root"}).find("header", {
-                                        "class": "article-header"})
+                                    newsTags = soup.find("div", {"id": "root"}).find("header", {"class": "article-header"})
                                     newsContent = ""
                                     for i in newsTags.find_all('div',attrs={'class': 'twitter-tweet twitter-tweet-rendered'}):
                                         i.replace_with("")
@@ -402,7 +391,7 @@ def aljazeera():
                                         newsContent = newsContent + " " + new.get_text()
                                 except:
                                     print("Error!")
-                    print(newsContent.strip())
+                    databaseTransactions.contentAdd(name,newsTitle,newsContent,newsImage,pageurl,iconUrl)
                 except:
                     print("Error!")
 
@@ -450,10 +439,10 @@ def dwNews():
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
-
+                    name = "dwNews"
+                    iconUrl = "https://upload.wikimedia.org/wikipedia/commons/8/8e/DW_%28TV%29_Logo_2012.png"
+                    pageurl = url
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     newsTags= soup.find("div",{"id":"innerFrame"}).find("div",{"id":"bodyContent"}).find("div",{"class":"col3"}).find("div",{"class":"group"})
                     newsContent=""
 
@@ -469,9 +458,7 @@ def dwNews():
                     for new in newsTags.find_all('p'):
                         newsContent = newsContent+ " " + new.get_text().strip()
 
-
-
-                    print(newsContent.strip())
+                    databaseTransactions.contentAdd(name,newsTitle,newsContent,newsImage,pageurl,iconUrl)
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -506,10 +493,11 @@ def foxNews():
                     request=requests.get(url,timeout=30)
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "foxNews"
+                    iconUrl = "https://www.logo.wine/a/logo/Fox_News/Fox_News-Logo.wine.svg"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     newsTags= soup.find("div",{"class":"article-body"})
                     newsContent=""
 
@@ -522,8 +510,7 @@ def foxNews():
                     for new in newsTags.find_all("p"):
                         newsContent = newsContent+ " " + new.get_text()
 
-
-                    print(newsContent.strip())
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -575,16 +562,17 @@ def rtNews():
                     request=requests.get(url,timeout=30)
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "rtNews"
+                    iconUrl = "https://seeklogo.com/images/R/russia-today-logo-3E92F51CD6-seeklogo.com.png"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     newsTags= soup.find("div",{"class":"columns__content"}).find("div",{"class":"article__text text"}).find_all('p')
                     newsContent=""
                     for new in newsTags:
                         newsContent = newsContent+ " " + new.get_text()
 
-                    print(newsContent.strip())
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -631,55 +619,41 @@ def independent():
                     request=requests.get(url,timeout=30)
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "independentNews"
+                    iconUrl = "https://img1.pnghut.com/0/18/25/C0STPpgPST/united-kingdom-media-daily-telegraph-irish-independent-symbol.jpg"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     try:
                         newsTags= soup.find("div",{"class":"sc-psEMT gwrImx main-wrapper"}).find("div",{"class":"sc-pJgJK daSdlt sc-pZbQk kzfPTw"}).find_all('p')
                         newsContent=""
                         for new in newsTags:
-                            newsContent = newsContent+ " " + new.get_text()
-
-                        print(newsContent.strip())
+                            newsContent = newsContent+ " " + new.get_text().strip()
 
                     except:
                         try:
                             newsTags = soup.find("div", {"class": "sc-psEMT sc-pbxEC dKclYu main-wrapper"}).find("div", {"class": "sc-pJgJK daSdlt sc-pZbQk sc-oTAMn kWoGPI"}).find_all('p')
                             newsContent = ""
                             for new in newsTags:
-                                newsContent = newsContent + " " + new.get_text()
-
-                            print(newsContent.strip())
-
+                                newsContent = newsContent + " " + new.get_text().strip()
 
                         except:
-
                             try:
-
                                 newsTags = soup.find("body", {"id": "body"}).find("div", {"class": "sc-pBjRv sc-qQIyP khJPob main-wrapper "}).find("div",{"id": "frameInner"}).find("div", {"id": "main"}).find_all('p')
-
                                 newsContent = ""
-
                                 for new in newsTags:
-                                    newsContent = newsContent + " " + new.get_text()
-
-                                print(newsContent.strip())
-
+                                    newsContent = newsContent + " " + new.get_text().strip()
 
                             except:
-
                                 try:
 
                                     newsTags = soup.find("body", {"id": "body"}).find("div", {"class": "sc-pBjRv sc-qQIyP khJPob main-wrapper "}).find("div", {"id": "frameInner"}).find( "div", {"class": "sc-oTAMn ldIexo sc-pjvSN sc-prsLc eLjvEP"}).find_all( 'p')
                                     newsContent = ""
                                     for new in newsTags:
-                                        newsContent = newsContent + " " + new.get_text()
-                                    print(newsContent.strip())
+                                        newsContent = newsContent + " " + new.get_text().strip()
                                 except:
-
                                     print("Error!")
-
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
                     print("Error!")
 
@@ -716,27 +690,24 @@ def independent():
                         request=requests.get(url,timeout=30)
                         content=request.content
                         soup=BeautifulSoup(content,"html.parser")
+                        name = "independentNews"
+                        iconUrl = "https://img1.pnghut.com/0/18/25/C0STPpgPST/united-kingdom-media-daily-telegraph-irish-independent-symbol.jpg"
+                        pageurl = url
                         newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                        print(newsImage)
                         newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                        print(newsTitle)
                         try:
                             newsTags= soup.find("div",{"class":"sc-psEMT gwrImx main-wrapper"}).find("div",{"class":"sc-pJgJK daSdlt sc-pZbQk kzfPTw"}).find_all('p')
                             newsContent=""
                             for new in newsTags:
-                                newsContent = newsContent+ " " + new.get_text()
+                                newsContent = newsContent+ " " + new.get_text().strip()
 
-                            print(newsContent.strip())
 
                         except:
                             try:
                                 newsTags = soup.find("div", {"class": "sc-psEMT sc-pbxEC dKclYu main-wrapper"}).find("div", {"class": "sc-pJgJK daSdlt sc-pZbQk sc-oTAMn kWoGPI"}).find_all('p')
                                 newsContent = ""
                                 for new in newsTags:
-                                    newsContent = newsContent + " " + new.get_text()
-
-                                print(newsContent.strip())
-
+                                    newsContent = newsContent + " " + new.get_text().strip()
 
                             except:
 
@@ -745,36 +716,29 @@ def independent():
                                     newsTags = soup.find("body", {"id": "body"}).find("div", {
                                         "class": "sc-pBjRv sc-qQIyP khJPob main-wrapper "}).find("div", {
                                         "id": "frameInner"}).find("div", {"id": "main"}).find_all(
-
                                         'p')
 
                                     newsContent = ""
 
                                     for new in newsTags:
-                                        newsContent = newsContent + " " + new.get_text()
-
-                                    print(newsContent.strip())
+                                        newsContent = newsContent + " " + new.get_text().strip()
 
 
                                 except:
 
                                     try:
 
-                                        newsTags = soup.find("body", {"id": "body"}).find("div", { "class": "sc-pBjRv sc-qQIyP khJPob main-wrapper "}).find("div",{"id": "frameInner"}).find("div", {"class": "sc-oTAMn ldIexo sc-pjvSN sc-prsLc eLjvEP"}).find_all( 'p')
-
+                                        newsTags = soup.find("body", {"id": "body"}).find("div", { "class": "sc-pBjRv sc-qQIyP khJPob main-wrapper "}).find("div",{"id": "frameInner"}).find("div", {"class": "sc-oTAMn ldIexo sc-pjvSN sc-prsLc eLjvEP"}).find_all('p')
                                         newsContent = ""
-
                                         for new in newsTags:
-                                            newsContent = newsContent + " " + new.get_text()
-
-                                        print(newsContent.strip())
-
+                                            newsContent = newsContent + " " + new.get_text().strip()
 
                                     except:
-
                                         print("Error!")
+
+                        databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                     except:
-                        print("Error!"+Exception)
+                        print("Error!")
                 getContent(firstUrl)
                 getContent(secondUrl)
                 getContent(thirdUrl)
@@ -811,26 +775,25 @@ def independent():
                             request = requests.get(url, timeout=30)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "independentNews"
+                            iconUrl = "https://img1.pnghut.com/0/18/25/C0STPpgPST/united-kingdom-media-daily-telegraph-irish-independent-symbol.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             try:
                                 newsTags = soup.find("div", {"class": "sc-psEMT gwrImx main-wrapper"}).find("div", {"class": "sc-pJgJK daSdlt sc-pZbQk kzfPTw"}).find_all('p')
                                 newsContent = ""
                                 for new in newsTags:
-                                    newsContent = newsContent + " " + new.get_text()
+                                    newsContent = newsContent + " " + new.get_text().strip()
 
-                                print(newsContent.strip())
 
                             except:
                                 try:
                                     newsTags = soup.find("div", {"id": "main"}).find_all('p')
                                     newsContent = ""
                                     for new in newsTags:
-                                        newsContent = newsContent + " " + new.get_text()
+                                        newsContent = newsContent + " " + new.get_text().strip()
 
-                                    print(newsContent.strip())
 
 
                                 except:
@@ -841,9 +804,8 @@ def independent():
                                         newsContent = ""
 
                                         for new in newsTags:
-                                            newsContent = newsContent + " " + new.get_text()
+                                            newsContent = newsContent + " " + new.get_text().strip()
 
-                                        print(newsContent.strip())
 
 
                                     except:
@@ -853,12 +815,13 @@ def independent():
                                             newsTags = soup.find("body", {"id": "body"}).find("div", {"class": "sc-pBjRv sc-qQIyP khJPob main-wrapper "}).find("div",{"id": "frameInner"}).find("div", {"class": "sc-oTAMn ldIexo sc-pjvSN sc-prsLc eLjvEP"}).find_all('p')
                                             newsContent = ""
                                             for new in newsTags:
-                                                newsContent = newsContent + " " + new.get_text()
-                                            print(newsContent.strip())
+                                                newsContent = newsContent + " " + new.get_text().strip()
 
                                         except:
 
                                             print("Error!")
+
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -901,18 +864,18 @@ def independent():
                                 request = requests.get(url, timeout=30)
                                 content = request.content
                                 soup = BeautifulSoup(content, "html.parser")
+                                name = "independentNews"
+                                iconUrl = "https://img1.pnghut.com/0/18/25/C0STPpgPST/united-kingdom-media-daily-telegraph-irish-independent-symbol.jpg"
+                                pageurl = url
                                 newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                                print(newsImage)
                                 newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                                print(newsTitle)
                                 try:
                                     newsTags = soup.find("div", {"class": "sc-psEMT gwrImx main-wrapper"}).find("div", {
                                         "class": "sc-pJgJK daSdlt sc-pZbQk kzfPTw"}).find_all('p')
                                     newsContent = ""
                                     for new in newsTags:
-                                        newsContent = newsContent + " " + new.get_text()
+                                        newsContent = newsContent + " " + new.get_text().strip()
 
-                                    print(newsContent.strip())
 
                                 except:
                                     try:
@@ -921,9 +884,8 @@ def independent():
                                             "div", {"class": "sc-pJgJK daSdlt sc-pZbQk sc-oTAMn kWoGPI"}).find_all('p')
                                         newsContent = ""
                                         for new in newsTags:
-                                            newsContent = newsContent + " " + new.get_text()
+                                            newsContent = newsContent + " " + new.get_text().strip()
 
-                                        print(newsContent.strip())
 
                                     except:
                                         try:
@@ -934,30 +896,27 @@ def independent():
                                                 'p')
                                             newsContent = ""
                                             for new in newsTags:
-                                                newsContent = newsContent + " " + new.get_text()
+                                                newsContent = newsContent + " " + new.get_text().strip()
 
-                                            print(newsContent.strip())
 
                                         except:
                                             try:
 
                                                 newsTags = soup.find("body", {"id": "body"}).find("div", {
-                                                    "class": "sc-pBjRv sc-qQIyP khJPob main-wrapper "}).find("div",
-                                                                                                             {
-                                                                                                                 "id": "frameInner"}).find(
+                                                    "class": "sc-pBjRv sc-qQIyP khJPob main-wrapper "}).find("div",{"id": "frameInner"}).find(
                                                     "div",
                                                     {"class": "sc-oTAMn ldIexo sc-pjvSN sc-prsLc eLjvEP"}).find_all(
                                                     'p')
                                                 newsContent = ""
                                                 for new in newsTags:
-                                                    newsContent = newsContent + " " + new.get_text()
+                                                    newsContent = newsContent + " " + new.get_text().strip()
 
-                                                print(newsContent.strip())
 
                                             except:
                                                 print("Error!")
+                                databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl,iconUrl)
                             except:
-                                print("Error!" + Exception)
+                                print("Error!")
 
                         getContent(firstUrl)
                         getContent(secondUrl)
@@ -998,18 +957,18 @@ def independent():
                                     request = requests.get(url, timeout=30, headers={'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36 OPR/76.0.4017.154'})
                                     content = request.content
                                     soup = BeautifulSoup(content, "html.parser")
+                                    name = "independentNews"
+                                    iconUrl = "https://img1.pnghut.com/0/18/25/C0STPpgPST/united-kingdom-media-daily-telegraph-irish-independent-symbol.jpg"
+                                    pageurl = url
                                     newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                                    print(newsImage)
                                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                                    print(newsTitle)
                                     try:
                                         newsTags = soup.find("div", {"class": "sc-psEMT gwrImx main-wrapper"}).find(
                                             "div", {"class": "sc-pJgJK daSdlt sc-pZbQk kzfPTw"}).find_all('p')
                                         newsContent = ""
                                         for new in newsTags:
-                                            newsContent = newsContent + " " + new.get_text()
+                                            newsContent = newsContent + " " + new.get_text().strip()
 
-                                        print(newsContent.strip())
 
                                     except:
                                         try:
@@ -1017,12 +976,14 @@ def independent():
                                             newsTags = soup.find("div", {"id": "main"}).find_all('p')
                                             newsContent = ""
                                             for new in newsTags:
-                                                newsContent = newsContent + " " + new.get_text()
+                                                newsContent = newsContent + " " + new.get_text().strip()
 
-                                            print(newsContent.strip())
 
                                         except:
                                             print("Error!")
+
+                                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl,iconUrl)
+
                                 except:
                                    print("Error!")
 
@@ -1068,11 +1029,14 @@ def time():
 
 
                 def getContent(url):
+                    try:
                         request=requests.get(url,timeout=30)
                         content=request.content
                         soup=BeautifulSoup(content,"html.parser")
+                        name = "timeNews"
+                        iconUrl = "https://banner2.cleanpng.com/20180602/hxf/kisspng-shelter-magazine-time-news-magazine-house-garden-no-time-5b127d0800e9a0.1898284415279383120038.jpg"
+                        pageurl = url
                         newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-
                         newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
 
 
@@ -1092,9 +1056,6 @@ def time():
                                 i.replace_with("")
                             for new in newsTags.find_all("p"):
                                 newsContent = newsContent + " " + new.get_text()
-                            print(newsImage)
-                            print(newsTitle)
-                            print(newsContent.strip())
 
                         except:
                             try:
@@ -1109,9 +1070,7 @@ def time():
                                 newsContent = ""
 
                                 newsContent = newsContent + " " + newsTags
-                                print(newsImage)
-                                print(newsTitle)
-                                print(newsContent.strip())
+
                             except:
                                 try:
                                     request = requests.get(url, timeout=30)
@@ -1127,13 +1086,14 @@ def time():
 
                                     for i in newsTags:
                                         for c in i.find_all('ul'):
-                                                newsContent = newsContent + " " + c.find("h3").text.strip()+ " " + c.find("h4").text.strip()
-                                    print(newsImage)
-                                    print(newsTitle)
-                                    print(newsContent)
+                                                newsContent = newsContent + " " + c.find("h3").text.strip()+ " " + c.find("h4").text
+
                                 except:
                                     print("Error!")
 
+                        databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                    except:
+                        print("Error!")
 
 
 
@@ -1183,21 +1143,22 @@ def chinaPost():
             thirdUrl =thirdNews
 
 
-            def getContent(url,timeout=30):
+            def getContent(url):
                 try:
-                    request=requests.get(url)
+                    request=requests.get(url,timeout=30)
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "chinaPostNews"
+                    iconUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVBpkJTy2YBXCIifpJhXl1fDIgTBuSPWm-dS6fX3uNdxEHL9Bht7UjL_7124h7f_Zfo8c&usqp=CAU"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     newsTags= soup.find("div",{"class":"td-post-content"}).find_all('p')
                     newsContent=""
                     for new in newsTags:
-                        newsContent = newsContent+ " " + new.get_text()
+                        newsContent = newsContent+ " " + new.get_text().strip()
 
-                    print(newsContent.strip())
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -1245,10 +1206,11 @@ def france24():
                     request=requests.get(url,headers=hdr,timeout=30)
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "france24News"
+                    iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/France24.png/635px-France24.png"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
 
                     try:
                         newsContent = soup.find("p", {"class": "t-content__chapo"}).get_text().strip()
@@ -1261,17 +1223,15 @@ def france24():
                         for i in newsTags.find_all('div', attrs={'class': 'm-em-flash'}):
                             i.replace_with("")
                         for new in newsTags.find_all("p"):
-                            newsContent = newsContent+ " " + new.get_text()
+                            newsContent = newsContent+ " " + new.get_text().strip()
 
-                        print(newsContent.strip())
 
                     except:
                         try:
                             newsContent = ""
                             newsTags = soup.find("div", {"class": "t-content t-content--article"}).find("p", {"class": "t-content__chapo"})
-                            newsContent = newsContent + " " + newsTags.get_text()
+                            newsContent = newsContent + " " + newsTags.get_text().strip()
 
-                            print(newsContent.strip())
 
                         except:
                             try:
@@ -1280,12 +1240,13 @@ def france24():
                                 for i in newsTags.find_all('div', attrs={'class': 'm-em-diaporama'}):
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
-                                    newsContent = newsContent + " " + i.get_text()
+                                    newsContent = newsContent + " " + i.get_text().strip()
 
-                                print(newsContent.strip())
 
                             except:
                                 print("Error!")
+
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -1329,19 +1290,19 @@ def insider():
                     request=requests.get(url,timeout=30)
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "insiderNews"
+                    iconUrl = "https://iconape.com/wp-content/files/cc/348265/png/348265.png"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     try:
                         newsContent = ""
                         newsTags= soup.find("div",{"id":"piano-inline-content-wrapper"}).find("div",{"class":"content-lock-content"})
                         for i in newsTags.find_all('figure', attrs={'data-type': 'img'}):
                             i.replace_with("")
                         for new in newsTags.find_all('p'):
-                            newsContent = newsContent+ " " + new.get_text()
+                            newsContent = newsContent+ " " + new.get_text().strip()
 
-                        print(newsContent.strip())
 
                     except:
                         try:
@@ -1350,47 +1311,49 @@ def insider():
                             for i in newsTags.find_all('figure', attrs={'data-type': 'img'}):
                                 i.replace_with("")
                             for new in newsTags.find_all('li'):
-                                newsContent = newsContent+ " " + new.get_text()
+                                newsContent = newsContent+ " " + new.get_text().strip()
 
-                            print(newsContent.strip())
 
                         except:
                             print("Error!")
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
-                    baseUrl = "https://www.insider.com"
-                    request = requests.get(baseUrl+url, timeout=30)
-                    content = request.content
-                    soup = BeautifulSoup(content, "html.parser")
-                    newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                    print(newsImage)
-                    newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     try:
-                        newsContent = ""
-                        newsTags = soup.find("div", {"id": "piano-inline-content-wrapper"}).find("div", {
-                            "class": "content-lock-content"})
-                        for i in newsTags.find_all('figure', attrs={'data-type': 'img'}):
-                            i.replace_with("")
-                        for new in newsTags.find_all('p'):
-                            newsContent = newsContent+ " " + new.get_text()
-
-                        print(newsContent.strip())
-
-                    except:
+                        baseUrl = "https://www.insider.com"
+                        request = requests.get(baseUrl+url, timeout=30)
+                        content = request.content
+                        soup = BeautifulSoup(content, "html.parser")
+                        name = "insiderNews"
+                        iconUrl = "https://iconape.com/wp-content/files/cc/348265/png/348265.png"
+                        pageurl = baseUrl+url
+                        newsImage = soup.find("meta", {"property": "og:image"}).get("content")
+                        newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
                         try:
                             newsContent = ""
-                            newsTags = soup.find("div", {"class": "col-12"}).find("article").find("section", {"class": "slideshow-container typography"}).find("div", {"class": "content-lock-content"}).find("ul", {"class": "summary-list"})
-
+                            newsTags = soup.find("div", {"id": "piano-inline-content-wrapper"}).find("div", {
+                                "class": "content-lock-content"})
                             for i in newsTags.find_all('figure', attrs={'data-type': 'img'}):
                                 i.replace_with("")
-                            for new in newsTags.find_all('p'.find_all('li',id=False)):
-                                newsContent = newsContent+ " " + new.get_text()
+                            for new in newsTags.find_all('p'):
+                                newsContent = newsContent+ " " + new.get_text().strip()
 
-                            print(newsContent.strip())
 
                         except:
-                            print("Error!")
+                            try:
+                                newsContent = ""
+                                newsTags = soup.find("div", {"class": "col-12"}).find("article").find("section", {"class": "slideshow-container typography"}).find("div", {"class": "content-lock-content"}).find("ul", {"class": "summary-list"})
 
+                                for i in newsTags.find_all('figure', attrs={'data-type': 'img'}):
+                                    i.replace_with("")
+                                for new in newsTags.find_all('p'.find_all('li',id=False)):
+                                    newsContent = newsContent+ " " + new.get_text().strip()
+
+
+                            except:
+                                print("Error!")
+                        databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                    except:
+                        print("Error!")
 
             getContent(firstUrl)
             getContent(secondUrl)
@@ -1434,16 +1397,17 @@ def reuters():
                     request=requests.get(url,timeout=30)
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "reutersNews"
+                    iconUrl = "https://cdn.iconscout.com/icon/free/png-512/reuters-283443.png"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     newsContent = ""
                     newsTags= soup.find("div",{"class":"ArticleBody__container___D-h4BJ"}).find("div",{"class":"ArticleBody__content___2gQno2 paywall-article"}).find_all('p')
                     for new in newsTags:
-                        newsContent = newsContent+ " " + new.get_text()
+                        newsContent = newsContent+ " " + new.get_text().strip()
 
-                    print(newsContent.strip())
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -1484,13 +1448,13 @@ def skyNews():
             def getContent(url):
                 try:
                     request=requests.get(url,timeout=30)
-
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "skyNews"
+                    iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Sky-news-logo.png/1200px-Sky-news-logo.png"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
 
                     try:
 
@@ -1507,9 +1471,8 @@ def skyNews():
                             i.replace_with("")
 
                         for new in newsTags.find_all('p'):
-                            newsContent = newsContent+ " " + new.get_text()
+                            newsContent = newsContent+ " " + new.get_text().strip()
 
-                        print(newsContent.strip())
                     except:
                         try:
                             newsContent = ""
@@ -1523,9 +1486,8 @@ def skyNews():
                                 i.replace_with("")
 
                             for new in newsTags.find_all('p'):
-                                newsContent = newsContent + " " + new.get_text()
+                                newsContent = newsContent + " " + new.get_text().strip()
 
-                            print(newsContent.strip())
                         except:
                             try:
                                 newsContent = ""
@@ -1539,11 +1501,11 @@ def skyNews():
                                     i.replace_with("")
 
                                 for new in newsTags.find_all('p'):
-                                    newsContent = newsContent + " " + new.get_text()
+                                    newsContent = newsContent + " " + new.get_text().strip()
 
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -1582,24 +1544,22 @@ def euronews():
                     request=requests.get(url,timeout=30)
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "euroNews"
+                    iconUrl = "https://cdn.freelogovectors.net/wp-content/uploads/2019/01/euronews_logo.png"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     try:
                         newsContent = ""
                         newsTags= soup.find("div",{"class":"o-article__body"}).find("article",{"class":"article-wrapper c-article__full_article"}).find("section",{"class":"row collapse jsBottomArticle u-overflow-visible u-margin-top-medium-down-2 u-margin-top-large-only-3 u-margin-top-xlarge-4"}).find("div",{"class":"column small-12 medium-10 xlarge-11 js-responsive-iframes-container"}).find("div",{"class":"c-article-content js-article-content article__content"}).find_all('p')
 
                         for new in newsTags:
 
-                            newsContent = newsContent+ " " + new.get_text()
+                            newsContent = newsContent+ " " + new.get_text().strip()
 
-                        print(newsContent.strip())
                     except:
                         try:
-                            print(soup.find("div", {"class": "o-article__body"}).find("div", {
-                                "class": "c-article__full_article"}).find("div", {
-                                "class": "column small-12 medium-10 xlarge-11 js-responsive-iframes-container u-zindex--bottom"}))
+
                             newsTags = soup.find("div", {"class": "o-article__body"}).find("div", {
                                 "class": "c-article__full_article"}).find("div", {
                                 "class": "column small-12 medium-10 xlarge-11 js-responsive-iframes-container u-zindex--bottom"}).find(
@@ -1614,9 +1574,8 @@ def euronews():
                             for i in newsTags.find_all('div', attrs={'class': 'widget widget--type-related widget--size-fullwidth widget--align-center'}):
                                 i.replace_with("")
                             for new in newsTags:
-                                newsContent = newsContent + " " + new.get_text()
+                                newsContent = newsContent + " " + new.get_text().strip()
 
-                            print(newsContent.strip())
 
                         except:
                             try:
@@ -1627,13 +1586,12 @@ def euronews():
                                     i.replace_with("")
 
                                 for new in newsTags:
-                                    newsContent = newsContent + " " + new.get_text()
+                                    newsContent = newsContent + " " + new.get_text().strip()
 
-                                print(newsContent.strip())
 
                             except:
                                 print("Error!")
-
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -1676,10 +1634,11 @@ def sputnik():
                     request=requests.get(url,timeout=30)
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "sputnikNews"
+                    iconUrl = "https://st6232.ispot.cc/apks/rossiya-segodnya/com.sputniknews.sputnik/icon.png"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     newsContent = ""
                     try:
                         newsTags= soup.find("div",{"class":"l-main m-oh"}).find("div",{"class":"b-article__text"})
@@ -1694,14 +1653,13 @@ def sputnik():
                         for i in newsTags.find_all('iframe'):
                             i.replace_with("")
                         for new in newsTags.find_all():
-                            newsContent = newsContent+ " " + new.text
+                            newsContent = newsContent+ " " + new.text.strip()
 
-                        print(newsContent.strip())
 
                     except:
                         print("Error!")
 
-
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
                     print("Error!")
             getContent(firstUrl)
@@ -1743,17 +1701,17 @@ def washingtonPost():
 
                     content=request.content
                     soup=BeautifulSoup(content,"html.parser")
+                    name = "washingtonPostNews"
+                    iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/The_Logo_of_The_Washington_Post_Newspaper.svg/1200px-The_Logo_of_The_Washington_Post_Newspaper.svg.png"
+                    pageurl = url
                     newsImage = soup.find("meta",{"property":"og:image"}).get("content")
-                    print(newsImage)
                     newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                    print(newsTitle)
                     try:
                         newsContent = ""
                         newsTags= soup.find("div",{"class":"relative"}).find("article",{"class":"b-l br-l mb-xxl-ns mt-xxs mt-md-l pr-lg-l col-8-lg mr-lg-l"}).find("div",{"class":"article-body"}).find_all('p')
                         for new in newsTags:
                             newsContent = newsContent+ " " + new.get_text().strip()
 
-                        print(newsContent.strip())
 
                     except:
                         try:
@@ -1763,7 +1721,6 @@ def washingtonPost():
                             for new in newsTags:
                                 newsContent = newsContent+ " " + new.get_text().strip()
 
-                            print(newsContent.strip())
 
                         except:
                             try:
@@ -1773,7 +1730,6 @@ def washingtonPost():
                                 for new in newsTags:
                                     newsContent = newsContent+ " " + new.find("p").get_text().strip()
 
-                                print(newsContent.strip())
 
                             except:
                                 try:
@@ -1783,7 +1739,6 @@ def washingtonPost():
                                     for new in newsTags:
                                         newsContent = newsContent + " "+ new.get_text().strip()
 
-                                    print(newsContent.strip())
 
                                 except:
                                     try:
@@ -1793,7 +1748,6 @@ def washingtonPost():
                                         for new in newsTags:
                                             newsContent = newsContent + " " + new.get_text().strip()
 
-                                        print(newsContent.strip())
 
                                     except:
                                         try:
@@ -1801,7 +1755,6 @@ def washingtonPost():
                                             newsTags = soup.find("main").find("article").find("div", {"class": "topper-grid"}).find("span").get_text()
                                             newsContent = newsContent + " " + newsTags.strip()
 
-                                            print(newsContent.strip())
 
                                         except:
                                             try:
@@ -1809,7 +1762,6 @@ def washingtonPost():
                                                 newsTags = soup.find("main").find("article").find("div", {"class": "topperwrapper"}).find("span").get_text()
                                                 newsContent = newsContent + " " + newsTags.strip()
 
-                                                print(newsContent.strip())
 
                                             except:
                                                 try:
@@ -1818,7 +1770,6 @@ def washingtonPost():
                                                     for i in newsTags:
                                                         newsContent = newsContent + " " + i.find("h3").get_text().strip()+ " " + i.find_all("p")[0].get_text().strip()+ i.find_all("p")[1].get_text().strip()
 
-                                                    print(newsContent.strip())
 
                                                 except:
                                                     try:
@@ -1831,13 +1782,10 @@ def washingtonPost():
                                                         for i in newsTags.find_all("p"):
                                                             newsContent = newsContent+ " " + i.get_text()
 
-                                                        print(newsContent.strip())
-
                                                     except:
                                                             print("Error!")
 
-
-
+                    databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                 except:
                     print("Error!")
             getContent(firstUrl)

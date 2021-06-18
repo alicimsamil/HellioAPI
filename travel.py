@@ -159,9 +159,6 @@ def travel():
 
 
 
-
-
-
         def trailerLife():
             try:
                 url = "https://www.trailerlife.com"
