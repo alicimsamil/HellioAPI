@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-
+import databaseTransactions
 
 def showsMovies():
     def tvShows():
@@ -29,10 +29,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "screenRantTv"
+                            iconUrl = "https://findlogovector.com/wp-content/uploads/2020/06/screen-rant-logo-vector.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"id": "article-body"})
@@ -58,11 +59,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -102,10 +102,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "varietyTvShows"
+                            iconUrl = "https://miro.medium.com/max/3520/1*VNe0Lf6ur02sK5f31dHbYA.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "vy-cx-page-content"})
@@ -131,11 +132,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -176,10 +176,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "tvSeriesFinale"
+                            iconUrl = "https://tvseriesfinale.com/wp-content/themes/tvseriesfinale/images/logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main", {"class": "content"}).find("div", {"class": "entry-content"})
@@ -203,11 +204,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -247,10 +247,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "hollywoodReporterTv"
+                            iconUrl = "https://www.hollywoodreporter.com/wp-content/uploads/2014/07/thr_logo.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "a-content"})
@@ -274,11 +275,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -319,10 +319,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "colliderTv"
+                            iconUrl = "https://collider.com/public/build/images/cl-amp-logo.93e10fe7.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"itemprop": "articleBody"})
@@ -346,11 +347,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -390,10 +390,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theWrap"
+                            iconUrl = "https://www.thewrap.com/wp-content/themes/thewrap-canvas/imgs/thewrap-logo.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "article-content"}).find("div", {"class": "entry-content"})
@@ -417,7 +418,6 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("section", {"class": "aesop-content"})
@@ -441,11 +441,10 @@ def showsMovies():
                                         i.replace_with("")
                                     for x in newsTags.find_all("p"):
                                         newsContent = newsContent + " " + x.get_text().strip()
-                                    print(newsContent.strip())
                                 except:
                                     print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -485,10 +484,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "mtvTvShows"
+                            iconUrl = "https://www.mtv.com.lb/Content/images/push-icon.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "post"}).find("section", {"class": "entry-content"})
@@ -512,11 +512,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -577,10 +576,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "cinemaBlend"
+                            iconUrl = "https://logovectorseek.com/wp-content/uploads/2020/11/cinemablend-logo-vector.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "slot_main"}).find_all("div", attrs={"class": "text-body"})
@@ -605,11 +605,10 @@ def showsMovies():
                                         i.replace_with("")
                                     for i in x.find_all("p"):
                                         newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -649,10 +648,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "screenRantMovies"
+                            iconUrl = "https://findlogovector.com/wp-content/uploads/2020/06/screen-rant-logo-vector.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"id": "article-body"})
@@ -678,11 +678,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -718,10 +717,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "colliderMovies"
+                            iconUrl = "https://upload.wikimedia.org/wikipedia/en/6/64/Collider-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"itemprop": "articleBody"})
@@ -745,11 +745,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -791,10 +790,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "cbrMovies"
+                            iconUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFB3kB1GM13rBThEfypxDAB6adFzNR7qT8R4Y4AsDN2sbe_QzB5stiH9ezjqEWFlI8Vg&usqp=CAU"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"itemprop": "articleBody"})
@@ -818,11 +818,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -865,10 +864,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "comingSoonMovies"
+                            iconUrl = "https://www.comingsoon.net/assets/uploads/2021/05/evolve_media_llc_summer_season_pass_sales_2021_comingsoon_logo_r04b.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "js-article"}).find("div", {"class": "article-content"})
@@ -892,11 +892,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -939,10 +938,11 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "mtvMovies"
+                            iconUrl = "https://www.mtv.com.lb/Content/images/push-icon.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "post"}).find("section", {"class": "entry-content"})
@@ -966,11 +966,10 @@ def showsMovies():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 

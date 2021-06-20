@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import databaseTransactions
 
 
 
@@ -30,10 +31,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "edmNews"
+                            iconUrl = "https://edm.com/.image/c_fit%2Ccs_srgb%2Cq_auto:good%2Cw_916/MTgxNDU4NzMxNDkyNDUxNDky/edmcom---moore-kismet---website-header---front-image---916x240.webp"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "l-grid--content-body"}).find("div", {"class": "m-detail--body"})
@@ -61,11 +63,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -112,10 +113,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "pitchforkElectronic"
+                            iconUrl = "https://cdn.pitchfork.com/assets/misc/hp-og-image.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "article__chunks"}).find("div", {"class": "grid-layout__content"})
@@ -143,11 +145,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -188,10 +189,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "edmTunesNews"
+                            iconUrl = "https://www.edmtunes.com/wp-content/uploads/2017/08/edmtunes-red.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"role": "main"}).find("div", {"class": "td-post-content"})
@@ -219,11 +221,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -265,10 +266,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theMusicEssentials"
+                            iconUrl = "https://themusicessentials.com/wp-content/uploads/2015/06/T.H.E-Logo2.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "td-ss-main-content"}).find("div", {"class": "td-post-content"})
@@ -296,11 +298,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -342,10 +343,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "edmSauceNews"
+                            iconUrl = "https://www.edmsauce.com/wp-content/uploads/2014/12/edmsaucelogo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "theiaPostSlider_slides"}).find("div", {"class": "theiaPostSlider_preloadedSlide"})
@@ -374,7 +376,6 @@ def music():
                                 for i in newsTags.find_all('p'):
                                     newsContent = newsContent + " " + i.get_text().strip()
 
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("div", {"class": "zox-post-main"}).find("div", {"class": "zox-post-body left zoxrel zox100"})
@@ -402,11 +403,10 @@ def music():
                                         i.replace_with("")
 
                                     newsContent = newsContent + " " + newsTags.find("p").get_text().strip()
-                                    print(newsContent.strip())
                                 except:
                                     print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -473,10 +473,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "loudWireNews"
+                            iconUrl = "https://townsquare.media/site/366/files/2019/03/ldlogo2.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "entry"}).find("div", {"class": "pod-content"})
@@ -504,11 +505,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -552,10 +552,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "blabberMouth"
+                            iconUrl = "https://www.blabbermouth.net/assets/main-logo-93709a4802ad4d1f9f32d19edee7e59fa97395795d2711150f4271ba47e07f08.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"itemprop": "articleBody"})
@@ -583,11 +584,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -632,10 +632,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "weareThePit"
+                            iconUrl = "http://www.wearethepit.com/wp-content/uploads/2019/01/heromockup-1.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "main-content"}).find("div", {"class": "entry-content clearfix"})
@@ -665,11 +666,10 @@ def music():
                                     i.replace_with("")
 
                                 newsContent = newsContent + " " + newsTags.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -721,10 +721,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "bluesMatters"
+                            iconUrl = "https://bluesmatters.com/wp-content/uploads/2020/05/blues-matters-logo-large.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "et_pb_row et_pb_row_0"}).find_all("div", attrs={"class": "et_pb_text_inner"})
@@ -753,11 +754,10 @@ def music():
                                         i.replace_with("")
                                     for x in c.find_all("p"):
                                         newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -798,10 +798,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "americanBluesScene"
+                            iconUrl = "https://www.americanbluesscene.com/wp-content/uploads/2020/04/american-blues-scene-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"data-widget_type": "theme-post-content.default"}).find("div", {"class": "elementor-widget-container"})
@@ -829,11 +830,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -876,10 +876,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "downBeat"
+                            iconUrl = "https://downbeat.com/_img/logo_0087DE.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "col-sm-7 col-sm-push-2 pad-col"})
@@ -909,11 +910,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -954,10 +954,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "bluesRockReview"
+                            iconUrl = "https://bluesrockreview.com/wp-content/uploads/2014/03/cropped-brr_logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "content"}).find("div", {"class": "entry-content clearfix"})
@@ -987,11 +988,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1041,10 +1041,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "hipHopDx"
+                            iconUrl = "https://static.hiphopdx.com/assets/prod/img/logo-black.svg?v11"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "cmn_wrap"}).find("div", {"itemprop": "articleBody"})
@@ -1074,11 +1075,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1118,10 +1118,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theSourceHipHop"
+                            iconUrl = "https://thesource.com/source_logo_.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"itemprop": "articleBody"})
@@ -1151,11 +1152,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1191,10 +1191,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "pitchforkHipHop"
+                            iconUrl = "https://cdn.pitchfork.com/assets/misc/hp-og-image.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "article__chunks"}).find("div", {"class": "grid-layout__content"})
@@ -1222,11 +1223,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1277,10 +1277,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "xxlmagHipHop"
+                            iconUrl = "https://townsquare.media/site/812/files/2017/10/xxl-trimmed-spacing.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "entry"}).find("div", {"class": "pod-content"})
@@ -1308,11 +1309,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1355,10 +1355,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "rapupHipHop"
+                            iconUrl = "https://pbs.twimg.com/profile_images/1270742698278785029/CxbBCQ-7_400x400.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main", {"id": "post-single"}).find("section", {"id": "story"}).find("div",{"class":"content stickem-container"})
@@ -1386,11 +1387,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1441,10 +1441,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "cmtCountry"
+                            iconUrl = "https://seeklogo.com/images/C/cmt-country-music-television-logo-A17712C67C-seeklogo.com.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "main"}).find("section", {"class": "entry-content"})
@@ -1472,11 +1473,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1527,10 +1527,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "tasteOfCountry"
+                            iconUrl = "https://pbs.twimg.com/profile_images/656499940806385664/yHeprouf.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "main-content"}).find("div", {"class": "entry"}).find("div", {"class": "pod-content"})
@@ -1558,11 +1559,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1602,10 +1602,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "peopleCountry"
+                            iconUrl = "https://people.com/img/misc/og-default.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "container-full-width"}).find("div", {"class": "articleContainer"}).find_all("div",{"class":"articleContainer__content"})
@@ -1633,11 +1634,10 @@ def music():
                                     for x in c.find_all("div",{"class":"paragraph"}):
                                         for e in x.find_all("p"):
                                             newsContent = newsContent + " " + e.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1677,10 +1677,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "countryNow"
+                            iconUrl = "https://countrynow.com/wp-content/uploads/2019/04/logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main", {"id": "content"}).find("div", {"class": "grids"}).find("article", {"class": "clearfix single-box entry-content"})
@@ -1708,11 +1709,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1763,10 +1763,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theBootCountry"
+                            iconUrl = "https://townsquare.media/site/623/files/2017/10/theboot-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "main-content"}).find("div", {"class": "entry"}).find("div", {"class": "content-wrap"}).find("div", {"class": "pod-content"})
@@ -1794,11 +1795,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1848,10 +1848,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "jazzTimes"
+                            iconUrl = "https://pbs.twimg.com/profile_images/1009167791377641474/Y6Lk_s2i_400x400.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main", {"id": "main"}).find("div", {"class": "entry-content-wrapper"}).find("div", {"class": "entry-content"})
@@ -1879,11 +1880,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1924,10 +1924,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "allAboutJazz"
+                            iconUrl = "https://upload.wikimedia.org/wikipedia/en/3/3f/All-about-jazz-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"itemprop": "articleBody"}).find("div", {"itemprop": "text"})
@@ -1954,11 +1955,10 @@ def music():
                                 for i in newsTags.find_all('script'):
                                     i.replace_with("")
                                 newsContent = newsContent + " " + newsTags.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1997,10 +1997,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "pitchforkJazz"
+                            iconUrl = "https://cdn.pitchfork.com/assets/misc/hp-og-image.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "article__chunks"}).find("div", {"class": "grid-layout__content"})
@@ -2028,11 +2029,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -2073,10 +2073,11 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "nprJazz"
+                            iconUrl = "https://media.npr.org/chrome_svg/npr-logo.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "story"}).find("div", {"id": "storytext"})
@@ -2104,11 +2105,10 @@ def music():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 

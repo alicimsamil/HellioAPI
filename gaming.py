@@ -1,3 +1,4 @@
+import databaseTransactions
 from bs4 import BeautifulSoup
 import requests
 
@@ -29,10 +30,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "pcgamerNews"
+                            iconUrl = "https://www.responsesource.com/content/uploads/2016/07/PC-Gamer.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "article-body"})
@@ -56,11 +58,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -101,10 +102,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theVergeNews"
+                            iconUrl = "https://upload.wikimedia.org//wikipedia/commons/thumb/3/35/Verge-color_logo.svg/1200px-Verge-color_logo.svg.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main", {"id": "content"}).find("div", {"class": "c-entry-content"})
@@ -128,11 +130,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -174,10 +175,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "gameInformerNews"
+                            iconUrl = "https://www.gameinformer.com/sites/default/files/imagefeed/gisocial.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"property": "schema:text"})
@@ -201,11 +203,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -248,10 +249,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "gameRantNews"
+                            iconUrl = "https://pbs.twimg.com/profile_images/1288445622542929923/05FNH9O5.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"id": "article-body"})
@@ -277,11 +279,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -322,10 +323,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "ignNews"
+                            iconUrl = "https://yt3.ggpht.com/ytc/AAUvwngvOQvSsus1IvliMsc5Tsz2BajY4c-4j0c1br_rCA=s900-c-k-c0x00ffffff-no-rj"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"class": "article-page"})
@@ -351,16 +353,14 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("div", {"itemprop": "description"})
                                     newsContent = newsContent + " " + newsTags.get_text().strip()
-                                    print(newsContent.strip())
                                 except:
                                     print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -400,10 +400,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "gamespotNews"
+                            iconUrl = "https://www.gamespot.com/a/bundles/gamespotsite/images/logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"class": "article-body"}).find("div", {"class": "js-content-entity-body content-entity-body"})
@@ -427,11 +428,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -490,10 +490,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "esportsinsider"
+                            iconUrl = "https://resources.esportsinsider.com/esportsinsider/2018/04/esi-logo-544x180.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "td-post-content"})
@@ -517,11 +518,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -562,10 +562,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "sportSkeedaEsports"
+                            iconUrl = "https://cdn.flipboard.com/uploads/avatar/fc229c3603d4cd543a5e6b6d70a9c8507f76a5ec.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "article-content"})
@@ -589,11 +590,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -632,10 +632,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "dotEsports"
+                            iconUrl = "https://cdn1.dotesports.com/wp-content/uploads/2018/08/08145103/2840ee3d-2f1b-4a57-9c79-c7f13a503bd1.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "main-content"})
@@ -659,11 +660,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -705,10 +705,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "esportsObserver"
+                            iconUrl = "https://esportsobserver.com/wp-content/uploads/2020/03/TEO_EXTENDED_BLACK.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "content-inner"})
@@ -732,11 +733,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -778,10 +778,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "oneEsports"
+                            iconUrl = "https://oneesports.blob.core.windows.net/cdn-data/2021/03/oneesports-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "post-content-stream"}).find("div", {"class": "post-content"})
@@ -805,11 +806,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -866,10 +866,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "dotEsportsValorant"
+                            iconUrl = "https://cdn1.dotesports.com/wp-content/uploads/2018/08/08145103/2840ee3d-2f1b-4a57-9c79-c7f13a503bd1.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "main-content"})
@@ -893,11 +894,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -939,10 +939,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "sportSkeedaValorant"
+                            iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Sportskeeda.svg/1280px-Sportskeeda.svg.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "article-content"})
@@ -966,11 +967,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1011,10 +1011,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "talkEsportValorant"
+                            iconUrl = "https://www.talkesport.com/wp-content/uploads/2015/11/500-130.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "vc_row_inner tdi_19 vc_row vc_inner wpb_row td-pb-row"}).find("div", {"class": "tdb-block-inner td-fix-index"})
@@ -1038,11 +1039,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1082,10 +1082,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theGamehausValorant"
+                            iconUrl = "https://i1.wp.com/thegamehaus.com/wp-content/uploads/2018/04/TheGameHausTransparentLogo.png?fit=230%2C230&ssl=1"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "penci-entry-content entry-content"})
@@ -1109,11 +1110,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1166,10 +1166,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "dotEsportsLol"
+                            iconUrl = "https://play-lh.googleusercontent.com/9H8yYMJMXHrvD7k1RC-c0nSgpwhDbCtW4218coPdtfM8tJBjoZXOjytTE89ILWeWOQ"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "main-content"})
@@ -1193,11 +1194,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1239,10 +1239,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "sportSkeedaLol"
+                            iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Sportskeeda.svg/1280px-Sportskeeda.svg.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "article-content"})
@@ -1266,11 +1267,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1312,10 +1312,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "leagueFeedLol"
+                            iconUrl = "https://leaguefeed.net/wp-content/uploads/2021/01/leaguefeed-red-1.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "entry-content no-share"}).find("div", {"class": "content-inner"})
@@ -1339,11 +1340,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1385,10 +1385,11 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "earlyGameLol"
+                            iconUrl = "https://www.earlygame.com/uploads/images/logo.jpeg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main",{"class":"has-topbar"}).find("article",{"class":"publication"})
@@ -1412,11 +1413,10 @@ def gaming():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1426,9 +1426,6 @@ def gaming():
 
             except:
                 print("Error!")
-
-
-
 
 
 

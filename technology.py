@@ -1,4 +1,4 @@
-
+import databaseTransactions
 import requests
 from bs4 import BeautifulSoup
 
@@ -34,10 +34,11 @@ def technology():
                             request = requests.get(url, timeout=30)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "cNETMobile"
+                            iconUrl = "https://cdn.iconscout.com/icon/free/png-512/cnet-283245.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "contentWrap"}).find("div",{"class": "container"})
@@ -55,9 +56,10 @@ def technology():
                                         for i in new.find("div",{"class":"col-12"}).find("article",{"id":"article-body"}).find("div",{"class":"col-7 article-main-body row"}).find_all('p'):
                                             newsContent = newsContent + " " + i.text.strip()
                                     a=a+1
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
+
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -95,10 +97,11 @@ def technology():
                             request = requests.get(url, timeout=30)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "techRadarMobile"
+                            iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/TechRadar_logo.svg/1200px-TechRadar_logo.svg.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             try:
                                 newsContent = ""
                                 newsTags = soup.find("section", {"class": "content-wrapper"}).find("div",{"id": "article-body"})
@@ -112,7 +115,6 @@ def technology():
                                 for new in newsTags.find_all('p'):
                                     newsContent=newsContent+" "+new.get_text().strip()
 
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsContent = ""
@@ -130,11 +132,10 @@ def technology():
                                     for new in newsTags.find_all('div', attrs={'class': 'wcp-item-content'}):
                                         newsContent = newsContent + " " + new.get_text().strip()
 
-                                    print(newsContent.strip())
 
                                 except:
                                     print("Error!")
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
                     getContent(firstUrl)
@@ -177,10 +178,11 @@ def technology():
                             request = requests.get(url, timeout=30)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "pocketLintMobile"
+                            iconUrl = "https://assets-global.website-files.com/5ca6f1703977261264f0212e/5dc976f041ec9e06774029ed_pocketlint.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             newsTags = soup.find("div", {"id": "container"}).find("div",{"class": "text-content"})
                             a = 0
@@ -202,8 +204,7 @@ def technology():
                             for new in newsTags.find_all('p'):
                                 newsContent=newsContent+" "+new.get_text().strip()
 
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -250,30 +251,26 @@ def technology():
                             request = requests.get(url, timeout=30)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "gadgets360Mobile"
+                            iconUrl = "https://images.metadata.sky.com/pd-image/91746c63-9c7d-4f64-b7b4-bf7148eef072/16-9"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             newsTags = soup.find("div", {"class": "rhs clearfix"}).find("div",{"class": "content_section"}).find("div",{"class": "content_block white_bg row margin_b30"}).find("div",{"class": "story_detail row margin_b20"}).find("div",{"id": "center_content_div"}).find("div",{"class": "content_text row description"})
 
                             for i in newsTags.find_all('div', attrs={'class': 'embed-container'}):
                                 i.replace_with("")
-
                             for i in newsTags.find_all('iframe', attrs={'allow': 'encrypted-media'}):
                                 i.replace_with("")
-
                             for i in newsTags.find_all('div', attrs={'id': 'adslotNativeVideo'}):
                                 i.replace_with("")
                             for i in newsTags.find_all('div', attrs={'class': 'alsoseewgt oneline clearfix'}):
                                 i.replace_with("")
-
-
                             for new in newsTags.find_all('p'):
                                 newsContent=newsContent+" "+new.get_text().strip()
 
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -299,7 +296,6 @@ def technology():
 
                     firstNews = soup.find("div", {"class": "archive"}).find("article", {"class": "lg"}).find("div", {"class": "row"}).find("div", {"class": "col-sm-6"}).find("h2").find("a").get("href")
 
-
                     a=0
                     for i in soup.find("div", {"class": "archive"}).find_all('div', attrs={'class': 'row'}):
 
@@ -324,10 +320,11 @@ def technology():
                             request = requests.get(url, timeout=30)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "techTimesMobile"
+                            iconUrl = "https://owlcam.com/wp-content/uploads/2019/09/tech-times.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             newsTags = soup.find("div", {"class": "archive"}).find("div",{"class": "row"}).find("div",{"class": "article-body"})
 
@@ -344,8 +341,7 @@ def technology():
                             for new in newsTags.find_all('p'):
                                 newsContent=newsContent+" "+new.get_text().strip()
 
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -399,19 +395,17 @@ def technology():
                             request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "iotNow"
+                            iconUrl = "https://cdn.asp.events/CLIENT_CL_EE_E92EC48A_9F42_8E1E_7106D5CAFEEF513B/sites/Project-Alex/media/libraries/media/Iotnow_500x200.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             newsTags = soup.find("div", {"class": "builder-html"}).find("main", {"class": "container"}).find("div",{"class": "col-md-12 col-lg-8"}).find("div",{"class": "article__content"})
-
-
                             for new in newsTags.find_all("p"):
                                 newsContent=newsContent+" "+new.get_text().strip()
 
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -458,10 +452,11 @@ def technology():
                             request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "iotBusinessNews"
+                            iconUrl = "https://pbs.twimg.com/profile_images/1248601787147280384/viJxcTHE.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             newsTags = soup.find("div", {"class": "main-content"}).find("div", {"class": "site-content page-wrap"}).find("div",{"class": "entry-content clearfix"})
 
@@ -474,8 +469,7 @@ def technology():
                             for new in newsTags.find_all("p"):
                                 newsContent=newsContent+" "+new.get_text().strip()
 
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -524,10 +518,11 @@ def technology():
                             request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "futureIot"
+                            iconUrl = "https://pbs.twimg.com/profile_images/1141217277959761922/-_W98lS9.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             newsTags = soup.find("div", {"class": "jeg_viewport"}).find("div", {"class": "post-wrapper"}).find("div",{"class": "row"}).find("div",{"class": "entry-content with-share"}).find("div",{"class": "content-inner"})
 
@@ -538,8 +533,7 @@ def technology():
                             for new in newsTags.find_all("p"):
                                 newsContent=newsContent+" "+new.get_text().strip()
 
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -593,10 +587,11 @@ def technology():
                             request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "mitAI"
+                            iconUrl = "https://yt3.ggpht.com/ytc/AAUvwnjQD4IfLhQni2KsfwvW8MbpZSxeKUgfOadv0EWVoA=s900-c-k-c0x00ffffff-no-rj"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             newsTags = soup.find("main", {"class": "site-main"}).find("div", {"class": "page--section"}).find("div",{"id": "block-mit-content"}).find("div",{"class": "news-article--content"}).find("div",{"class": "news-article--content--body"}).find("div",{"class": "news-article--content--body--inner"})
 
@@ -608,8 +603,7 @@ def technology():
                                 for x in new.find_all('p'):
                                     newsContent=newsContent+" "+x.get_text().strip()
 
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -687,15 +681,14 @@ def technology():
                             request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "wiredAI"
+                            iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Wired_logo.svg/1200px-Wired_logo.svg.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main", {"id": "main-content"}).find("div", {"class": "content-background"})
-
-
                                 for i in newsTags.find_all('div',attrs={'class':'sc-hRUHzT dOqdZq callout--has-top-border'}):
                                     i.replace_with("")
                                 for x in newsTags.find_all('p'):
@@ -703,9 +696,7 @@ def technology():
                             except:
                                 print("Error!")
 
-
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -741,9 +732,6 @@ def technology():
                         a=a+1
 
 
-
-
-
                     url = "https://thenextweb.com"
 
                     firstUrl = url + firstNews
@@ -755,10 +743,11 @@ def technology():
                             request = requests.get(url, timeout=30,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theNextWebAI"
+                            iconUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1eJ3yboAArCUm-JjezpoKu8XDISu5r-_UcpOiFJGxe3mdw3Iqlvjfl4v7Z11Ow6w9jy0&usqp=CAU"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -779,8 +768,7 @@ def technology():
                             except:
                                 print("Error!")
 
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -830,10 +818,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theVergeAI"
+                            iconUrl = "https://cdn.vox-cdn.com/uploads/chorus_asset/file/9672633/VergeOG.0_1200x627.0.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -845,12 +834,11 @@ def technology():
                                 for i in newsTags.find_all('div',attrs={'class':'article-body-banner banner'}):
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
-
-                                        newsContent=newsContent+" "+x.get_text().strip()
+                                    newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
 
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -904,10 +892,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "digitalTrends"
+                            iconUrl = "https://cdn.dtcn.com/dtdesign/2019/iphone-11-amp-review/assets/DT-logo-RGB-horizontal_4x.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -926,8 +915,7 @@ def technology():
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -967,10 +955,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "techRadarComputing"
+                            iconUrl = "https://assets-jpcust.jwpsrv.com/watermarks/0AT1nZQJ.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -988,8 +977,7 @@ def technology():
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1034,14 +1022,14 @@ def technology():
                             request = requests.get(url, timeout=30)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "cnetComputing"
+                            iconUrl = "https://cdn.iconscout.com/icon/free/png-512/cnet-283245.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
-                                newsTags = soup.find("div", {"class": "contentWrap"}).find("div",
-                                                                                           {"class": "container"})
+                                newsTags = soup.find("div", {"class": "contentWrap"}).find("div",{"class": "container"})
                                 a = 0
 
                                 for i in newsTags.find_all('figure', attrs={'section': 'shortcodeImage'}):
@@ -1056,9 +1044,9 @@ def technology():
                                         for i in new.find("div", {"class": "col-12"}).find("article",{"id": "article-body"}).find("div", {"class": "col-7 article-main-body row"}).find_all('p'):
                                             newsContent = newsContent + " " + i.text.strip()
                                     a = a + 1
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1100,10 +1088,11 @@ def technology():
                             request = requests.get(url, timeout=30)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "tomsHardware"
+                            iconUrl = "https://cdn.knoji.com/images/logo/tomshardwarecom.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "news-article"}).find("section", {"class": "content-wrapper"}).find("div", {"id": "article-body"})
@@ -1119,9 +1108,9 @@ def technology():
                                 for new in newsTags.find_all('p'):
                                     newsContent = newsContent + " " + new.text.strip()
 
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1159,14 +1148,14 @@ def technology():
                             request = requests.get(url, timeout=30)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "computerworld"
+                            iconUrl = "https://mobysign.com/mobysign/wp-content/uploads/2016/07/computerworld.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "page-wrapper"}).find("section", {"role": "main"}).find("section", {"class": "bodee"}).find("div", {"itemprop": "articleBody"})
-
 
                                 for i in newsTags.find_all('aside'):
                                     i.replace_with("")
@@ -1176,16 +1165,15 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('div',attrs={"id":"editorialfakesidebardiv"}):
                                     i.replace_with("")
-
                                 for i in newsTags.find_all('div',attrs={"class":"end-note"}):
                                     i.replace_with("")
 
                                 for new in newsTags.find_all('p'):
                                     newsContent = newsContent + " " + new.text.strip()
 
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1235,10 +1223,11 @@ def technology():
                             request = requests.get(url, timeout=60)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "robohub"
+                            iconUrl = "https://robohub.org/wp-content/themes/rbh_vf/images/printlogo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("head").find("title").get_text().strip()
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "page-wrap"}).find("div", {"id": "main"}).find("div", {"class": "inner clearfix"}).find("div", {"class": "columnv mainw"}).find("div", {"class": "intcontent"})
@@ -1260,9 +1249,9 @@ def technology():
                                 for new in newsTags.find_all('p'):
                                     newsContent = newsContent + " " + new.text.strip()
 
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1300,18 +1289,16 @@ def technology():
                             request = requests.get(url, timeout=30)
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "automate"
+                            iconUrl = "https://www.wileyindustrynews.com/sites/default/files/styles/gallery/public/2021-03/a3_logo.jpg?h=bdcf3624&itok=vuMwHO7o"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            if newsImage!="":
-                                print(newsImage)
-                            else:
+                            if newsImage=="":
                                 newsImage="https://www.automate.org/favicon.ico"
-                                print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "wrapper"}).find("main", {"role": "main"}).find("div", {"class": "gridcol nine"}).find("div", {"class": "articleContent"})
-
 
                                 for i in newsTags.find_all('img'):
                                     i.replace_with("")
@@ -1321,14 +1308,12 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('a'):
                                     i.replace_with("")
-
-
                                 for new in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + new.text.strip()
 
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1368,10 +1353,11 @@ def technology():
                             request = requests.get(url, timeout=30, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theRobotReport"
+                            iconUrl = "https://sponsorlogo.informamarkets.com/sites/default/files/The-Robot-Report-422x292.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
 
@@ -1386,14 +1372,11 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('div'):
                                     i.replace_with("")
-
-
                                 for new in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + new.text.strip()
-
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1431,10 +1414,11 @@ def technology():
                             request = requests.get(url, timeout=30, headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "physRobotics"
+                            iconUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoUiTEXIJ78QFU6YRh1CF8x0gNrX5rlin4BAulPXPs30M09gtABAc169NMazKMqC4LXPc&usqp=CAU"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
 
@@ -1453,14 +1437,12 @@ def technology():
                                     i.replace_with("")
                                 for i in newsTags.find_all('p',attrs={"class":"article-main__note mt-4"}):
                                     i.replace_with("")
-
-
                                 for new in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + new.text.strip()
 
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1510,10 +1492,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theHackerNews"
+                            iconUrl = "https://thehackernews.com/images/-AaptImXE5Y4/WzjvqBS8HtI/AAAAAAAAxSs/BcCIwpWJszILkuEbDfKZhxQJwOAD7qV6ACLcBGAs/s728-e100/the-hacker-news.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -1530,8 +1513,7 @@ def technology():
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1570,10 +1552,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "tripWire"
+                            iconUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRANxSlbPj3u8uc1KPELXrmIZScs4nLzfiwrresiALgAcATaVLZpuQBXsdP-drHHUUc8CM&usqp=CAU"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -1592,8 +1575,7 @@ def technology():
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1635,10 +1617,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "darkReading"
+                            iconUrl = "https://twimgs.com/nojitter/darkreading/dr-logo.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -1663,8 +1646,7 @@ def technology():
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1703,10 +1685,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "threatPost"
+                            iconUrl = "https://media.threatpost.com/wp-content/uploads/sites/103/2018/07/02133237/THREAT-e1530305072468.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -1735,8 +1718,7 @@ def technology():
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1777,10 +1759,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "hackRead"
+                            iconUrl = "https://pbs.twimg.com/profile_images/1076928978794016769/paG0wbRw_400x400.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -1803,8 +1786,7 @@ def technology():
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1814,12 +1796,6 @@ def technology():
 
             except:
                 print("Error!")
-
-
-
-
-
-
 
 
 
@@ -1862,10 +1838,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "wiredBlockChain"
+                            iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Wired_logo.svg/1200px-Wired_logo.svg.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -1894,8 +1871,7 @@ def technology():
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1933,10 +1909,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "cnbcBlockChain"
+                            iconUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/CNBC-e.svg/1200px-CNBC-e.svg.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -1964,8 +1941,7 @@ def technology():
                                         newsContent=newsContent+" "+c.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -2005,10 +1981,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "forbesBlockChain"
+                            iconUrl = "https://1000logos.net/wp-content/uploads/2021/05/Forbes-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -2037,8 +2014,7 @@ def technology():
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -2077,10 +2053,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "coindeskBlockChain"
+                            iconUrl = "https://s2-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/839/300/original/coindesk-4C_2x.png?1570032520"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -2138,8 +2115,7 @@ def technology():
                                         newsContent = newsContent + " " + x.get_text().strip()
                                 except:
                                     print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -2179,10 +2155,11 @@ def technology():
                             request = requests.get(url, timeout=60,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "bitcoinBlockChain"
+                            iconUrl = "https://blokzin.github.io/assets/img/resources/bitcoin-com.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
 
                             try:
@@ -2219,8 +2196,7 @@ def technology():
                                     newsContent=newsContent+" "+x.get_text().strip()
                             except:
                                 print("Error!")
-                            print(newsContent.strip())
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 

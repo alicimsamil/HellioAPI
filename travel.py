@@ -1,4 +1,4 @@
-
+import databaseTransactions
 from bs4 import BeautifulSoup
 import requests
 
@@ -29,10 +29,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "rvdealerNews"
+                            iconUrl = "http://rvldealernews.com/wp-content/uploads/2017/10/DEALER-NEWS-new-logo-544-180.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"role": "main"}).find("div", {"class": "td-post-content"})
@@ -60,11 +61,9 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
-
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -107,10 +106,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "motorHome"
+                            iconUrl = "https://www.motorhome.com/wp-content/uploads/2017/09/MotorHome-logo-white-373x80-300x64.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"role": "main"}).find("div", {"class": "td-post-content"})
@@ -138,11 +138,9 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
-
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -184,10 +182,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "trailerLife"
+                            iconUrl = "https://www.trailerlife.com/wp-content/uploads/2017/08/Trailer-Life-logo-white-300x80-300x80.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"role": "main"}).find("div", {"class": "td-post-content"})
@@ -215,11 +214,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -264,10 +262,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "rvPro"
+                            iconUrl = "https://rv-pro.com/wp-content/uploads/2020/06/rvp-logo-main-20200610-191521.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"id": "the-post"}).find("div", {"class": "entry-content entry clearfix"})
@@ -295,11 +294,9 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
-
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -339,10 +336,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "rvNews"
+                            iconUrl = "https://rv-pro.com/wp-content/uploads/2020/06/rvp-logo-main-20200610-191521.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
 
@@ -371,11 +369,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -430,10 +427,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "bbcAirTravel"
+                            iconUrl = "https://img.icons8.com/ios/452/bbc-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "ssrcss-1072xwf-ArticleWrapper"})
@@ -460,7 +458,6 @@ def travel():
                                 for x in newsTags.find_all("div",attrs={"data-component":"text-block"}):
                                     for a in x.find_all("p"):
                                         newsContent = newsContent + " " + a.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("div", {"id": "story-content"}).find("div", {"class": "body-content"})
@@ -488,11 +485,10 @@ def travel():
                                         i.replace_with("")
                                     for x in newsTags.find_all("p"):
                                         newsContent = newsContent + " " + x.get_text().strip()
-                                    print(newsContent.strip())
                                 except:
                                     print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -535,10 +531,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "independentAirTravel"
+                            iconUrl = "https://w7.pngwing.com/pngs/226/415/png-transparent-the-independent-united-kingdom-logo-newspaper-news-media-newspaper-bald-eagle-vertebrate-media.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "main"})
@@ -564,11 +561,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -608,10 +604,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "travelPulseAirTravel"
+                            iconUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_FmWaGyNIVgG0vdjvkzHKEeo_wBCukW8viQq7pU_2AqihNrq7YHuQFb_FjJEwYArszWo&usqp=CAU"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "news detail"}).find("div", {"class": "content aqua_links clear"})
@@ -639,11 +636,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -684,10 +680,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "ndtvAirTravel"
+                            iconUrl = "https://i.pinimg.com/originals/5b/64/ea/5b64ea67efe77c5d81d3a08a4e4ac97e.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"itemprop": "articleBody"})
@@ -715,11 +712,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -772,10 +768,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "breakingTravelNewsHotel"
+                            iconUrl = "https://www.breakingtravelnews.com/images/logo/BTN-logo-retina.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "post-entry"})
@@ -803,11 +800,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -851,10 +847,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "travelWeeklyHotel"
+                            iconUrl = "https://travelweekly.co.uk/tw/images/travelweekly/og-default_v1.png?t=16"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"itemprop": "articleBody"})
@@ -882,11 +879,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -896,11 +892,6 @@ def travel():
 
             except:
                 print("Error!")
-
-
-
-
-
 
 
 
@@ -931,10 +922,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "skiftHotel"
+                            iconUrl = "https://images.ctfassets.net/13indbtdj8hn/5dkZif0cmV5KYuUUB0rxAn/ebd9912ac2502f289068ec4f1f012017/skift_banner.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "post-copy"})
@@ -962,7 +954,6 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("div", {"class": "take-copy"})
@@ -990,11 +981,10 @@ def travel():
                                         i.replace_with("")
                                     for x in newsTags.find_all("p"):
                                         newsContent = newsContent + " " + x.get_text().strip()
-                                    print(newsContent.strip())
                                 except:
                                     print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1004,12 +994,6 @@ def travel():
 
             except:
                 print("Error!")
-
-
-
-
-
-
 
 
 
@@ -1041,10 +1025,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "topHotelNews"
+                            iconUrl = "https://www.tophotelprojects.com/wp-content/uploads/2017/02/TOPHOTELNEWS.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "et_pb_module et_pb_text et_pb_text_0 et_pb_text_align_left et_pb_bg_layout_light"}).find("div", {"class": "et_pb_text_inner"})
@@ -1072,11 +1057,9 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
-
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1086,11 +1069,6 @@ def travel():
 
             except:
                 print("Error!")
-
-
-
-
-
 
 
 
@@ -1121,10 +1099,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "travelPulseHotelTravel"
+                            iconUrl = "https://geneandgeorgetti.com/wp-content/uploads/2015/08/travel-pulse.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "news detail"}).find("div", {"class": "content aqua_links clear"})
@@ -1152,11 +1131,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1209,10 +1187,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "bucketListJourney"
+                            iconUrl = "https://i0.wp.com/bucketlistjourney.net/wp-content/uploads/2020/05/BLJ-by-Annette-Logo-copy-1.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "fusion-text fusion-text-1"})
@@ -1240,11 +1219,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all():
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1254,11 +1232,6 @@ def travel():
 
             except:
                 print("Error!")
-
-
-
-
-
 
 
 
@@ -1288,10 +1261,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "katieParla"
+                            iconUrl = "https://katieparla.com/wp-content/uploads/2015/12/KP-logo-ls.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section", {"id": "content"}).find("div", {"class": "post-content"})
@@ -1319,11 +1293,9 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all():
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
-
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1333,16 +1305,6 @@ def travel():
 
             except:
                 print("Error!")
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1373,10 +1335,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "willTravelForFood"
+                            iconUrl = "http://willtravelforfood.com/wp-content/themes/simply-white3/images/logo-new.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "post-content"})
@@ -1406,11 +1369,9 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
-
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1453,10 +1414,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "iAmAIleen"
+                            iconUrl = "https://iamaileen.com/wp-content/uploads/2021/02/home-iaa-main-travel-logo.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find_all("div", attrs={"class": "wp-block-group__inner-container"})
@@ -1489,11 +1451,10 @@ def travel():
                                         i.replace_with("")
                                     for c in x.find_all("p"):
                                         newsContent = newsContent + " " + c.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1548,10 +1509,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "breakingTravelNewsCruise"
+                            iconUrl = "https://www.breakingtravelnews.com/images/logo/BTN-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "post-entry"})
@@ -1584,11 +1546,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1631,10 +1592,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "travelPulseCruiseTravel"
+                            iconUrl = "https://geneandgeorgetti.com/wp-content/uploads/2015/08/travel-pulse.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "news detail"}).find("div", {"class": "content aqua_links clear"})
@@ -1662,11 +1624,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1707,10 +1668,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "travelWeeklyCruise"
+                            iconUrl = "https://travelweekly.co.uk/tw/images/travelweekly/og-default_v1.png?t=16"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"itemprop": "articleBody"})
@@ -1743,11 +1705,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1796,10 +1757,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "bbcRailNews"
+                            iconUrl = "https://img.icons8.com/ios/452/bbc-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "ssrcss-1072xwf-ArticleWrapper"})
@@ -1826,7 +1788,6 @@ def travel():
                                 for x in newsTags.find_all("div", attrs={"data-component": "text-block"}):
                                     for a in x.find_all("p"):
                                         newsContent = newsContent + " " + a.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("div", {"id": "story-content"}).find("div",{"class": "body-content"})
@@ -1854,11 +1815,9 @@ def travel():
                                         i.replace_with("")
                                     for x in newsTags.find_all("p"):
                                         newsContent = newsContent + " " + x.get_text().strip()
-                                    print(newsContent.strip())
                                 except:
                                     print("Error!")
-
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1900,10 +1859,11 @@ def travel():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "interRailNews"
+                            iconUrl = "https://www.interrail.eu/content/dam/brand-assets/logos/Interrail%20Eurail%20RGB%202019.adaptive.130.0.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "section aem-GridColumn aem-GridColumn--default--12"}).find("div", {"class": "e-text"})
@@ -1937,11 +1897,10 @@ def travel():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1959,14 +1918,6 @@ def travel():
 
         bbcRailNews()
         interRailNews()
-
-
-
-
-
-
-
-
 
 
 

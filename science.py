@@ -1,4 +1,4 @@
-
+import databaseTransactions
 import requests
 from bs4 import BeautifulSoup
 
@@ -31,10 +31,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "physMathematics"
+                            iconUrl = "https://phys.b-cdn.net/tmpl/v6/img/logo-header.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "news-article"}).find("div", {"class": "mt-4 article-main"})
@@ -65,11 +66,10 @@ def science():
                                 for i in newsTags.find_all('script'):
                                     i.replace_with("")
                                 newsContent = newsContent + " " + newsTags.find("p").get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -108,10 +108,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "scienceDailyMathematics"
+                            iconUrl = "https://www.sciencedaily.com/images/sd-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "story_text"})
@@ -153,11 +154,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -200,10 +200,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "plusMagazineMathematics"
+                            iconUrl = "https://plus.maths.org/content/sites/plus.maths.org/themes/bootplus/Header.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "field field-name-body field-type-text-with-summary field-label-hidden"}).find("div", {"class": "field-item even"})
@@ -233,11 +234,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -278,10 +278,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "firstPostMathematics"
+                            iconUrl = "https://www.firstpost.com/static/images/fp-desk-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "inner-copy article-full-content"})
@@ -309,11 +310,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -363,10 +363,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "sciencedailybiology"
+                            iconUrl = "https://www.sciencedaily.com/images/sd-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "story_text"})
@@ -408,11 +409,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -450,10 +450,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "physBiology"
+                            iconUrl = "https://phys.b-cdn.net/tmpl/v6/img/logo-header.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "news-article"}).find("div", {"class": "mt-4 article-main"})
@@ -485,14 +486,11 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all('script'):
                                     i.replace_with("")
-
-
                                 newsContent = newsContent + " " + newsTags.find("p").get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -533,10 +531,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "scitechDailybiology"
+                            iconUrl = "https://scitechdaily.com/images/scitechdaily-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "entry-content clearfix"})
@@ -566,11 +565,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -612,10 +610,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "sciNewsbiology"
+                            iconUrl = "http://cdn.sci-news.com/images/2013/02/banner_site.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "entry-content"})
@@ -645,11 +644,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -708,10 +706,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "downToEearth"
+                            iconUrl = "https://www.downtoearth.org.in/static/new_assets/img/dte-logo-eh.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image:url"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "news-detail-content"})
@@ -736,12 +735,12 @@ def science():
                                 for i in newsTags.find_all('script'):
                                     i.replace_with("")
 
-                                print(newsTags.find("p",{"class":"news-para"}).get_text())
+                                newsContent=newsTags.find("p",{"class":"news-para"}).get_text()
 
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -784,10 +783,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theguardianEnvironment"
+                            iconUrl = "https://events.sustainablebrands.com/sb19det/wp-content/uploads/2019/04/logo-theguardian-500x500-350x350.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "article-body-commercial-selector"})
@@ -815,11 +815,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -860,14 +859,14 @@ def science():
 
                     def getContent(url):
                         try:
-                            request = requests.get(url, timeout=60, headers={
-                                'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "scienceDailyEnvironment"
+                            iconUrl = "https://www.sciencedaily.com/images/sd-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "story_text"})
@@ -911,11 +910,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -967,10 +965,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "scienceDailyChemistry"
+                            iconUrl = "https://www.sciencedaily.com/images/sd-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "story_text"})
@@ -1014,11 +1013,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1072,10 +1070,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theChemicalEngineer"
+                            iconUrl = "https://www.thechemicalengineer.com/Content/img/header/logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "grid-section"})
@@ -1103,11 +1102,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1145,10 +1143,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "scitechDailyChemistry"
+                            iconUrl = "https://scitechdaily.com/images/scitechdaily-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "entry-content clearfix"})
@@ -1178,11 +1177,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1223,10 +1221,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "physChemistry"
+                            iconUrl = "https://phys.b-cdn.net/tmpl/v6/img/logo-header.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "news-article"}).find("div", {"class": "mt-4 article-main"})
@@ -1258,14 +1257,11 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all('script'):
                                     i.replace_with("")
-
-
                                 newsContent = newsContent + " " + newsTags.find("p").get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1317,10 +1313,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "physPhysics"
+                            iconUrl = "https://phys.b-cdn.net/tmpl/v6/img/logo-header.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "news-article"}).find("div", {"class": "mt-4 article-main"})
@@ -1355,11 +1352,10 @@ def science():
 
 
                                 newsContent = newsContent + " " + newsTags.find("p").get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1400,10 +1396,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "scienceNewsPhysics"
+                            iconUrl = "https://www.sciencenews.org/wp-content/uploads/2019/08/sn-fallback.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "rich-text"})
@@ -1435,11 +1432,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1480,10 +1476,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "physicsWorldPhysics"
+                            iconUrl = "https://physicsworld.com/wp-content/themes/iopp/assets/img/svg/pw-logo-red.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "entry-content"})
@@ -1517,11 +1514,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1557,10 +1553,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "scitechDailyPhysics"
+                            iconUrl = "https://scitechdaily.com/images/scitechdaily-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "entry-content clearfix"})
@@ -1590,11 +1587,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1645,10 +1641,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "cnbcEnergy"
+                            iconUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/CNBC-e.svg/1200px-CNBC-e.svg.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"data-module": "ArticleBody"}).find("div", {"class": "group"})
@@ -1678,11 +1675,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1722,10 +1718,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "renewableEnergyWorld"
+                            iconUrl = "https://dqbx58m08igv.cloudfront.net/wp-content/uploads/2021/04/logo-rew-90.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "td-post-content tagdiv-type"})
@@ -1755,11 +1752,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1801,10 +1797,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "reutersEnergy"
+                            iconUrl = "https://www.greenamerica.org/sites/default/files/mediasource/2019-10/Media-Thumb-Tiles_Reuters.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div",{"class":"ArticleBodyWrapper"})
@@ -1832,7 +1829,6 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("div", {"class": "ArticleBody__content___2gQno2"})
@@ -1860,11 +1856,10 @@ def science():
                                         i.replace_with("")
                                     for i in newsTags.find_all("p"):
                                         newsContent = newsContent + " " + i.get_text().strip()
-                                    print(newsContent.strip())
                                 except:
                                     print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1914,10 +1909,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "spaceNews"
+                            iconUrl = "https://spacenews.com/wp-content/themes/spacenews/assets/img/logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section",{"class":"article-content"}).find("div",{"class":"tablet-wrapper"})
@@ -1947,11 +1943,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1989,10 +1984,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "spaceCom"
+                            iconUrl = "https://yt3.ggpht.com/ytc/AAUvwnhhpVUgkEtVt0Gnf4iyx3PuBA9zNqjB4wGW_kCcFA=s900-c-k-c0x00ffffff-no-rj"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("section",{"class":"content-wrapper"}).find("div",{"id":"article-body"})
@@ -2022,11 +2018,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -2064,10 +2059,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "scitechDailySpace"
+                            iconUrl = "https://scitechdaily.com/images/scitechdaily-logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "entry-content clearfix"})
@@ -2097,11 +2093,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -2143,10 +2138,11 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "physSpace"
+                            iconUrl = "https://phys.b-cdn.net/tmpl/v6/img/logo-header.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("article", {"class": "news-article"}).find("div", {"class": "mt-4 article-main"})
@@ -2180,11 +2176,10 @@ def science():
                                     i.replace_with("")
                                 for i in newsTags.find('p').find_all("p"):
                                      newsContent = newsContent + " " + i.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 

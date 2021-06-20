@@ -1,4 +1,4 @@
-
+import databaseTransactions
 import requests
 from bs4 import BeautifulSoup
 
@@ -29,10 +29,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "independentSculpture"
+                            iconUrl = "https://img1.pnghut.com/0/18/25/C0STPpgPST/united-kingdom-media-daily-telegraph-irish-independent-symbol.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "main"})
@@ -62,11 +63,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -108,10 +108,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theArtNewspaperSculpture"
+                            iconUrl = "https://i.pinimg.com/originals/11/ab/37/11ab37f8b8239a30a3ec9455c602fb9b.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"itemprop": "articleBody"})
@@ -139,11 +140,11 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p", attrs={"itemprop": "text"}):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
+
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -183,10 +184,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "euronewsSculpture"
+                            iconUrl = "https://cdn.freelogovectors.net/wp-content/uploads/2019/01/euronews_logo.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "o-article__body"}).find("div", {"class": "c-article-content"})
@@ -216,11 +218,11 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
+
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -263,10 +265,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "bbcSculpture"
+                            iconUrl = "https://cdn.iconscout.com/icon/free/png-256/bbc-3-555283.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main", {"id": "main-content"}).find("article", {"class": "ssrcss-1072xwf-ArticleWrapper"})
@@ -294,7 +297,6 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("div",attrs={"data-component":"text-block"}):
                                     newsContent = newsContent + " " + x.find("p").get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 try:
                                     newsTags = soup.find("main", {"id": "main-content"}).find("div", {"class": "ssrcss-18snukc-RichTextContainer"})
@@ -322,11 +324,10 @@ def art():
                                         i.replace_with("")
                                     for x in newsTags.find_all("p"):
                                         newsContent = newsContent + " " + x.get_text().strip()
-                                    print(newsContent.strip())
                                 except:
                                     print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -365,10 +366,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "sculptureMagazine"
+                            iconUrl = "https://sculpturemagazine.art/wp-content/themes/sculpture-understrap/img/sculpture-logo-tag.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main", {"id": "main"}).find("div", {"class": "entry-content"})
@@ -398,11 +400,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -458,10 +459,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theArtlingArtDesign"
+                            iconUrl = "https://s3.amazonaws.com/files.collageplatform.com.prod/image_cache/340x260/575562f5cfaf34762c8b4568/7f8e1d2a8752c6ff95d76e3fabdd05d2.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "root"})
@@ -488,11 +490,10 @@ def art():
                                 for x in newsTags.find_all("div",{"class":"css-8bwobh e134tidk0"}):
                                     for a in x.find_all("p"):
                                         newsContent = newsContent + " " + a.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -538,10 +539,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "nprArtDesign"
+                            iconUrl = "https://media.npr.org/chrome_svg/npr-logo.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"id": "storytext"})
@@ -571,11 +573,11 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
+
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -615,14 +617,14 @@ def art():
 
                     def getContent(url):
                         try:
-                            request = requests.get(url, timeout=60, headers={
-                                'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
+                            request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theArtNewspaperArtDesign"
+                            iconUrl = "https://i.pinimg.com/originals/11/ab/37/11ab37f8b8239a30a3ec9455c602fb9b.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"itemprop": "articleBody"})
@@ -650,11 +652,11 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p", attrs={"itemprop": "text"}):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
+
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -695,10 +697,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "materiaArtDesign"
+                            iconUrl = "https://materia.press/wp-content/themes/materia/images/logo.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main", {"id": "main"}).find("div", {"class": "post_flexible_content"})
@@ -723,11 +726,10 @@ def art():
                                 for x in newsTags.find_all("div",{"class":"post_content_column_text"}):
                                     for a in x.find_all("p"):
                                         newsContent = newsContent + " " + a.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -784,10 +786,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theArtNewspaperPainting"
+                            iconUrl = "https://i.pinimg.com/originals/11/ab/37/11ab37f8b8239a30a3ec9455c602fb9b.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"itemprop": "articleBody"})
@@ -815,11 +818,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p", attrs={"itemprop": "text"}):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -858,10 +860,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "twoCoatsOfPaint"
+                            iconUrl = "https://www.twocoatsofpaint.com/wp-content/uploads/2021/02/2021.TwoCoatsofPaint6-768x101.jpg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "entry-content"})
@@ -889,11 +892,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -934,10 +936,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "juxtapozPainting"
+                            iconUrl = "https://www.juxtapoz.com/templates/frontend/images/Juxtapoz%20Logos/Juxtapoz_logo_425x113.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "articleWrapper"}).find("div", {"class": "articleBody"})
@@ -963,11 +966,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1017,10 +1019,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "archDaily"
+                            iconUrl = "https://assets.adsttc.com/doodles/logo-us.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "afd-main-content"}).find("article", {"class": "afd-post-content"})
@@ -1050,11 +1053,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1095,10 +1097,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "dezeenArch"
+                            iconUrl = "http://rtlln1kraz3heqyqi5ac19ce-wpengine.netdna-ssl.com/wp-content/uploads/2017/03/Dezeen-Logo-e1466088696119.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("main", {"class": "left-column"}).find("section", {"class": "main-article-body"})
@@ -1128,11 +1131,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1175,10 +1177,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "worldArchitecture"
+                            iconUrl = "https://static.worldarchitecture.org/WAC-2017/Images/WA-logo.2015-01.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "article-wrapper"}).find("div", {"class": "content"})
@@ -1208,11 +1211,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1255,10 +1257,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "architectsJournal"
+                            iconUrl = "https://cdn.rt.emap.com/wp-content/uploads/sites/4/2020/05/18132417/logo-AJ1.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "content-wrap"}).find("div", {"class": "entry"})
@@ -1288,11 +1291,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1335,10 +1337,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "architectureAu"
+                            iconUrl = "https://media1.architecturemedia.net/site_media/static/frontend/images/logos/aau.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "content"}).find("div", {"id": "project"})
@@ -1366,11 +1369,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1426,10 +1428,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "coindeskNft"
+                            iconUrl = "https://media.coindesk.com/uploads/brand/logo/normal/horizontal.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "article-body-wrapper"})
@@ -1454,11 +1457,10 @@ def art():
                                 for x in newsTags.find_all("div",attrs={"class":"article-pharagraph"}):
                                     for a in x.find_all("p"):
                                         newsContent = newsContent + " " + a.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1498,10 +1500,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "theArtNewspaperNft"
+                            iconUrl = "https://i.pinimg.com/originals/11/ab/37/11ab37f8b8239a30a3ec9455c602fb9b.png"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"itemprop": "articleBody"})
@@ -1529,11 +1532,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p", attrs={"itemprop": "text"}):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
@@ -1575,10 +1577,11 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            name = "cryptoNewsNft"
+                            iconUrl = "https://cryptonews.com/assets/img/logo.svg"
+                            pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
-                            print(newsImage)
                             newsTitle = soup.find("meta", {"property": "og:title"}).get("content")
-                            print(newsTitle)
                             newsContent = ""
                             try:
                                 newsTags = soup.find("div", {"class": "content"}).find("div", {"class": "cn-content"})
@@ -1606,11 +1609,10 @@ def art():
                                     i.replace_with("")
                                 for x in newsTags.find_all("p"):
                                     newsContent = newsContent + " " + x.get_text().strip()
-                                print(newsContent.strip())
                             except:
                                 print("Error!")
 
-
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
                         except:
                             print("Error!")
 
