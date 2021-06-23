@@ -31,6 +31,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Electronic Music"
                             name = "edmNews"
                             iconUrl = "https://edm.com/.image/c_fit%2Ccs_srgb%2Cq_auto:good%2Cw_916/MTgxNDU4NzMxNDkyNDUxNDky/edmcom---moore-kismet---website-header---front-image---916x240.webp"
                             pageurl = url
@@ -66,7 +68,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -113,6 +115,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Electronic Music"
                             name = "pitchforkElectronic"
                             iconUrl = "https://cdn.pitchfork.com/assets/misc/hp-og-image.jpg"
                             pageurl = url
@@ -148,7 +152,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -189,6 +193,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Electronic Music"
                             name = "edmTunesNews"
                             iconUrl = "https://www.edmtunes.com/wp-content/uploads/2017/08/edmtunes-red.jpg"
                             pageurl = url
@@ -224,7 +230,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -266,6 +272,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Electronic Music"
                             name = "theMusicEssentials"
                             iconUrl = "https://themusicessentials.com/wp-content/uploads/2015/06/T.H.E-Logo2.jpg"
                             pageurl = url
@@ -301,7 +309,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -343,6 +351,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Electronic Music"
                             name = "edmSauceNews"
                             iconUrl = "https://www.edmsauce.com/wp-content/uploads/2014/12/edmsaucelogo.png"
                             pageurl = url
@@ -406,7 +416,7 @@ def music():
                                 except:
                                     print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -473,6 +483,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Rock"
                             name = "loudWireNews"
                             iconUrl = "https://townsquare.media/site/366/files/2019/03/ldlogo2.png"
                             pageurl = url
@@ -508,7 +520,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -552,6 +564,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Rock"
                             name = "blabberMouth"
                             iconUrl = "https://www.blabbermouth.net/assets/main-logo-93709a4802ad4d1f9f32d19edee7e59fa97395795d2711150f4271ba47e07f08.jpg"
                             pageurl = url
@@ -587,7 +601,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -632,6 +646,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Rock"
                             name = "weareThePit"
                             iconUrl = "http://www.wearethepit.com/wp-content/uploads/2019/01/heromockup-1.jpg"
                             pageurl = url
@@ -669,7 +685,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -721,6 +737,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Blues"
                             name = "bluesMatters"
                             iconUrl = "https://bluesmatters.com/wp-content/uploads/2020/05/blues-matters-logo-large.png"
                             pageurl = url
@@ -757,7 +775,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -798,6 +816,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Blues"
                             name = "americanBluesScene"
                             iconUrl = "https://www.americanbluesscene.com/wp-content/uploads/2020/04/american-blues-scene-logo.png"
                             pageurl = url
@@ -833,7 +853,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -876,6 +896,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Blues"
                             name = "downBeat"
                             iconUrl = "https://downbeat.com/_img/logo_0087DE.png"
                             pageurl = url
@@ -913,7 +935,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -954,6 +976,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Blues"
                             name = "bluesRockReview"
                             iconUrl = "https://bluesrockreview.com/wp-content/uploads/2014/03/cropped-brr_logo.png"
                             pageurl = url
@@ -991,7 +1015,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1041,6 +1065,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Hip Hop"
                             name = "hipHopDx"
                             iconUrl = "https://static.hiphopdx.com/assets/prod/img/logo-black.svg?v11"
                             pageurl = url
@@ -1078,7 +1104,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1118,6 +1144,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Hip Hop"
                             name = "theSourceHipHop"
                             iconUrl = "https://thesource.com/source_logo_.svg"
                             pageurl = url
@@ -1155,7 +1183,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1191,6 +1219,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Hip Hop"
                             name = "pitchforkHipHop"
                             iconUrl = "https://cdn.pitchfork.com/assets/misc/hp-og-image.jpg"
                             pageurl = url
@@ -1226,7 +1256,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1277,6 +1307,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Hip Hop"
                             name = "xxlmagHipHop"
                             iconUrl = "https://townsquare.media/site/812/files/2017/10/xxl-trimmed-spacing.png"
                             pageurl = url
@@ -1312,7 +1344,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1355,6 +1387,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Hip Hop"
                             name = "rapupHipHop"
                             iconUrl = "https://pbs.twimg.com/profile_images/1270742698278785029/CxbBCQ-7_400x400.jpg"
                             pageurl = url
@@ -1390,7 +1424,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1441,6 +1475,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Country"
                             name = "cmtCountry"
                             iconUrl = "https://seeklogo.com/images/C/cmt-country-music-television-logo-A17712C67C-seeklogo.com.png"
                             pageurl = url
@@ -1476,7 +1512,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1527,6 +1563,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Country"
                             name = "tasteOfCountry"
                             iconUrl = "https://pbs.twimg.com/profile_images/656499940806385664/yHeprouf.jpg"
                             pageurl = url
@@ -1562,7 +1600,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1602,6 +1640,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Country"
                             name = "peopleCountry"
                             iconUrl = "https://people.com/img/misc/og-default.png"
                             pageurl = url
@@ -1637,7 +1677,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1677,6 +1717,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Country"
                             name = "countryNow"
                             iconUrl = "https://countrynow.com/wp-content/uploads/2019/04/logo.png"
                             pageurl = url
@@ -1712,7 +1754,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1763,6 +1805,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Country"
                             name = "theBootCountry"
                             iconUrl = "https://townsquare.media/site/623/files/2017/10/theboot-logo.png"
                             pageurl = url
@@ -1798,7 +1842,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1848,6 +1892,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Jazz"
                             name = "jazzTimes"
                             iconUrl = "https://pbs.twimg.com/profile_images/1009167791377641474/Y6Lk_s2i_400x400.jpg"
                             pageurl = url
@@ -1883,7 +1929,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1924,6 +1970,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Jazz"
                             name = "allAboutJazz"
                             iconUrl = "https://upload.wikimedia.org/wikipedia/en/3/3f/All-about-jazz-logo.png"
                             pageurl = url
@@ -1958,7 +2006,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1997,6 +2045,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Jazz"
                             name = "pitchforkJazz"
                             iconUrl = "https://cdn.pitchfork.com/assets/misc/hp-og-image.jpg"
                             pageurl = url
@@ -2032,7 +2082,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -2073,6 +2123,8 @@ def music():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Music"
+                            subtopic = "Jazz"
                             name = "nprJazz"
                             iconUrl = "https://media.npr.org/chrome_svg/npr-logo.svg"
                             pageurl = url
@@ -2108,7 +2160,7 @@ def music():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -2133,9 +2185,6 @@ def music():
 
 
 
-
-
-
     electronicMusic()
     rock()
     blues()
@@ -2147,4 +2196,3 @@ def music():
 
 
 
-music()

@@ -31,6 +31,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Mathematics"
                             name = "physMathematics"
                             iconUrl = "https://phys.b-cdn.net/tmpl/v6/img/logo-header.png"
                             pageurl = url
@@ -69,7 +71,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -108,6 +110,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Mathematics"
                             name = "scienceDailyMathematics"
                             iconUrl = "https://www.sciencedaily.com/images/sd-logo.png"
                             pageurl = url
@@ -157,7 +161,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -200,6 +204,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Mathematics"
                             name = "plusMagazineMathematics"
                             iconUrl = "https://plus.maths.org/content/sites/plus.maths.org/themes/bootplus/Header.jpg"
                             pageurl = url
@@ -237,7 +243,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -278,6 +284,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Mathematics"
                             name = "firstPostMathematics"
                             iconUrl = "https://www.firstpost.com/static/images/fp-desk-logo.png"
                             pageurl = url
@@ -313,7 +321,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -363,6 +371,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Biology"
                             name = "sciencedailybiology"
                             iconUrl = "https://www.sciencedaily.com/images/sd-logo.png"
                             pageurl = url
@@ -412,7 +422,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -450,6 +460,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Biology"
                             name = "physBiology"
                             iconUrl = "https://phys.b-cdn.net/tmpl/v6/img/logo-header.png"
                             pageurl = url
@@ -490,7 +502,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -531,6 +543,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Biology"
                             name = "scitechDailybiology"
                             iconUrl = "https://scitechdaily.com/images/scitechdaily-logo.png"
                             pageurl = url
@@ -568,7 +582,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -610,6 +624,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Biology"
                             name = "sciNewsbiology"
                             iconUrl = "http://cdn.sci-news.com/images/2013/02/banner_site.png"
                             pageurl = url
@@ -647,7 +663,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -706,6 +722,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Environment"
                             name = "downToEearth"
                             iconUrl = "https://www.downtoearth.org.in/static/new_assets/img/dte-logo-eh.png"
                             pageurl = url
@@ -740,7 +758,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -783,6 +801,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Environment"
                             name = "theguardianEnvironment"
                             iconUrl = "https://events.sustainablebrands.com/sb19det/wp-content/uploads/2019/04/logo-theguardian-500x500-350x350.png"
                             pageurl = url
@@ -818,7 +838,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -862,6 +882,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Environment"
                             name = "scienceDailyEnvironment"
                             iconUrl = "https://www.sciencedaily.com/images/sd-logo.png"
                             pageurl = url
@@ -913,7 +935,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -965,6 +987,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Chemistry"
                             name = "scienceDailyChemistry"
                             iconUrl = "https://www.sciencedaily.com/images/sd-logo.png"
                             pageurl = url
@@ -1016,7 +1040,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1070,6 +1094,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Chemistry"
                             name = "theChemicalEngineer"
                             iconUrl = "https://www.thechemicalengineer.com/Content/img/header/logo.png"
                             pageurl = url
@@ -1105,7 +1131,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1143,6 +1169,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Chemistry"
                             name = "scitechDailyChemistry"
                             iconUrl = "https://scitechdaily.com/images/scitechdaily-logo.png"
                             pageurl = url
@@ -1180,7 +1208,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1221,6 +1249,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Chemistry"
                             name = "physChemistry"
                             iconUrl = "https://phys.b-cdn.net/tmpl/v6/img/logo-header.png"
                             pageurl = url
@@ -1261,7 +1291,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1313,6 +1343,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Physics"
                             name = "physPhysics"
                             iconUrl = "https://phys.b-cdn.net/tmpl/v6/img/logo-header.png"
                             pageurl = url
@@ -1355,7 +1387,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1396,6 +1428,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Physics"
                             name = "scienceNewsPhysics"
                             iconUrl = "https://www.sciencenews.org/wp-content/uploads/2019/08/sn-fallback.png"
                             pageurl = url
@@ -1435,7 +1469,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1476,6 +1510,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Physics"
                             name = "physicsWorldPhysics"
                             iconUrl = "https://physicsworld.com/wp-content/themes/iopp/assets/img/svg/pw-logo-red.svg"
                             pageurl = url
@@ -1517,7 +1553,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1553,6 +1589,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Physics"
                             name = "scitechDailyPhysics"
                             iconUrl = "https://scitechdaily.com/images/scitechdaily-logo.png"
                             pageurl = url
@@ -1590,7 +1628,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1641,6 +1679,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Energy"
                             name = "cnbcEnergy"
                             iconUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/CNBC-e.svg/1200px-CNBC-e.svg.png"
                             pageurl = url
@@ -1678,7 +1718,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1718,6 +1758,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Energy"
                             name = "renewableEnergyWorld"
                             iconUrl = "https://dqbx58m08igv.cloudfront.net/wp-content/uploads/2021/04/logo-rew-90.png"
                             pageurl = url
@@ -1755,7 +1797,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1797,6 +1839,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Energy"
                             name = "reutersEnergy"
                             iconUrl = "https://www.greenamerica.org/sites/default/files/mediasource/2019-10/Media-Thumb-Tiles_Reuters.jpg"
                             pageurl = url
@@ -1859,7 +1903,7 @@ def science():
                                 except:
                                     print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1909,6 +1953,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Space"
                             name = "spaceNews"
                             iconUrl = "https://spacenews.com/wp-content/themes/spacenews/assets/img/logo.png"
                             pageurl = url
@@ -1946,7 +1992,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1984,6 +2030,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Space"
                             name = "spaceCom"
                             iconUrl = "https://yt3.ggpht.com/ytc/AAUvwnhhpVUgkEtVt0Gnf4iyx3PuBA9zNqjB4wGW_kCcFA=s900-c-k-c0x00ffffff-no-rj"
                             pageurl = url
@@ -2021,7 +2069,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -2059,6 +2107,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Space"
                             name = "scitechDailySpace"
                             iconUrl = "https://scitechdaily.com/images/scitechdaily-logo.png"
                             pageurl = url
@@ -2096,7 +2146,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -2138,6 +2188,8 @@ def science():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Science"
+                            subtopic = "Space"
                             name = "physSpace"
                             iconUrl = "https://phys.b-cdn.net/tmpl/v6/img/logo-header.png"
                             pageurl = url
@@ -2179,7 +2231,7 @@ def science():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -2211,16 +2263,6 @@ def science():
 
 
 
-
-
-
-
-
-
-
-
-
-
     mathematics()
     biology()
     environment()
@@ -2237,4 +2279,3 @@ def science():
 
 
 
-science()

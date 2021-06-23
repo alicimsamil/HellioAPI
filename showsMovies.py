@@ -29,6 +29,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Tv Shows"
                             name = "screenRantTv"
                             iconUrl = "https://findlogovector.com/wp-content/uploads/2020/06/screen-rant-logo-vector.png"
                             pageurl = url
@@ -62,7 +64,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -102,6 +104,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Tv Shows"
                             name = "varietyTvShows"
                             iconUrl = "https://miro.medium.com/max/3520/1*VNe0Lf6ur02sK5f31dHbYA.png"
                             pageurl = url
@@ -135,7 +139,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -177,6 +181,8 @@ def showsMovies():
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
                             name = "tvSeriesFinale"
+                            topic = "Shows Movies"
+                            subtopic = "Tv Shows"
                             iconUrl = "https://tvseriesfinale.com/wp-content/themes/tvseriesfinale/images/logo.png"
                             pageurl = url
                             newsImage = soup.find("meta", {"property": "og:image"}).get("content")
@@ -207,7 +213,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -247,6 +253,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Tv Shows"
                             name = "hollywoodReporterTv"
                             iconUrl = "https://www.hollywoodreporter.com/wp-content/uploads/2014/07/thr_logo.jpg"
                             pageurl = url
@@ -278,7 +286,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -319,6 +327,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Tv Shows"
                             name = "colliderTv"
                             iconUrl = "https://collider.com/public/build/images/cl-amp-logo.93e10fe7.png"
                             pageurl = url
@@ -350,7 +360,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -376,6 +386,8 @@ def showsMovies():
                 else:
                     websiteContent = websiteRequest.content
                     soup = BeautifulSoup(websiteContent, "html.parser")
+                    topic = "Shows Movies"
+                    subtopic = "Tv Shows"
                     firstNews = soup.find("div", {"id": "featured-main"}).find_all("div",{"class":"subtext"})[0].find("a").get("href")
                     secondNews = soup.find("div", {"id": "featured-main"}).find_all("div",{"class":"subtext"})[1].find("a").get("href")
                     thirdNews = soup.find("div", {"id": "featured-main"}).find_all("div",{"class":"subtext"})[2].find("a").get("href")
@@ -444,7 +456,7 @@ def showsMovies():
                                 except:
                                     print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -484,6 +496,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Tv Shows"
                             name = "mtvTvShows"
                             iconUrl = "https://www.mtv.com.lb/Content/images/push-icon.png"
                             pageurl = url
@@ -515,7 +529,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -576,6 +590,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Movies"
                             name = "cinemaBlend"
                             iconUrl = "https://logovectorseek.com/wp-content/uploads/2020/11/cinemablend-logo-vector.png"
                             pageurl = url
@@ -608,7 +624,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -648,6 +664,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Movies"
                             name = "screenRantMovies"
                             iconUrl = "https://findlogovector.com/wp-content/uploads/2020/06/screen-rant-logo-vector.png"
                             pageurl = url
@@ -681,7 +699,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -717,6 +735,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Movies"
                             name = "colliderMovies"
                             iconUrl = "https://upload.wikimedia.org/wikipedia/en/6/64/Collider-logo.png"
                             pageurl = url
@@ -748,7 +768,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -790,6 +810,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Movies"
                             name = "cbrMovies"
                             iconUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFB3kB1GM13rBThEfypxDAB6adFzNR7qT8R4Y4AsDN2sbe_QzB5stiH9ezjqEWFlI8Vg&usqp=CAU"
                             pageurl = url
@@ -821,7 +843,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -864,6 +886,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Movies"
                             name = "comingSoonMovies"
                             iconUrl = "https://www.comingsoon.net/assets/uploads/2021/05/evolve_media_llc_summer_season_pass_sales_2021_comingsoon_logo_r04b.svg"
                             pageurl = url
@@ -895,7 +919,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -938,6 +962,8 @@ def showsMovies():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Shows Movies"
+                            subtopic = "Movies"
                             name = "mtvMovies"
                             iconUrl = "https://www.mtv.com.lb/Content/images/push-icon.png"
                             pageurl = url
@@ -969,7 +995,7 @@ def showsMovies():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1009,4 +1035,3 @@ def showsMovies():
 
 
 
-showsMovies()

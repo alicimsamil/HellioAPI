@@ -29,6 +29,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic="Art"
+                            subtopic="Sculpture"
                             name = "independentSculpture"
                             iconUrl = "https://img1.pnghut.com/0/18/25/C0STPpgPST/united-kingdom-media-daily-telegraph-irish-independent-symbol.jpg"
                             pageurl = url
@@ -66,7 +68,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -108,6 +110,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Sculpture"
                             name = "theArtNewspaperSculpture"
                             iconUrl = "https://i.pinimg.com/originals/11/ab/37/11ab37f8b8239a30a3ec9455c602fb9b.png"
                             pageurl = url
@@ -144,7 +148,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -184,6 +188,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Sculpture"
                             name = "euronewsSculpture"
                             iconUrl = "https://cdn.freelogovectors.net/wp-content/uploads/2019/01/euronews_logo.png"
                             pageurl = url
@@ -222,7 +228,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -265,6 +271,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Sculpture"
                             name = "bbcSculpture"
                             iconUrl = "https://cdn.iconscout.com/icon/free/png-256/bbc-3-555283.png"
                             pageurl = url
@@ -327,7 +335,7 @@ def art():
                                 except:
                                     print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -366,6 +374,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Sculpture"
                             name = "sculptureMagazine"
                             iconUrl = "https://sculpturemagazine.art/wp-content/themes/sculpture-understrap/img/sculpture-logo-tag.svg"
                             pageurl = url
@@ -403,7 +413,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -459,6 +469,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Art Design"
                             name = "theArtlingArtDesign"
                             iconUrl = "https://s3.amazonaws.com/files.collageplatform.com.prod/image_cache/340x260/575562f5cfaf34762c8b4568/7f8e1d2a8752c6ff95d76e3fabdd05d2.png"
                             pageurl = url
@@ -493,7 +505,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -539,6 +551,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Art Design"
                             name = "nprArtDesign"
                             iconUrl = "https://media.npr.org/chrome_svg/npr-logo.svg"
                             pageurl = url
@@ -577,7 +591,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -620,6 +634,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Art Design"
                             name = "theArtNewspaperArtDesign"
                             iconUrl = "https://i.pinimg.com/originals/11/ab/37/11ab37f8b8239a30a3ec9455c602fb9b.png"
                             pageurl = url
@@ -656,7 +672,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -697,6 +713,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Art Design"
                             name = "materiaArtDesign"
                             iconUrl = "https://materia.press/wp-content/themes/materia/images/logo.svg"
                             pageurl = url
@@ -729,7 +747,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -786,6 +804,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Painting"
                             name = "theArtNewspaperPainting"
                             iconUrl = "https://i.pinimg.com/originals/11/ab/37/11ab37f8b8239a30a3ec9455c602fb9b.png"
                             pageurl = url
@@ -821,7 +841,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -860,6 +880,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Painting"
                             name = "twoCoatsOfPaint"
                             iconUrl = "https://www.twocoatsofpaint.com/wp-content/uploads/2021/02/2021.TwoCoatsofPaint6-768x101.jpg"
                             pageurl = url
@@ -895,7 +917,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -936,6 +958,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Painting"
                             name = "juxtapozPainting"
                             iconUrl = "https://www.juxtapoz.com/templates/frontend/images/Juxtapoz%20Logos/Juxtapoz_logo_425x113.png"
                             pageurl = url
@@ -969,7 +993,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1019,6 +1043,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Architecture"
                             name = "archDaily"
                             iconUrl = "https://assets.adsttc.com/doodles/logo-us.png"
                             pageurl = url
@@ -1056,7 +1082,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1097,6 +1123,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Architecture"
                             name = "dezeenArch"
                             iconUrl = "http://rtlln1kraz3heqyqi5ac19ce-wpengine.netdna-ssl.com/wp-content/uploads/2017/03/Dezeen-Logo-e1466088696119.png"
                             pageurl = url
@@ -1134,7 +1162,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1177,6 +1205,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Architecture"
                             name = "worldArchitecture"
                             iconUrl = "https://static.worldarchitecture.org/WAC-2017/Images/WA-logo.2015-01.svg"
                             pageurl = url
@@ -1214,7 +1244,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1257,6 +1287,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Architecture"
                             name = "architectsJournal"
                             iconUrl = "https://cdn.rt.emap.com/wp-content/uploads/sites/4/2020/05/18132417/logo-AJ1.svg"
                             pageurl = url
@@ -1294,7 +1326,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1337,6 +1369,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Architecture"
                             name = "architectureAu"
                             iconUrl = "https://media1.architecturemedia.net/site_media/static/frontend/images/logos/aau.svg"
                             pageurl = url
@@ -1372,7 +1406,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1428,6 +1462,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Nft"
                             name = "coindeskNft"
                             iconUrl = "https://media.coindesk.com/uploads/brand/logo/normal/horizontal.png"
                             pageurl = url
@@ -1460,7 +1496,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1500,6 +1536,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Nft"
                             name = "theArtNewspaperNft"
                             iconUrl = "https://i.pinimg.com/originals/11/ab/37/11ab37f8b8239a30a3ec9455c602fb9b.png"
                             pageurl = url
@@ -1535,7 +1573,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1577,6 +1615,8 @@ def art():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Art"
+                            subtopic = "Nft"
                             name = "cryptoNewsNft"
                             iconUrl = "https://cryptonews.com/assets/img/logo.svg"
                             pageurl = url
@@ -1612,7 +1652,7 @@ def art():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1669,7 +1709,3 @@ def art():
 
 
 
-
-
-
-art()

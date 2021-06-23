@@ -30,6 +30,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Gaming News"
                             name = "pcgamerNews"
                             iconUrl = "https://www.responsesource.com/content/uploads/2016/07/PC-Gamer.jpg"
                             pageurl = url
@@ -61,7 +63,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -102,6 +104,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Gaming News"
                             name = "theVergeNews"
                             iconUrl = "https://upload.wikimedia.org//wikipedia/commons/thumb/3/35/Verge-color_logo.svg/1200px-Verge-color_logo.svg.png"
                             pageurl = url
@@ -133,7 +137,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -175,6 +179,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Gaming News"
                             name = "gameInformerNews"
                             iconUrl = "https://www.gameinformer.com/sites/default/files/imagefeed/gisocial.jpg"
                             pageurl = url
@@ -206,7 +212,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -249,6 +255,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Gaming News"
                             name = "gameRantNews"
                             iconUrl = "https://pbs.twimg.com/profile_images/1288445622542929923/05FNH9O5.png"
                             pageurl = url
@@ -282,7 +290,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -323,6 +331,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Gaming News"
                             name = "ignNews"
                             iconUrl = "https://yt3.ggpht.com/ytc/AAUvwngvOQvSsus1IvliMsc5Tsz2BajY4c-4j0c1br_rCA=s900-c-k-c0x00ffffff-no-rj"
                             pageurl = url
@@ -360,7 +370,7 @@ def gaming():
                                 except:
                                     print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -400,6 +410,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Gaming News"
                             name = "gamespotNews"
                             iconUrl = "https://www.gamespot.com/a/bundles/gamespotsite/images/logo.png"
                             pageurl = url
@@ -431,7 +443,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -490,6 +502,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Espor"
                             name = "esportsinsider"
                             iconUrl = "https://resources.esportsinsider.com/esportsinsider/2018/04/esi-logo-544x180.png"
                             pageurl = url
@@ -521,7 +535,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -562,6 +576,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Espor"
                             name = "sportSkeedaEsports"
                             iconUrl = "https://cdn.flipboard.com/uploads/avatar/fc229c3603d4cd543a5e6b6d70a9c8507f76a5ec.png"
                             pageurl = url
@@ -593,7 +609,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -632,6 +648,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Espor"
                             name = "dotEsports"
                             iconUrl = "https://cdn1.dotesports.com/wp-content/uploads/2018/08/08145103/2840ee3d-2f1b-4a57-9c79-c7f13a503bd1.png"
                             pageurl = url
@@ -663,7 +681,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -705,6 +723,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Espor"
                             name = "esportsObserver"
                             iconUrl = "https://esportsobserver.com/wp-content/uploads/2020/03/TEO_EXTENDED_BLACK.png"
                             pageurl = url
@@ -736,7 +756,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -778,6 +798,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Espor"
                             name = "oneEsports"
                             iconUrl = "https://oneesports.blob.core.windows.net/cdn-data/2021/03/oneesports-logo.png"
                             pageurl = url
@@ -809,7 +831,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -866,6 +888,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Valorant News"
                             name = "dotEsportsValorant"
                             iconUrl = "https://cdn1.dotesports.com/wp-content/uploads/2018/08/08145103/2840ee3d-2f1b-4a57-9c79-c7f13a503bd1.png"
                             pageurl = url
@@ -897,7 +921,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -939,6 +963,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Valorant News"
                             name = "sportSkeedaValorant"
                             iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Sportskeeda.svg/1280px-Sportskeeda.svg.png"
                             pageurl = url
@@ -970,7 +996,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1011,6 +1037,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Valorant News"
                             name = "talkEsportValorant"
                             iconUrl = "https://www.talkesport.com/wp-content/uploads/2015/11/500-130.png"
                             pageurl = url
@@ -1042,7 +1070,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1082,6 +1110,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Valorant News"
                             name = "theGamehausValorant"
                             iconUrl = "https://i1.wp.com/thegamehaus.com/wp-content/uploads/2018/04/TheGameHausTransparentLogo.png?fit=230%2C230&ssl=1"
                             pageurl = url
@@ -1113,7 +1143,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1166,6 +1196,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Lol News"
                             name = "dotEsportsLol"
                             iconUrl = "https://play-lh.googleusercontent.com/9H8yYMJMXHrvD7k1RC-c0nSgpwhDbCtW4218coPdtfM8tJBjoZXOjytTE89ILWeWOQ"
                             pageurl = url
@@ -1197,7 +1229,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1239,6 +1271,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Lol News"
                             name = "sportSkeedaLol"
                             iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Sportskeeda.svg/1280px-Sportskeeda.svg.png"
                             pageurl = url
@@ -1270,7 +1304,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1312,6 +1346,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Lol News"
                             name = "leagueFeedLol"
                             iconUrl = "https://leaguefeed.net/wp-content/uploads/2021/01/leaguefeed-red-1.png"
                             pageurl = url
@@ -1343,7 +1379,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1385,6 +1421,8 @@ def gaming():
                             request = requests.get(url, timeout=60, headers={'User-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'})
                             content = request.content
                             soup = BeautifulSoup(content, "html.parser")
+                            topic = "Gaming"
+                            subtopic = "Lol News"
                             name = "earlyGameLol"
                             iconUrl = "https://www.earlygame.com/uploads/images/logo.jpeg"
                             pageurl = url
@@ -1416,7 +1454,7 @@ def gaming():
                             except:
                                 print("Error!")
 
-                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl)
+                            databaseTransactions.contentAdd(name, newsTitle, newsContent, newsImage, pageurl, iconUrl,topic,subtopic)
                         except:
                             print("Error!")
 
@@ -1469,4 +1507,3 @@ def gaming():
     valorantNews()
     lolNews()
 
-gaming()
