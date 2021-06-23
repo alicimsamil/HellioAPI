@@ -6,7 +6,7 @@ import art,gaming,music,news,sports,showsMovies,science,technology,travel
 from apscheduler.schedulers.background import BackgroundScheduler
 import databaseTransactions
 def sensor():
-    if datetime.datetime.now().minute == 0:
+    if datetime.datetime.now().minute == 30:
         art.art()
         gaming.gaming()
         music.music()
