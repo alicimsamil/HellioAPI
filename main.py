@@ -5,10 +5,6 @@ import datetime
 import art,gaming,music,news,sports,showsMovies,science,technology,travel
 from apscheduler.schedulers.background import BackgroundScheduler
 import databaseTransactions
-
-app = Flask(__name__)
-api = Api(app)
-
 def sensor():
     if datetime.datetime.now().minute == 0:
         art.art()
@@ -26,6 +22,10 @@ def sensor():
 sched = BackgroundScheduler(daemon=True)
 sched.add_job(sensor,'interval',minutes=1, id="test",max_instances=6)
 sched.start()
+
+app = Flask(__name__)
+api = Api(app)
+
 
 
 
