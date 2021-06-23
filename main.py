@@ -5,8 +5,17 @@ import datetime
 import art,gaming,music,news,sports,showsMovies,science,technology,travel
 from apscheduler.schedulers.background import BackgroundScheduler
 import databaseTransactions
+
+
+
+app = Flask(__name__)
+api = Api(app)
+
+
+
+@app.before_first_request
 def sensor():
-    if datetime.datetime.now().minute == 18:
+    if datetime.datetime.now().minute == 59:
         art.art()
         gaming.gaming()
         music.music()
@@ -23,8 +32,8 @@ sched = BackgroundScheduler(daemon=True)
 sched.add_job(sensor,'interval',minutes=1, id="test",max_instances=6)
 sched.start()
 
-app = Flask(__name__)
-api = Api(app)
+
+
 
 
 
@@ -61,4 +70,4 @@ def updates():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,use_reloader=False)
+    app.run(debug=True, threaded=True,use_reloader=False)
