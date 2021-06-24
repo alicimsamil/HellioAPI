@@ -15,7 +15,7 @@ api = Api(app)
 
 @app.before_first_request
 def sensor():
-    if datetime.datetime.now().minute == 59:
+    if datetime.datetime.now().minute == 1:
         art.art()
         gaming.gaming()
         music.music()
