@@ -51,6 +51,22 @@ def db_connection():
 
 
 
+@app.route("/v1/topics", methods=["GET", "POST"])
+def topics():
+
+    conn = db_connection()
+    cursor = conn.cursor()
+
+    if request.method == "GET":
+        cursor = conn.execute("SELECT DISTINCT name,iconurl,topic,subtopic FROM api")
+        updates = [
+            dict(name=row[0], iconurl=row[1], topic=row[2], subtopic=row[3])
+            for row in cursor.fetchall()
+        ]
+        if updates is not None:
+            return jsonify(updates)
+
+
 
 @app.route("/v1/updates", methods=["GET", "POST"])
 def updates():
