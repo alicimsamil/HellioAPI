@@ -68,6 +68,18 @@ def topics():
 
 
 
+
+@app.route("/", methods=["GET", "POST"])
+def mainScreen():
+
+    if request.method == "GET":
+
+        if updates is not None:
+            return {"Updates":"/v1/updates","Topics":"/v1/topics"}
+
+
+
+
 @app.route("/v1/updates", methods=["GET", "POST"])
 def updates():
 
